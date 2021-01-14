@@ -1,0 +1,99 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>4d36032e-7adf-4db0-99ae-8d9be3b4193d</UserSecretsId>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="Pages\BridgesView - Copy.razor" />
+    <Content Remove="wwwroot\Images\Image1.jpg" />
+    <Content Remove="wwwroot\Images\Image10.jpg" />
+    <Content Remove="wwwroot\Images\Image11.jpg" />
+    <Content Remove="wwwroot\Images\Image12.jpg" />
+    <Content Remove="wwwroot\Images\Image13.jpg" />
+    <Content Remove="wwwroot\Images\Image14.jpg" />
+    <Content Remove="wwwroot\Images\Image15.jpg" />
+    <Content Remove="wwwroot\Images\Image16.jpg" />
+    <Content Remove="wwwroot\Images\Image17.jpg" />
+    <Content Remove="wwwroot\Images\Image18.jpg" />
+    <Content Remove="wwwroot\Images\Image19.jpg" />
+    <Content Remove="wwwroot\Images\Image2.jpg" />
+    <Content Remove="wwwroot\Images\Image20.jpg" />
+    <Content Remove="wwwroot\Images\Image21.jpg" />
+    <Content Remove="wwwroot\Images\Image22.jpg" />
+    <Content Remove="wwwroot\Images\Image23.jpg" />
+    <Content Remove="wwwroot\Images\Image24.jpg" />
+    <Content Remove="wwwroot\Images\Image25.jpg" />
+    <Content Remove="wwwroot\Images\Image3.jpg" />
+    <Content Remove="wwwroot\Images\Image4.jpg" />
+    <Content Remove="wwwroot\Images\Image5.jpg" />
+    <Content Remove="wwwroot\Images\Image6.jpg" />
+    <Content Remove="wwwroot\Images\Image7.jpg" />
+    <Content Remove="wwwroot\Images\Image8.jpg" />
+    <Content Remove="wwwroot\Images\Image9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="wwwroot\Images\1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Images\2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Images\3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Images\4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Images\5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Images\6.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Images\Bridge1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Images\Bridge2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="custom.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="custom.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\Images\Image1.jpg" />
+    <None Include="wwwroot\Images\Image10.jpg" />
+    <None Include="wwwroot\Images\Image11.jpg" />
+    <None Include="wwwroot\Images\Image12.jpg" />
+    <None Include="wwwroot\Images\Image13.jpg" />
+    <None Include="wwwroot\Images\Image14.jpg" />
+    <None Include="wwwroot\Images\Image15.jpg" />
+    <None Include="wwwroot\Images\Image16.jpg" />
+    <None Include="wwwroot\Images\Image17.jpg" />
+    <None Include="wwwroot\Images\Image18.jpg" />
+    <None Include="wwwroot\Images\Image19.jpg" />
+    <None Include="wwwroot\Images\Image2.jpg" />
+    <None Include="wwwroot\Images\Image20.jpg" />
+    <None Include="wwwroot\Images\Image21.jpg" />
+    <None Include="wwwroot\Images\Image22.jpg" />
+    <None Include="wwwroot\Images\Image23.jpg" />
+    <None Include="wwwroot\Images\Image24.jpg" />
+    <None Include="wwwroot\Images\Image25.jpg" />
+    <None Include="wwwroot\Images\Image3.jpg" />
+    <None Include="wwwroot\Images\Image4.jpg" />
+    <None Include="wwwroot\Images\Image5.jpg" />
+    <None Include="wwwroot\Images\Image6.jpg" />
+    <None Include="wwwroot\Images\Image7.jpg" />
+    <None Include="wwwroot\Images\Image8.jpg" />
+    <None Include="wwwroot\Images\Image9.jpg" />
+  </ItemGroup>
+</Project>

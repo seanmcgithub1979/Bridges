@@ -1,16 +1,18 @@
 ﻿@inherits LayoutComponentBase
 
+@using Microsoft.AspNetCore.Mvc.TagHelpers;
+
+@*@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers;*@
+
 <div class="sidebar">
     <NavMenu />
 </div>
 
 <div class="main">
-
-    <div class="top-row px-1" align="left" style="">
+    <div class="top-row px-1">
         <h1 align="left">Georgie & Sean &trade; &copy; 2020</h1>
         <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
     </div>
-
     <div class="content px-4">
         @Body
     </div>

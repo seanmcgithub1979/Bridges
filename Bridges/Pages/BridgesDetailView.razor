@@ -1,0 +1,40 @@
+﻿@page "/bridgesdetailview"
+
+@using Bridges.Services;
+@using Bridges.Models
+
+<table>
+    <tr colspan="2">
+        <td>
+            <h2>@bridge.Name</h2>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img title="@bridge.Name" alt="No image" height="600" width="800" src="Images/Original/@bridge.Filename"/>
+        </td>
+        <td>
+            <h4>Description</h4>
+            <hr/>
+            <p>@bridge.Description</p>
+        </td>
+    </tr>
+</table>
+
+@code
+{
+        readonly string filename;
+        private readonly Bridge bridge;
+
+        public BridgesDetailView()
+        {
+            this.filename = "";
+            bridge = new BridgesService().GetBridges.FirstOrDefault(x => x.Filename == "Image8.jpg");
+        }
+
+        public BridgesDetailView(string filename = "Image 10")
+        {
+            this.filename = filename;
+            bridge = new BridgesService().GetBridges.FirstOrDefault(x => x.Filename == "Image1.jpg0");
+        }
+    }

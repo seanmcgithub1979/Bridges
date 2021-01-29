@@ -1,10 +1,19 @@
-﻿using Bridges.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Bridges.Models;
 
 namespace Bridges.Services
 {
     public class BridgesService
     {
+// #if DEBUG
+//        public IList<Bridge> GetBridges => new List<Bridge>
+//        {
+//            new Bridge("Image1.jpg", "Image 1", "desc"),
+//            new Bridge("Image2.jpg", "Image 2", "desc"),
+//            new Bridge("Image3.jpg", "Image 3", "desc"),
+//            new Bridge("Image4.jpg", "Image 4", "desc")
+//        };
+//#else
         public IList<Bridge> GetBridges => new List<Bridge>
         {
             new Bridge("Image1.jpg", "Image 1", "desc"),
@@ -14,7 +23,16 @@ namespace Bridges.Services
             new Bridge("Image5.jpg", "Image 5", "desc"),
             new Bridge("Image6.jpg", "Image 6", "desc"),
             new Bridge("Image7.jpg", "Image 7", "desc"),
-            new Bridge("Image8.jpg", "Image 8", "desc"),
+            new Bridge("Image8.jpg", "Image 8",
+                "This is a bridge.\n" +
+                "Some info when lazy bones gets round to it.\n" +
+                "Some more info......\n" +
+                "Some more info......\n" +
+                "Some more info......\n" +
+                "Some more info......\n" +
+                "Some more info......\n" +
+                "Some more info......\n" +
+                "Some more info......\n"),
             new Bridge("Image9.jpg", "Image 9", "desc"),
             new Bridge("Image10.jpg", "Image 10", "desc"),
             new Bridge("Image11.jpg", "Image 11", "desc"),
@@ -70,5 +88,7 @@ namespace Bridges.Services
             new Bridge("Image61.jpg", "Image 61", "desc"),
             new Bridge("Image62.jpg", "Image 62", "desc")
         };
+
+//#endif
     }
 }

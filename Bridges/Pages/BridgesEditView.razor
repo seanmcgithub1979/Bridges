@@ -1,0 +1,26 @@
+﻿@page "/bridgeseditview"
+
+@using Bridges.Services;
+
+<form method="post">
+    <h3>Edit bridges</h3>
+</form>
+
+<table>
+    <thead>Bridges list</thead>
+    <tr>
+        <td><h5>Name</h5></td>
+        <td><h5>Description</h5></td>
+        <td><h5>Filename</h5></td>
+    </tr>
+    @{
+        foreach (var bridge in new BridgesService().GetBridges)
+        {
+            <tr>
+                <td><p color="white">@bridge.Name</p></td>
+                <td><p color="white">@bridge.Description</p></td>
+                <td><p color="white">@bridge.Filename</p></td>
+            </tr>
+        }
+    }
+</table>

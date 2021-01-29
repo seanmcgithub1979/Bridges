@@ -56,41 +56,48 @@ using Microsoft.AspNetCore.Components.Web;
 #nullable disable
 #nullable restore
 #line 7 "C:\SeansStuff\Code\Bridges\Bridges\_Imports.razor"
-using Microsoft.JSInterop;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 8 "C:\SeansStuff\Code\Bridges\Bridges\_Imports.razor"
-using Bridges;
+using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 9 "C:\SeansStuff\Code\Bridges\Bridges\_Imports.razor"
-using Bridges.Pages;
+using Bridges;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 10 "C:\SeansStuff\Code\Bridges\Bridges\_Imports.razor"
-using Bridges.Shared;
+using Bridges.Pages;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 11 "C:\SeansStuff\Code\Bridges\Bridges\_Imports.razor"
-using Microsoft.Extensions.Configuration;
+using Bridges.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 12 "C:\SeansStuff\Code\Bridges\Bridges\_Imports.razor"
+using Microsoft.Extensions.Configuration;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "C:\SeansStuff\Code\Bridges\Bridges\_Imports.razor"
 using Microsoft.Extensions.Options;
 
 #line default
@@ -103,7 +110,7 @@ using Bridges.Services;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/bridgesview")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/bridgeseditview")]
     public partial class BridgesEditView : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -111,15 +118,6 @@ using Bridges.Services;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 52 "C:\SeansStuff\Code\Bridges\Bridges\Pages\BridgesEditView.razor"
- 
-    int i;
-    int colCount = 6;
-
-#line default
-#line hidden
-#nullable disable
     }
 }
 #pragma warning restore 1591

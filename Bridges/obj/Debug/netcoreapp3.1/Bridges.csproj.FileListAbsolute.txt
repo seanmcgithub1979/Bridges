@@ -2,9 +2,6 @@ C:\SeansStuff\Code\Bridges\Bridges\bin\Debug\netcoreapp3.1\appsettings.Developme
 C:\SeansStuff\Code\Bridges\Bridges\bin\Debug\netcoreapp3.1\appsettings.json
 C:\SeansStuff\Code\Bridges\Bridges\bin\Debug\netcoreapp3.1\appsettings.Production.json
 C:\SeansStuff\Code\Bridges\Bridges\bin\Debug\netcoreapp3.1\appsettings.Staging.json
-C:\SeansStuff\Code\Bridges\Bridges\bin\Debug\netcoreapp3.1\custom.json
-C:\SeansStuff\Code\Bridges\Bridges\bin\Debug\netcoreapp3.1\custom.ini
-C:\SeansStuff\Code\Bridges\Bridges\bin\Debug\netcoreapp3.1\custom.xml
 C:\SeansStuff\Code\Bridges\Bridges\bin\Debug\netcoreapp3.1\Bridges.exe
 C:\SeansStuff\Code\Bridges\Bridges\bin\Debug\netcoreapp3.1\Bridges.deps.json
 C:\SeansStuff\Code\Bridges\Bridges\bin\Debug\netcoreapp3.1\Bridges.runtimeconfig.json

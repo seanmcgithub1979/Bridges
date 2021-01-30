@@ -1,11 +1,11 @@
-﻿@page "/bridgesview"
+﻿@page "/bridgesview/{colcount:int}"
 
 @using Bridges.Services;
 
 <form method="post">
     <p>
         Columns:
-        <select id="IdDdColCount" name="ddColCount" onchange="@colCount = 3;">
+        <select id="IdDdColCount" name="ddColCount">
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
@@ -21,24 +21,18 @@
 <table>
     @foreach (var bridge in new BridgesService().GetBridges)
     {
-        var x = (i) % colCount;
+        var x = (i) % Colcount;
 
         if (x == 0)
         {
             @:<tr>
         }
-        <td>
-            <div class="container">
-                <a href="bridgesdetailview/">
-                    <img title="@bridge.Name" height="200" width="200" src="Images/Thumbs/@bridge.Filename" />
-                    <div class="text-block">
-                        <h5>@bridge.Name</h5>
-                        <p>@bridge.Description</p>
-                    </div>
-                </a>
-            </div>
-        </td>
-
+                <td>
+                    <a href="bridgesdetailview/@bridge.Name">
+                            <h4>@bridge.Name</h4>
+                        <img title="@bridge.Name" height="200" width="200" src="Images/Thumbs/@bridge.Filename" />
+                    </a>
+                </td>
         if (x == 0)
         {
             @:</tr>
@@ -50,15 +44,7 @@
 @code
 {
     int i;
-    int colCount = 6;
-}
 
-@*@section scripts{
-    <script>
-        $('select[name="IdDdColCount"]').change(function () {
-            var val = $(this).val();
-            console.log(val);
-            
-        });
-    </script>
-}*@
+    [Parameter]
+    public int Colcount { get; set; }
+}

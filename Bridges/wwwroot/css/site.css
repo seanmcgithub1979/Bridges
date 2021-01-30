@@ -23,7 +23,7 @@ img:hover {
     position: relative;
     top: 10px;
     right: 2px;
-    background-color: darkslategray;
+    background-color: gray;
     color: white;
     padding-top: 10px;
     /*padding-bottom: 10px;*/
@@ -33,9 +33,10 @@ img:hover {
 }
 
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', sans-serif;
+    /*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
     /*background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);*/
-    background-color: darkslategray;
+    /*background-color: darkslategray;*/
 }
 
 a, .btn-link {
@@ -65,8 +66,8 @@ app {
 }
 
     .main .top-row {
-        background-color: darkslategray;
-        color: white;
+        background-color: rgb(3, 50 70);
+        /*color: white;*/
         /*background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);*/
         /*border-bottom: 1px solid #d6d5d5;*/
         /*justify-content: flex-end;*/
@@ -83,7 +84,7 @@ app {
 }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    background-image: linear-gradient(180deg, rgb(3, 50, 70) 0%, #3a0647 70%);
 }
 
     .sidebar .top-row {

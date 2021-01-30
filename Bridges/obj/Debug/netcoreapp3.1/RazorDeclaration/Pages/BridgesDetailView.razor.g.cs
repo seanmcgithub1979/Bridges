@@ -117,7 +117,7 @@ using Bridges.Models;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/bridgesdetailview")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/bridgesdetailview/{name}")]
     public partial class BridgesDetailView : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -126,23 +126,10 @@ using Bridges.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 25 "C:\SeansStuff\Code\Bridges\Bridges\Pages\BridgesDetailView.razor"
+#line 36 "C:\SeansStuff\Code\Bridges\Bridges\Pages\BridgesDetailView.razor"
  
-        readonly string filename;
-        private readonly Bridge bridge;
-
-        public BridgesDetailView()
-        {
-            this.filename = "";
-            bridge = new BridgesService().GetBridges.FirstOrDefault(x => x.Filename == "Image8.jpg");
-        }
-
-        public BridgesDetailView(string filename = "Image 10")
-        {
-            this.filename = filename;
-            bridge = new BridgesService().GetBridges.FirstOrDefault(x => x.Filename == "Image1.jpg0");
-        }
-    
+    [Parameter]
+    public string Name { get; set; }
 
 #line default
 #line hidden

@@ -6,7 +6,7 @@
     <h3>Edit bridges</h3>
 </form>
 
-<table>
+<table class="table-bordered">
     <thead>Bridges list</thead>
     <tr>
         <td><h5>Name</h5></td>
@@ -17,9 +17,9 @@
         foreach (var bridge in new BridgesService().GetBridges)
         {
             <tr>
-                <td><p color="white">@bridge.Name</p></td>
-                <td><p color="white">@bridge.Description</p></td>
-                <td><p color="white">@bridge.Filename</p></td>
+                <td>@bridge.Name</td>
+                <td>@bridge.Description</td>
+                <td>@bridge.Filename</td>
             </tr>
         }
     }

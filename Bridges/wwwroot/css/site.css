@@ -8,7 +8,7 @@ img {
 
 /* Add a hover effect (blue shadow) */
 img:hover {
-    box-shadow: 0 0 2px 1px #393939;
+    box-shadow: 0 0 2px 1px rgb(255,100,10);
 }
 
 /* Container holding the image and the text */
@@ -33,9 +33,10 @@ img:hover {
 }
 
 html, body {
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Berlin Sans FB', Broadway;
     /*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
     /*background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);*/
+    background-image: "bkgrd.jpg";
     /*background-color: darkslategray;*/
 }
 
@@ -67,7 +68,7 @@ app {
 
     .main .top-row {
         background-color: rgb(3, 50 70);
-        /*color: white;*/
+        color: white;
         /*background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);*/
         /*border-bottom: 1px solid #d6d5d5;*/
         /*justify-content: flex-end;*/

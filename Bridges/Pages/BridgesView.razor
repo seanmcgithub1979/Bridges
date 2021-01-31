@@ -2,7 +2,7 @@
 
 @using Bridges.Services;
 
-<form method="post">
+@*<form method="post">
     <p>
         Columns:
         <select id="IdDdColCount" name="ddColCount">
@@ -16,9 +16,8 @@
             <option value="8">Eight</option>
         </select>
     </p>
-</form>
-
-<table>
+</form>*@
+<table class="table-bordered">
     @foreach (var bridge in new BridgesService().GetBridges)
     {
         var x = (i) % Colcount;
@@ -29,8 +28,8 @@
         }
                 <td>
                     <a href="bridgesdetailview/@bridge.Name">
-                            <h4>@bridge.Name</h4>
-                        <img title="@bridge.Name" height="200" width="200" src="Images/Thumbs/@bridge.Filename" />
+                        <h6>@bridge.Name</h6>
+                        <img title="@bridge.Description" height="200" width="200" src="Images/Thumbs/@bridge.Filename" />
                     </a>
                 </td>
         if (x == 0)

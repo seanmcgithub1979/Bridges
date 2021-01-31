@@ -55,6 +55,13 @@ using Microsoft.AspNetCore.Components.Web;
 #line hidden
 #nullable disable
 #nullable restore
+#line 7 "C:\SeansStuff\Code\Bridges\Bridges\_Imports.razor"
+using Microsoft.AspNetCore.Mvc.TagHelpers;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 8 "C:\SeansStuff\Code\Bridges\Bridges\_Imports.razor"
 using Microsoft.JSInterop;
 
@@ -92,13 +99,6 @@ using Microsoft.Extensions.Configuration;
 #nullable restore
 #line 13 "C:\SeansStuff\Code\Bridges\Bridges\_Imports.razor"
 using Microsoft.Extensions.Options;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "C:\SeansStuff\Code\Bridges\Bridges\Shared\MainLayout.razor"
-using Microsoft.AspNetCore.Mvc.TagHelpers;
 
 #line default
 #line hidden

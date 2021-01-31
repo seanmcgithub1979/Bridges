@@ -6,20 +6,27 @@
 @{
     Bridge bridge = new BridgesService().GetBridges.FirstOrDefault(x => x.Name == Name);
 
-    if(bridge != null)
-    { 
-        <table>
+   
+    if (bridge != null)
+    {
+        var lat = @bridge.Lat;
+        var lng = @bridge.Lng;
+        //var defaultZoom = "14.25z";
+    
+        var url = $"https://www.google.co.uk/maps/@{lat},{lng}m/data=!3m1!1e3";
+
+        <table class="table">
             <tr colspan="2">
                 <td>
-                    <h2>@bridge.Name</h2>
+                    <h6>@bridge.Name</h6><a href=@url> Show in maps</a>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <img title="@bridge.Name" alt="No image" height="600" width="800" src="Images/Original/@bridge.Filename"/>
+                    <img alt="No image" height="600" width="800" src="Images/Original/@bridge.Filename"/>
                 </td>
                 <td>
-                    <h4>Description</h4>
+                    <h6>Description</h6><a href=@url> Show in maps</a>
                     <hr/>
                     <p>@bridge.Description</p>
                 </td>

@@ -32,7 +32,8 @@ namespace Bridges.Services
                 "Some more info......\n" +
                 "Some more info......\n" +
                 "Some more info......\n" +
-                "Some more info......\n"),
+                "Some more info......\n",
+                52.7831845656961, -1.933417902451652),
             new Bridge("Image9.jpg", "Image 9", "desc"),
             new Bridge("Image10.jpg", "Image 10", "desc"),
             new Bridge("Image11.jpg", "Image 11", "desc"),

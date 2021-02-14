@@ -126,7 +126,7 @@ using Bridges.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 47 "C:\SeansStuff\Code\Bridges\Bridges\Pages\BridgesDetailView.razor"
+#line 45 "C:\SeansStuff\Code\Bridges\Bridges\Pages\BridgesDetailView.razor"
  
     [Parameter]
     public string Name { get; set; }

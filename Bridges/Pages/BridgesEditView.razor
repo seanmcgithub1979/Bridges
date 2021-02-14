@@ -2,17 +2,23 @@
 
 @using Bridges.Services;
 
+
 <form method="post">
     <h3>Edit bridges</h3>
 </form>
 
-<table class="table-bordered">
-    <thead>Bridges list</thead>
-    <tr>
-        <td><h5>Name</h5></td>
-        <td><h5>Description</h5></td>
-        <td><h5>Filename</h5></td>
-    </tr>
+<body style="opacity: 0.7">
+<table class=".table .thead-dark" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%">
+    <thead style="background-color: darkslategray; color: white";>
+        <th><h5>Name</h5></th>
+        <th><h5>Description</h5></th>
+        <th><h5>Filename</h5></th>
+        <th><h5>Lng</h5></th>
+        <th><h5>Lat</h5></th>
+        <th><h5>Zoom</h5></th>
+    <th><h5>Height</h5></th>
+    </thead>
+
     @{
         foreach (var bridge in new BridgesService().GetBridges)
         {
@@ -20,7 +26,12 @@
                 <td>@bridge.Name</td>
                 <td>@bridge.Description</td>
                 <td>@bridge.Filename</td>
+                <td>@bridge.Lng</td>
+                <td>@bridge.Lat</td>
+                <td>@bridge.Zoom</td>
+                <td>@bridge.Height</td>
             </tr>
         }
     }
 </table>
+</body>

@@ -2,11 +2,20 @@
 {
     public class Bridge
     {
-        public Bridge(string filename, string name, string description, double lat = 0.0d, double lng = 0.0d)
+        public Bridge(
+            string filename = "No filename specifed for this bridge yet.", 
+            string name = "No name entered for this bridge yet.", 
+            string description = "No desc entered for this bridge yet................................................................", 
+            decimal lat = 54.9136984m,   // Default to the river.
+            decimal lng = -1.3697736m,   // Default to the river.
+            decimal zoom = 14.25m,       // Google param
+            decimal height = 1222.0m)    // Google param
         {
             Filename = filename;
             Name = name;
             Description = description;
+            Zoom = zoom;
+            Height = height;
             Lat = lat;
             Lng = lng;
         }
@@ -14,7 +23,9 @@
         public string Filename { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public double Lat { get; set; }
-        public double Lng { get; set; }
+        public decimal Lat { get; set; }
+        public decimal Lng { get; set; }
+        public decimal Zoom { get; set; }
+        public decimal Height { get; set; }
     }
 }

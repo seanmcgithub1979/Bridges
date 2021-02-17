@@ -10,7 +10,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
     <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\js\jquery-3.5.1.js" />
   </ItemGroup>
 </Project>

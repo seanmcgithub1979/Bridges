@@ -15,9 +15,9 @@
         var satParams = "!3m1!1e3";
         var url = $"https://www.google.co.uk/maps/@{lat},{lng},{height}m/data={satParams}";
 
-        <table class="table-bordered">
+        <table class="table">
             <tr colspan="2">
-                <td>
+                <td style="color: whitesmoke">
                     <h4>@bridge.Name</h4><a href=@url> Show in maps</a>
                 </td>
             </tr>
@@ -27,7 +27,7 @@
                         <img alt="No image found for bridge with name: @Name" height="600" width="800" src="Images/Original/@bridge.Filename" />
                     </a>
                 </td>
-                <td style="horiz-align: left; background-color: lightgoldenrodyellow; opacity: 0.5; color: darkslategray; width: 100%">
+                <td style="horiz-align: left; vertical-align: text-top; background-color: lightgoldenrodyellow; opacity: 0.6; color: darkslategray; width: 100%">
                     <h6>Description</h6><a href=@url> Show in maps</a>
                     <hr />
                     <p>@bridge.Description</p>

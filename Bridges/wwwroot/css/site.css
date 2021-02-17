@@ -1,4 +1,12 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+/*tr:hover {
+    background: salmon;
+}*/
+
+/*.highlight {
+    background: salmon;
+}*/
+
 img {
     border: 2px solid gray;
     padding: 5px;  /*Some padding */

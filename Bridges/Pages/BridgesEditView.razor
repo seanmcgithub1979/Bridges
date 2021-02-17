@@ -2,20 +2,24 @@
 
 @using Bridges.Services;
 
+<style>
+       tr:hover {
+        background: salmon;
+    }
+</style>
 
 <form method="post">
-    <h3>Edit bridges</h3>
+    <h4 style="color: whitesmoke">Edit bridges</h4>
 </form>
 
-<body style="opacity: 0.7">
-<table class=".table .thead-dark" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%">
-    <thead style="background-color: darkslategray; color: white";>
-        <th><h5>Name</h5></th>
-        <th><h5>Description</h5></th>
-        <th><h5>Filename</h5></th>
-        <th><h5>Lng</h5></th>
-        <th><h5>Lat</h5></th>
-        <th><h5>Zoom</h5></th>
+<table class=".table .thead-dark" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%; opacity: 0.6">
+    <thead style="background-color: darkslategray; color: white" ;>
+    <th><h5>Name</h5></th>
+    <th><h5>Description</h5></th>
+    <th><h5>Filename</h5></th>
+    <th><h5>Lng</h5></th>
+    <th><h5>Lat</h5></th>
+    <th><h5>Zoom</h5></th>
     <th><h5>Height</h5></th>
     </thead>
 
@@ -34,4 +38,3 @@
         }
     }
 </table>
-</body>

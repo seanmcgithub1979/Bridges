@@ -2,47 +2,38 @@
 
 @using Bridges.Services;
 
-@*<form method="post">
-    <p>
-        Columns:
-        <select id="IdDdColCount" name="ddColCount">
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-            <option value="4">Four</option>
-            <option value="5">Five</option>
-            <option value="6" selected="selected">Six</option>
-            <option value="7">Seven</option>
-            <option value="8">Eight</option>
-        </select>
-    </p>
-</form>*@
 <table class="table-bordered">
-    @foreach (var bridge in new BridgesService().GetBridges)
-    {
-        var x = (i) % Colcount;
-
-        if (x == 0)
+    <tr>
+        
+        @if (Colcount != 0)
         {
-            @:<tr>  
-        }
+            @foreach (var bridge in new BridgesService().GetBridges)
+            {
+                var x = (i) % Colcount;
+
                 <td>
                     <a href="bridgesdetailview/@bridge.Name">
                         <h6>@bridge.Name</h6>
-                        <img alt="No image found for bridge with name: @bridge.Name" title="@bridge.Description" height="200" width="200" src="Images/Thumbs/@bridge.Filename" />
+                        <img alt="No image found for bridge with name: @bridge.Name" title="@bridge.Description" height="200" width="200" src="Images/Thumbs/@bridge.Filename"/>
                     </a>
                 </td>
-        if (x == 0)
-        {
-            @:</tr>
+
+                if (x == 0)
+                {
+                    @:</tr>
+                    @:<tr>
+                }
+
+                i++;
+
+            }
         }
-        i++;
-    }
+    </tr>
 </table>
 
 @code
 {
-    int i;
+    int i = 1;
 
     [Parameter]
     public int Colcount { get; set; }

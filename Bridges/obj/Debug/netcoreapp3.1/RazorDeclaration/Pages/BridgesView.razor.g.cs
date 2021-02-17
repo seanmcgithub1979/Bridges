@@ -119,9 +119,9 @@ using Bridges.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 44 "C:\SeansStuff\Code\Bridges\Bridges\Pages\BridgesView.razor"
+#line 35 "C:\SeansStuff\Code\Bridges\Bridges\Pages\BridgesView.razor"
  
-    int i;
+    int i = 1;
 
     [Parameter]
     public int Colcount { get; set; }

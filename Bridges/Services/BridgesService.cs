@@ -4,8 +4,23 @@ using Bridges.Models;
 namespace Bridges.Services
 {
     public class BridgesService
+#if DEBUG
     {
         public IList<Bridge> GetBridges => new List<Bridge>
+        {
+            new Bridge("Image1.jpg", "Image 1"),
+            new Bridge("Image2.jpg", "Image 2"),
+            new Bridge("Image3.jpg", "Image 3"),
+            new Bridge("Image4.jpg", "Image 4"),
+            new Bridge("Image5.jpg", "Image 5"),
+            new Bridge("Image6.jpg", "Image 6"),
+            new Bridge("Image7.jpg", "Image 7"),
+            new Bridge("Image8.jpg", "Image 8"),
+            new Bridge("Image9.jpg", "Image 9"),
+            new Bridge("Image10.jpg", "Image 10")
+        };
+#else
+public IList<Bridge> GetBridges => new List<Bridge>
         {
             new Bridge("Image1.jpg", "Image 1"),
             new Bridge("Image2.jpg", "Image 2"),
@@ -70,5 +85,6 @@ namespace Bridges.Services
             new Bridge("Image61.jpg", "Image 61"),
             new Bridge("Image62.jpg", "Image 62")
         };
+#endif
     }
 }

@@ -1,10 +1,8 @@
 ﻿@page "/bridgesview/{colcount:int}"
 
-@using Bridges.Services;
+@inject IBridgesService bridgesService;
+
 @using Bridges.Interfaces
-@using BridgesRepo
-@using BridgesRepo.Data
-@using Microsoft.EntityFrameworkCore
 
 <style>
     img:hover {
@@ -18,9 +16,6 @@
         @if (Colcount != 0)
         {
             var i = 1;
-
-            IBridgesService bridgesService = 
-                new BridgesService(new BridgeSqlServerRepo(new BridgesDbContext(new DbContextOptions<BridgesDbContext>())));
 
             @foreach (var bridge in bridgesService.GetAllBridges())
             {
@@ -37,8 +32,8 @@
 
                 if (i % Colcount == 0)
                 {
-                @:</tr>
-                @:<tr>
+                    @:</tr>
+                    @:<tr>
                 }
 
                 i++;

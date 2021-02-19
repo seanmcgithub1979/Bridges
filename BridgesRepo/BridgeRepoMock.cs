@@ -5,7 +5,7 @@ using BridgesRepo.Interfaces;
 
 namespace BridgesRepo
 {
-    public class BridgeRepoMock : IBridgeSqlServerRepoMock
+    public class BridgeRepoMock : IBridgeSqlServerRepo
     {
         public void AddBridge(Bridge bridge)
         {

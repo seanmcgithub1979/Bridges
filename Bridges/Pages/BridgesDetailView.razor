@@ -1,16 +1,11 @@
 ﻿@page "/bridgesdetailview/{name}"
 
-@using Bridges.Services;
+@inject IBridgesService bridgesService;
+
 @using BridgesDomain.Model
-@using BridgesRepo
-@using BridgesRepo.Data
-@using Microsoft.EntityFrameworkCore
 @using Bridges.Interfaces
 
 @{
-    IBridgesService bridgesService = 
-        new BridgesService(new BridgeSqlServerRepo(new BridgesDbContext(new DbContextOptions<BridgesDbContext>())));
-    
     Bridge bridge = bridgesService.GetBridge(Name);
 
     if (bridge != null)
@@ -24,7 +19,8 @@
 
         <table class="table">
             <tr colspan="2">
-                <h4 style="color: whitesmoke">@Name</h4><a href=@url> Show in maps</a>
+                <h4 style="color: whitesmoke">@Name</h4>
+                <a href=@url> Show in maps</a>
             </tr>
             <tr>
                 <td style="background-color: lightgoldenrodyellow">

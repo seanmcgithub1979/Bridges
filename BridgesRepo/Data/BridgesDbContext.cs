@@ -10,11 +10,6 @@ namespace BridgesRepo.Data
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-           optionsBuilder.UseSqlServer("Server=DESKTOP-HOUOIUP;Database=Bridges;Trusted_Connection=True;");
-        }
-
         public DbSet<Bridge> Bridges { get; set; }
     }
 }

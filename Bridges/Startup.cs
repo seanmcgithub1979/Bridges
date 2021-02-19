@@ -5,11 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
 using Bridges.Services;
 using BridgesRepo;
 using BridgesRepo.Data;
 using BridgesRepo.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bridges
 {
@@ -26,12 +26,19 @@ namespace Bridges
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("BridgesDbContext");
+            
             services.AddRazorPages();
+            
             services.AddServerSideBlazor();
+            
             services.Configure<RazorPagesOptions>(options => options.RootDirectory = "/Pages");
-            services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BridgesDbContext")));
+            
+            services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));
+            
             services.AddScoped<IBridgesDbContext, BridgesDbContext>();
             services.AddScoped<IBridgeSqlServerRepo, BridgeSqlServerRepo>();
+            //services.AddScoped<IBridgeSqlServerRepo, BridgeRepoMock>();
             services.AddScoped<IBridgesService, BridgesService>();
             
             //services.Configure<EmailSettingsOptions>(Configuration.GetSection("EmailSettings"));

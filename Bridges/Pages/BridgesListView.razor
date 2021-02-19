@@ -1,13 +1,11 @@
 ﻿@page "/bridgeslistview"
 
-@using Bridges.Services;
-@using BridgesRepo
-@using BridgesRepo.Data
-@using Microsoft.EntityFrameworkCore
+@inject IBridgesService bridgesService;
+
 @using Bridges.Interfaces
 
 <style>
-       tr:hover {
+    tr:hover {
         background: salmon;
     }
 </style>
@@ -28,9 +26,6 @@
     </thead>
 
     @{
-        IBridgesService bridgesService = 
-            new BridgesService(new BridgeSqlServerRepo(new BridgesDbContext(new DbContextOptions<BridgesDbContext>())));
-
         foreach (var bridge in bridgesService.GetAllBridges())
         {
             <tr>

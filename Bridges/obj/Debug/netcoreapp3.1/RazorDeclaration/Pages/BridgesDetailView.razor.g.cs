@@ -112,7 +112,21 @@ using Bridges.Services;
 #nullable disable
 #nullable restore
 #line 4 "C:\SeansStuff\Code\Bridges\Bridges\Pages\BridgesDetailView.razor"
-using Bridges.Models;
+using BridgesDomain.Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\SeansStuff\Code\Bridges\Bridges\Pages\BridgesDetailView.razor"
+using BridgesRepo;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\SeansStuff\Code\Bridges\Bridges\Pages\BridgesDetailView.razor"
+using BridgesRepo.Data;
 
 #line default
 #line hidden

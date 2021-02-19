@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>4d36032e-7adf-4db0-99ae-8d9be3b4193d</UserSecretsId>
     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
   </PropertyGroup>
@@ -10,9 +10,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <None Include="wwwroot\js\jquery-3.5.1.js" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="wwwroot\js\jquery-3.5.1.js" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BridgesDomain\BridgesDomain.csproj" />
+    <ProjectReference Include="..\BridgesRepo\BridgesRepo.csproj" />
   </ItemGroup>
 </Project>

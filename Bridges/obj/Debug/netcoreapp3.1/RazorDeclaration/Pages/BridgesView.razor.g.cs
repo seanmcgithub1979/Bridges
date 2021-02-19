@@ -110,6 +110,20 @@ using Bridges.Services;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\SeansStuff\Code\Bridges\Bridges\Pages\BridgesView.razor"
+using BridgesRepo;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\SeansStuff\Code\Bridges\Bridges\Pages\BridgesView.razor"
+using BridgesRepo.Data;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/bridgesview/{colcount:int}")]
     public partial class BridgesView : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -119,10 +133,8 @@ using Bridges.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 35 "C:\SeansStuff\Code\Bridges\Bridges\Pages\BridgesView.razor"
+#line 47 "C:\SeansStuff\Code\Bridges\Bridges\Pages\BridgesView.razor"
  
-    int i = 1;
-
     [Parameter]
     public int Colcount { get; set; }
 

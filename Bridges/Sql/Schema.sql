@@ -6,7 +6,8 @@ GO
 
 CREATE TABLE Bridges
 (
-	Name			VARCHAR(255)	PRIMARY KEY,
+	[Id]			INT IDENTITY (1, 1)	PRIMARY KEY,
+	Name			VARCHAR(255),
 	[Description]	VARCHAR(MAX),
 	[Filename]		VARCHAR(255),
 	Lng				DECIMAL(28,10),

@@ -1,6 +1,10 @@
-﻿@page "/bridgeseditview"
+﻿@page "/bridgeslistview"
 
 @using Bridges.Services;
+@using BridgesRepo
+@using BridgesRepo.Data
+@using Microsoft.EntityFrameworkCore
+@using Bridges.Interfaces
 
 <style>
        tr:hover {
@@ -12,7 +16,7 @@
     <h4 style="color: whitesmoke">Edit bridges</h4>
 </form>
 
-<table class=".table .thead-dark" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%; opacity: 0.6">
+<table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%; opacity: 0.6">
     <thead style="background-color: darkslategray; color: white" ;>
     <th><h5>Name</h5></th>
     <th><h5>Description</h5></th>
@@ -24,7 +28,10 @@
     </thead>
 
     @{
-        foreach (var bridge in new BridgesService().GetBridges)
+        IBridgesService bridgesService = 
+            new BridgesService(new BridgeSqlServerRepo(new BridgesDbContext(new DbContextOptions<BridgesDbContext>())));
+
+        foreach (var bridge in bridgesService.GetAllBridges())
         {
             <tr>
                 <td>@bridge.Name</td>

@@ -8,17 +8,18 @@
 }*/
 
 img {
-    border: 2px solid gray;
-    padding: 5px;  /*Some padding */
+    border: solid gray;
+    padding: 0; /*No padding */
+
     /*width: 254px;*/ /* Set a small width */
     /*height: 254px;*/ /* Set a small height */
 }
 
-/* Add a hover effect (blue shadow) */
-img:hover {
+/* Add a hover effect (shadow) */
+/*img:hover {
     box-shadow: 0 0 2px 1px rgb(255,255,10);
 }
-
+*/
 /* Container holding the image and the text */
 .container {
     position: relative;

@@ -1,10 +1,17 @@
 ﻿@page "/bridgesdetailview/{name}"
 
 @using Bridges.Services;
-@using Bridges.Models
+@using BridgesDomain.Model
+@using BridgesRepo
+@using BridgesRepo.Data
+@using Microsoft.EntityFrameworkCore
+@using Bridges.Interfaces
 
 @{
-    Bridge bridge = new BridgesService().GetBridges.FirstOrDefault(x => x.Name == Name);
+    IBridgesService bridgesService = 
+        new BridgesService(new BridgeSqlServerRepo(new BridgesDbContext(new DbContextOptions<BridgesDbContext>())));
+    
+    Bridge bridge = bridgesService.GetBridge(Name);
 
     if (bridge != null)
     {
@@ -17,12 +24,10 @@
 
         <table class="table">
             <tr colspan="2">
-                <td style="color: whitesmoke">
-                    <h4>@bridge.Name</h4><a href=@url> Show in maps</a>
-                </td>
+                <h4 style="color: whitesmoke">@Name</h4><a href=@url> Show in maps</a>
             </tr>
             <tr>
-                <td>
+                <td style="background-color: lightgoldenrodyellow">
                     <a href="@url">
                         <img alt="No image found for bridge with name: @Name" height="600" width="800" src="Images/Original/@bridge.Filename" />
                     </a>
@@ -37,7 +42,7 @@
     }
     else
     {
-    <p>No bridge found for:[@Name]</p>
+        <p>No bridge found for:[@Name]</p>
     }
 }
 

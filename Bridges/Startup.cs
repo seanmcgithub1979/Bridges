@@ -1,10 +1,15 @@
-using Bridges.Services;
-using Microsoft.AspNetCore.Builder;
+using Bridges.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Bridges.Services;
+using BridgesRepo;
+using BridgesRepo.Data;
+using BridgesRepo.Interfaces;
 
 namespace Bridges
 {
@@ -23,8 +28,12 @@ namespace Bridges
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<BridgesService>();
             services.Configure<RazorPagesOptions>(options => options.RootDirectory = "/Pages");
+            services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BridgesDbContext")));
+            services.AddScoped<IBridgesDbContext, BridgesDbContext>();
+            services.AddScoped<IBridgeSqlServerRepo, BridgeSqlServerRepo>();
+            services.AddScoped<IBridgesService, BridgesService>();
+            
             //services.Configure<EmailSettingsOptions>(Configuration.GetSection("EmailSettings"));
         }
 

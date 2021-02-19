@@ -1,31 +1,47 @@
 ﻿@page "/bridgesview/{colcount:int}"
 
 @using Bridges.Services;
+@using Bridges.Interfaces
+@using BridgesRepo
+@using BridgesRepo.Data
+@using Microsoft.EntityFrameworkCore
+
+<style>
+    img:hover {
+        box-shadow: 0 0 2px 1px salmon;
+        zoom: 200%;
+    }
+</style>
 
 <table class="table-bordered">
     <tr>
-        
         @if (Colcount != 0)
         {
-            @foreach (var bridge in new BridgesService().GetBridges)
-            {
-                var x = (i) % Colcount;
+            var i = 1;
 
+            IBridgesService bridgesService = 
+                new BridgesService(new BridgeSqlServerRepo(new BridgesDbContext(new DbContextOptions<BridgesDbContext>())));
+
+            @foreach (var bridge in bridgesService.GetAllBridges())
+            {
                 <td>
                     <a href="bridgesdetailview/@bridge.Name">
                         <h6>@bridge.Name</h6>
-                        <img alt="No image found for bridge with name: @bridge.Name" title="@bridge.Description" height="200" width="200" src="Images/Thumbs/@bridge.Filename"/>
+                        <img alt="No image found for bridge with name: @bridge.Name"
+                             title="@bridge.Description"
+                             height="200"
+                             width="200"
+                             src="Images/Thumbs/@bridge.Filename" />
                     </a>
                 </td>
 
-                if (x == 0)
+                if (i % Colcount == 0)
                 {
-                    @:</tr>
-                    @:<tr>
+                @:</tr>
+                @:<tr>
                 }
 
                 i++;
-
             }
         }
     </tr>
@@ -33,8 +49,6 @@
 
 @code
 {
-    int i = 1;
-
     [Parameter]
     public int Colcount { get; set; }
 }

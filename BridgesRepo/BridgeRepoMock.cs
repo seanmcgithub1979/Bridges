@@ -7,18 +7,18 @@ namespace BridgesRepo
 {
     public class BridgeRepoMock : IBridgeSqlServerRepo
     {
-        public void AddBridge(Bridge bridge)
+        public void Add(Bridge bridge)
         {
         }
 
-        public void DeleteBridge(Bridge bridge)
+        public void Delete(Bridge bridge)
         {
         }
 
-        public void EditBridge(Bridge bridge)
+        public void Update(Bridge bridge)
         {
         }
-
+        
         public IList<Bridge> GetAllBridges()
         {
             return GetMockBridges();

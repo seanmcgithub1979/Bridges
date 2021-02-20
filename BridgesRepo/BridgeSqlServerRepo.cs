@@ -14,19 +14,19 @@ namespace BridgesRepo
             this.context = context;
         }
 
-        public void AddBridge(Bridge bridge)
+        public void Add(Bridge bridge)
         {
             context.Bridges.Add(bridge);
         }
-
-        public void EditBridge(Bridge bridge)
-        {
-            context.Bridges.Update(bridge);
-        }
-
-        public void DeleteBridge(Bridge bridge)
+        
+        public void Delete(Bridge bridge)
         {
             context.Bridges.Remove(bridge);
+        }
+
+        public void Update(Bridge bridge)
+        {
+            context.Bridges.Update(bridge);
         }
 
         public IList<Bridge> GetAllBridges()

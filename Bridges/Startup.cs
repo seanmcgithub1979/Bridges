@@ -37,9 +37,10 @@ namespace Bridges
             services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));
             
             services.AddScoped<IBridgesDbContext, BridgesDbContext>();
-            services.AddScoped<IBridgeSqlServerRepo, BridgeSqlServerRepo>();
-            //services.AddScoped<IBridgeSqlServerRepo, BridgeRepoMock>();
+           //services.AddScoped<IBridgeSqlServerRepo, BridgeSqlServerRepo>();
+            services.AddScoped<IBridgeSqlServerRepo, BridgeRepoMock>();
             services.AddScoped<IBridgesService, BridgesService>();
+
             
             //services.Configure<EmailSettingsOptions>(Configuration.GetSection("EmailSettings"));
         }

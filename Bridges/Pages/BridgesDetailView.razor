@@ -17,24 +17,36 @@
         var satParams = "!3m1!1e3";
         var url = $"https://www.google.co.uk/maps/@{lat},{lng},{height}m/data={satParams}";
 
-        <table class="table">
-            <tr colspan="2">
-                <h4 style="color: whitesmoke">@Name</h4>
-                <a href=@url> Show in maps</a>
-            </tr>
-            <tr>
-                <td style="background-color: lightgoldenrodyellow">
-                    <a href="@url">
-                        <img alt="No image found for bridge with name: @Name" height="600" width="800" src="Images/Original/@bridge.Filename" />
-                    </a>
-                </td>
-                <td style="horiz-align: left; vertical-align: text-top; background-color: lightgoldenrodyellow; opacity: 0.6; color: darkslategray; width: 100%">
-                    <h6>Description</h6><a href=@url> Show in maps</a>
-                    <hr />
-                    <p>@bridge.Description</p>
-                </td>
-            </tr>
-        </table>
+    <table class="table">
+        <tr>
+            <h4 style="color: whitesmoke">@Name</h4>
+            <a href=@url> Show in maps</a>
+        </tr>
+        <tr>
+            <td style="background-color: lightgoldenrodyellow">
+                <a href="@url">
+                    <img alt="No image found for bridge with name: @Name" height="600" width="800" src="Images/Original/@bridge.Filename" />
+                </a>
+            </td>
+            <td style="horiz-align: left; vertical-align: text-top; background-color: lightgoldenrodyellow; opacity: 0.6; color: darkslategray; width: 100%">
+                <h6>Description</h6><a href=@url> Show in maps</a>
+                <hr />
+                <p>@bridge.Description</p>
+                <hr />
+                <p>Lng: @bridge.Lng.ToString("#.#######")</p>
+                <p>Lat: @bridge.Lat.ToString("#.#######")</p>
+                <p>Zoom (for google maps) :@bridge.Zoom.ToString("#.##")</p>
+                <p>Height (for google maps) :@bridge.Height.ToString("#.##")</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: right; vertical-align: text-top; background-color: lightgoldenrodyellow; opacity: 0.6; color: darkslategray; width: 100%">
+                Actions:
+                <button>Edit</button>
+                <button>Save</button>
+            </td>
+        </tr>
+    </table>
     }
     else
     {

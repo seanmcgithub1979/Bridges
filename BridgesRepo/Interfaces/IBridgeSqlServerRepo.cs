@@ -5,9 +5,9 @@ namespace BridgesRepo.Interfaces
 {
     public interface IBridgeSqlServerRepo
     {
-        void AddBridge(Bridge bridge);
-        void DeleteBridge(Bridge bridge);
-        void EditBridge(Bridge bridge);
+        void Add(Bridge bridge);
+        void Delete(Bridge bridge);
+        void Update(Bridge bridge);
         IList<Bridge> GetAllBridges();
         Bridge FindBridgeNyName(string name);
     }

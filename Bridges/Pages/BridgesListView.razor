@@ -1,4 +1,4 @@
-﻿@page "/bridgeslistview"
+﻿@page "/bridgeslistview/{page:int}"
 
 @inject IBridgesService bridgesService;
 
@@ -38,5 +38,25 @@
                 <td>@bridge.Height</td>
             </tr>
         }
+        <tr>
+            <td colspan="7" style="text-align: right; vertical-align: text-top; background-color: lightgoldenrodyellow; opacity: 0.6; color: darkslategray; width: 100%">
+                <p>Page: @Page</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7" style="text-align: right; vertical-align: text-top; background-color: lightgoldenrodyellow; opacity: 0.6; color: darkslategray; width: 100%">
+                Export to:
+                <button>csv</button>
+                <button>txt</button>
+                <button>html</button>
+                <button>xml</button>
+            </td>
+        </tr>
     }
 </table>
+
+@code
+{
+    [Parameter]
+    public int Page { get; set; }
+}

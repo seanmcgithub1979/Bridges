@@ -1,4 +1,4 @@
-﻿@page "/bridgesview/{colcount:int}"
+﻿@page "/bridgesview/{colcount:int}/{page:int}"
 
 @inject IBridgesService bridgesService;
 
@@ -40,10 +40,18 @@
             }
         }
     </tr>
+    <tr>
+        <td colspan="@Colcount" style="text-align: right; vertical-align: text-top; background-color: lightgoldenrodyellow; opacity: 0.6; color: darkslategray; width: 100%">
+            <p>Page: @Page</p>
+        </td>
+    </tr>
 </table>
 
 @code
 {
     [Parameter]
     public int Colcount { get; set; }
+    
+    [Parameter]
+    public int Page { get; set; }
 }

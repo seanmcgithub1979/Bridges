@@ -23,5 +23,10 @@ namespace Bridges.Services
         {
             return repo.FindBridgeNyName(name);
         }
+
+        public void Update(Bridge bridge)
+        {
+            repo.Update(bridge);
+        }
     }
 }

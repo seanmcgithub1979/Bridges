@@ -7,5 +7,6 @@ namespace Bridges.Interfaces
     {
         IEnumerable<Bridge> GetAllBridges();
         Bridge GetBridge(string name);
+        void Update(Bridge bridge);
     }
 }

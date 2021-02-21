@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BridgesDomain.Model;
+using BridgesRepo.Data;
 using BridgesRepo.Interfaces;
 
 namespace BridgesRepo
 {
     public class BridgeRepoSqlServer : IBridgeRepo
     {
-        private readonly IBridgesDbContext context;
+        private readonly BridgesDbContext context;
 
-        public BridgeRepoSqlServer(IBridgesDbContext context)
+        public BridgeRepoSqlServer(BridgesDbContext context)
         {
             this.context = context;
         }
@@ -17,16 +18,19 @@ namespace BridgesRepo
         public void Add(Bridge bridge)
         {
             context.Bridges.Add(bridge);
+            context.SaveChanges();
         }
         
         public void Delete(Bridge bridge)
         {
             context.Bridges.Remove(bridge);
+            context.SaveChanges();
         }
 
         public void Update(Bridge bridge)
         {
             context.Bridges.Update(bridge);
+            context.SaveChanges();
         }
 
         public IList<Bridge> GetAllBridges()

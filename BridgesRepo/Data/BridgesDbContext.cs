@@ -1,10 +1,9 @@
 ﻿using BridgesDomain.Model;
-using BridgesRepo.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace BridgesRepo.Data
 {
-   public class BridgesDbContext : DbContext, IBridgesDbContext
+   public class BridgesDbContext : DbContext
     {
         public BridgesDbContext(DbContextOptions options) : base(options)
         {

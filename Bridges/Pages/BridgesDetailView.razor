@@ -10,6 +10,10 @@
     @{
         Bridge bridge = bridgesService.GetBridge(Name);
 
+        //bridge.Name = $"Updated bridge at {DateTime.Now:yyyyMMddhh:mm}";
+
+        //bridgesService.Update(bridge);
+
         if (bridge != null)
         {
             var lat = @bridge.Lat;
@@ -23,13 +27,13 @@
             <hr />
             <tr>
                 <td colspan="2" style="text-align: left; background-color: darkslategray; opacity: 0.6; color: white">
-                    <h6 style="color: whitesmoke">@Name<a href=@url> Show in maps</a></h6>
+                    <h6 style="color: whitesmoke">@bridge.Name<a href=@url> Show in maps</a></h6>
                 </td>
             </tr>
             <tr>
                 <td style="background-color: lightgoldenrodyellow">
                     <a href="@url">
-                        <img alt="No image found for bridge with name: @Name" height="600" width="800" src="Images/Original/@bridge.Filename" />
+                        <img alt="No image found for bridge with name: @bridge.Name" height="600" width="800" src="Images/Original/@bridge.Filename" />
                     </a>
                 </td>
                 <td style="horiz-align: left; vertical-align: text-top; background-color: lightgoldenrodyellow; opacity: 0.6; color: darkslategray; width: 100%">

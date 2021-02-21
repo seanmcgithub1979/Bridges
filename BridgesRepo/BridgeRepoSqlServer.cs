@@ -5,11 +5,11 @@ using BridgesRepo.Interfaces;
 
 namespace BridgesRepo
 {
-    public class BridgeSqlServerRepo : IBridgeSqlServerRepo
+    public class BridgeRepoSqlServer : IBridgeRepo
     {
         private readonly IBridgesDbContext context;
 
-        public BridgeSqlServerRepo(IBridgesDbContext context)
+        public BridgeRepoSqlServer(IBridgesDbContext context)
         {
             this.context = context;
         }
@@ -32,6 +32,11 @@ namespace BridgesRepo
         public IList<Bridge> GetAllBridges()
         {
             return context.Bridges.ToList();
+        }
+
+        public IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx)
+        {
+            return GetAllBridges().Skip(startIdx).Take(noOfBridges);
         }
 
         public Bridge FindBridgeNyName(string name)

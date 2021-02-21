@@ -8,25 +8,34 @@
     tr:hover {
         background: salmon;
     }
+
+    tr {
+        vertical-align: text-top;
+        background-color: lightgoldenrodyellow;
+        opacity: 0.6;
+        color: darkslategray;
+        width: 100%
+    }
 </style>
 
-<form method="post">
-    <h4 style="color: whitesmoke">Edit bridges</h4>
-</form>
-
 <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%; opacity: 0.6">
-    <thead style="background-color: darkslategray; color: white" ;>
-    <th><h5>Name</h5></th>
-    <th><h5>Description</h5></th>
-    <th><h5>Filename</h5></th>
-    <th><h5>Lng</h5></th>
-    <th><h5>Lat</h5></th>
-    <th><h5>Zoom</h5></th>
-    <th><h5>Height</h5></th>
-    </thead>
+    <hr />
+    <tr style="background-color: darkslategray; color: white" ; opacity: 1.0;>
+        <td><h6>Name</h6></td>
+        <td><h6>Description</h6></td>
+        <td><h6>Filename</h6></td>
+        <td><h6>Lng</h6></td>
+        <td><h6>Lat</h6></td>
+        <td><h6>Zoom</h6></td>
+        <td><h6>Height</h6></td>
+    </tr>
 
     @{
-        foreach (var bridge in bridgesService.GetAllBridges())
+        var bridgeCount = bridgesService.GetAllBridges().Count();
+        var bridgesPerPage = 15;
+        var colCount = 7;
+
+        foreach (var bridge in bridgesService.GetBridgesInRange(bridgesPerPage, (Page - 1) * bridgesPerPage))
         {
             <tr>
                 <td>@bridge.Name</td>
@@ -39,12 +48,13 @@
             </tr>
         }
         <tr>
-            <td colspan="7" style="text-align: right; vertical-align: text-top; background-color: lightgoldenrodyellow; opacity: 0.6; color: darkslategray; width: 100%">
-                <p>Page: @Page</p>
+            <td colspan="1" style="text-align: left; background-color: lightgoldenrodyellow; color: blue" ; opacity: 1.0;>
+                @for (int i = 1; i <= (bridgeCount / bridgesPerPage) + 1; i++)
+                {
+                    <span><a href="bridgeslistview/@i">@i</a></span>
+                }
             </td>
-        </tr>
-        <tr>
-            <td colspan="7" style="text-align: right; vertical-align: text-top; background-color: lightgoldenrodyellow; opacity: 0.6; color: darkslategray; width: 100%">
+            <td colspan="@colCount - 1" style="text-align: right; background-color: darkslategray; color: white" ; opacity: 1.0;>
                 Export to:
                 <button>csv</button>
                 <button>txt</button>
@@ -59,4 +69,9 @@
 {
     [Parameter]
     public int Page { get; set; }
+
+    public void ExportToCsv()
+    {
+        bridgesService.ExportToCsv();
+    }
 }

@@ -5,7 +5,7 @@ using BridgesRepo.Interfaces;
 
 namespace BridgesRepo
 {
-    public class BridgeRepoMock : IBridgeSqlServerRepo
+    public class BridgeRepoMock : IBridgeRepo
     {
         public void Add(Bridge bridge)
         {
@@ -24,6 +24,16 @@ namespace BridgesRepo
             return GetMockBridges();
         }
 
+        public IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx)
+        {
+            return GetMockBridges().Skip(startIdx).Take(noOfBridges);
+        }
+
+        public Bridge FindBridgeNyName(string name)
+        {
+            return GetMockBridges().FirstOrDefault(x => x.Name == name);
+        }
+
         private static IList<Bridge> GetMockBridges()
         {
             var n = 62;
@@ -35,11 +45,6 @@ namespace BridgesRepo
             }
 
             return retVal;
-        }
-
-        public Bridge FindBridgeNyName(string name)
-        {
-            return GetMockBridges().FirstOrDefault(x => x.Name == name);
         }
     }
 }

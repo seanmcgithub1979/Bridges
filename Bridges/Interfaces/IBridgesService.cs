@@ -6,7 +6,9 @@ namespace Bridges.Interfaces
     public interface IBridgesService
     {
         IEnumerable<Bridge> GetAllBridges();
+        IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx);
         Bridge GetBridge(string name);
         void Update(Bridge bridge);
+        void ExportToCsv();
     }
 }

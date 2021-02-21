@@ -11,41 +11,44 @@
     }
 </style>
 
-<table class="table-bordered">
+<table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%; opacity: 0.6">
+    <hr />
     <tr>
         @if (Colcount != 0)
         {
             var i = 1;
 
-            @foreach (var bridge in bridgesService.GetAllBridges())
+            var bridgeCount = bridgesService.GetAllBridges().Count();
+            var imagesPerPage = 16;
+
+            foreach (var bridge in bridgesService.GetBridgesInRange(imagesPerPage, (Page - 1) * imagesPerPage))
             {
-                <td>
+                <td style="horiz-align: center; vertical-align: center; background-color: lightgoldenrodyellow; opacity: 0.6; color: darkslategray;">
                     <a href="bridgesdetailview/@bridge.Name">
                         <h6>@bridge.Name</h6>
-                        <img alt="No image found for bridge with name: @bridge.Name"
-                             title="@bridge.Description"
-                             height="200"
-                             width="200"
-                             src="Images/Thumbs/@bridge.Filename" />
+                        <img alt="No image found for bridge with name: @bridge.Name" title="@bridge.Description" src="Images/Thumbs/@bridge.Filename" />
                     </a>
                 </td>
 
                 if (i % Colcount == 0)
                 {
-                    @:</tr>
-                    @:<tr>
+                @:</tr>
+                @:<tr>
                 }
 
                 i++;
             }
-        }
-    </tr>
-    <tr>
-        <td colspan="@Colcount" style="text-align: right; vertical-align: text-top; background-color: lightgoldenrodyellow; opacity: 0.6; color: darkslategray; width: 100%">
-            <p>Page: @Page</p>
-        </td>
-    </tr>
-</table>
+        <tr>
+            <td colspan="@Colcount" style="text-align: left; background-color: lightgoldenrodyellow; color: white" ; opacity: 1.0;>
+                @for (i = 1; i <= (bridgeCount / imagesPerPage) + 1; i++)
+                {
+                    <span><a href="bridgesview/@Colcount/@i">@i</a></span>
+                }
+            </td>
+        </tr>
+    }
+        </tr>
+    </table>
 
 @code
 {

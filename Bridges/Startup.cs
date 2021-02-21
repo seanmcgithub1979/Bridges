@@ -36,10 +36,9 @@ namespace Bridges
             
             services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));
             
-            services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
-            //services.AddScoped<IBridgeRepo, BridgeRepoMock>();
+            //services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
+            services.AddScoped<IBridgeRepo, BridgeRepoMock>();
             services.AddScoped<IBridgesService, BridgesService>();
-
             
             //services.Configure<EmailSettingsOptions>(Configuration.GetSection("EmailSettings"));
         }
@@ -60,9 +59,7 @@ namespace Bridges
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();

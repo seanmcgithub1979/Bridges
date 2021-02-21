@@ -40,10 +40,12 @@
             }
         <tr>
             <td colspan="@Colcount" style="text-align: left; background-color: lightgoldenrodyellow; color: white" ; opacity: 1.0;>
-                @for (i = 1; i <= (bridgeCount / imagesPerPage) + 1; i++)
-                {
-                    <span><a href="bridgesview/@Colcount/@i">@i</a></span>
-                }
+                <div class="pagination">
+                    @for (i = 1; i <= (bridgeCount / imagesPerPage) + 1; i++)
+                    {
+                        <span><a href="bridgesview/@Colcount/@i">@i</a></span>
+                    }
+                </div>
             </td>
         </tr>
     }

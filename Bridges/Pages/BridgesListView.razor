@@ -49,10 +49,12 @@
         }
         <tr>
             <td colspan="1" style="text-align: left; background-color: lightgoldenrodyellow; color: blue" ; opacity: 1.0;>
-                @for (int i = 1; i <= (bridgeCount / bridgesPerPage) + 1; i++)
-                {
-                    <span><a href="bridgeslistview/@i">@i</a></span>
-                }
+                <div class="pagination">
+                    @for (int i = 1; i <= (bridgeCount / bridgesPerPage) + 1; i++)
+                    {
+                        <span><a href="bridgeslistview/@i">@i</a></span>
+                    }
+                </div>
             </td>
             <td colspan="@colCount - 1" style="text-align: right; background-color: darkslategray; color: white" ; opacity: 1.0;>
                 Export to:

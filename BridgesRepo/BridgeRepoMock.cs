@@ -41,7 +41,17 @@ namespace BridgesRepo
 
             for (var i = 1; i <= n; i++)
             {
-                retVal.Add(new Bridge {Id = i, Filename = $"Image{i}.jpg", Name = $"Image {i}"});
+                retVal.Add(new() 
+                { 
+                    Id = i, 
+                    Name = $"Bridge{i}", 
+                    Filename  = $"Image{i}.jpg", 
+                    Description = "Some desc here...", 
+                    Lat = 50m,
+                    Lng = 50m, 
+                    Height = 1222m, 
+                    Zoom = 14.25m
+                });
             }
 
             return retVal;

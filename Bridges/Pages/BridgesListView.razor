@@ -1,4 +1,4 @@
-﻿@page "/bridgeslistview/{page:int}"
+﻿@page "/bridgeslistview/{action}/{page:int}"
 
 @inject IBridgesService bridgesService;
 
@@ -36,7 +36,33 @@
         var bridgesPerPage = 15;
         var colCount = 7;
 
-        foreach (var bridge in bridgesService.GetBridgesInRange(bridgesPerPage, (Page - 1) * bridgesPerPage))
+        var bridgesInRange = bridgesService.GetBridgesInRange(bridgesPerPage, (Page - 1) * bridgesPerPage);
+
+        switch (Action.ToLowerInvariant())
+        {
+            case "exporttocsv":
+                {
+                    ExportToCsv();
+                    break;
+                }
+            case "exporttotxt":
+                {
+                    ExportToTxt();
+                    break;
+                }
+            case "exporttohtml":
+                {
+                    ExportToHtml();
+                    break;
+                }
+            case "exporttoxml":
+            {
+                    ExportToXml();
+                    break;
+                }
+        }
+
+        foreach (var bridge in bridgesInRange)
         {
             <tr>
                 <td>@bridge.Name</td>
@@ -46,7 +72,7 @@
                 <td>@bridge.Lat</td>
                 <td>@bridge.Zoom</td>
                 <td>@bridge.Height</td>
-                <td><a href="bridgesdetaileditview/@bridge.Id">Edit</a></td>
+                <td><a href="bridgesdetaileditview/view/@bridge.Id">Edit</a></td>
             </tr>
         }
         <tr>
@@ -54,16 +80,24 @@
                 <div class="pagination">
                     @for (int i = 1; i <= (bridgeCount / bridgesPerPage) + 1; i++)
                     {
-                        <span><a href="bridgeslistview/@i">@i</a></span>
+                        <span><a href="bridgeslistview/list/@i">@i</a></span>
                     }
                 </div>
             </td>
-            <td colspan="@colCount - 3" style="text-align: right; background-color: darkslategray; color: white;">
+            <td column="4" style="text-align: center; background-color: darkslategray; color: white;">
+                <input type="button" id="btnAdd" width="50px" value="Add"
+                       style="color: darkslategray;  max-width: 100px; width: 100px" />
+            </td>
+            <td colspan="@colCount - 4" style="text-align: right; background-color: darkslategray; color: white;">
                 Export to:
-                <button>csv</button>
-                <button>txt</button>
-                <button>html</button>
-                <button>xml</button>
+                <input type="button" id="btnExportToCsv" width="50px" value="csv"
+                       style="color: darkslategray; max-width: 100px; width: 100px" />
+                <input type="button" id="btnExportToTxt" width="50px" value="txt"
+                       style="color: darkslategray; max-width: 100px; width: 100px" />
+                <input type="button" id="btnExportToHtml" width="50px" value="html"
+                       style="color: darkslategray;  max-width: 100px; width: 100px" />
+                <input type="button" id="btnExportToXml" width="50px" value="xml"
+                       style="color: darkslategray;  max-width: 100px; width: 100px" />
             </td>
         </tr>
     }
@@ -72,10 +106,28 @@
 @code
 {
     [Parameter]
+    public string Action { get; set; }
+
+    [Parameter]
     public int Page { get; set; }
 
     public void ExportToCsv()
     {
         bridgesService.ExportToCsv();
+    }
+
+    public void ExportToTxt()
+    {
+        bridgesService.ExportToTxt();
+    }
+
+    public void ExportToHtml()
+    {
+        bridgesService.ExportToHtml();
+    }
+
+    public void ExportToXml()
+    {
+        bridgesService.ExportToXml();
     }
 }

@@ -1,4 +1,4 @@
-﻿@page "/bridgesdetaileditview/{id:int}"
+﻿@page "/bridgesdetaileditview/{action}/{id:int?}"
 
 @inject IBridgesService bridgesService;
 
@@ -18,7 +18,9 @@
 </style>
 
 @{
-    Bridge bridge = bridgesService.GetBridgeById(Id);
+    Bridge bridge = null;
+
+    bridge = Action.ToLowerInvariant() == "add" ? new Bridge() : bridgesService.GetBridgeById(Id);
 
     if (bridge != null)
     {
@@ -72,7 +74,7 @@
                         <tr>
                             <td colspan="2" style="text-align: right; horiz-align: right; background-color: darkslategray; color: white;">
                                 <input type="button" id="btnSave" width="50px" value="Save"
-                                       style="color: white; max-width: 100px; width: 100px" />
+                                       style="color: darkslategray; max-width: 100px; width: 100px" />
                                 <input type="button" id="btnDelete" width="50px" value="Delete"
                                        style="background-color: brown; color: white; max-width: 100px; width: 100px" />
                             </td>
@@ -90,6 +92,9 @@
 
 @code
 {
+    [Parameter]
+    public string Action { get; set; }
+
     [Parameter]
     public int Id { get; set; }
 }

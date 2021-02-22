@@ -1,13 +1,30 @@
 ﻿@page "/bridgesdetailview/{id:int}/{name?}/{filename?}/{desc?}/{lat:decimal?}/{lng:decimal?}/{zoom:decimal?}/{height:decimal?}"
-
 @inject IBridgesService bridgesService;
 
 @using BridgesDomain.Model
 @using Bridges.Interfaces
 
 @{
-    Bridge bridge = bridgesService.GetBridgeById(Id);
+    Bridge bridge;
 
+    if (!string.IsNullOrEmpty(Name))    // If we are passing the name in then we assume it's an edit
+    {
+        bridge = bridgesService.GetBridgeById(Id);
+        bridge.Name = Name;
+        bridge.Filename = Filename;
+        bridge.Description = Desc;
+        bridge.Lat = Lat;
+        bridge.Lng = Lng;
+        bridge.Zoom = Zoom;
+        bridge.Height = Height;
+
+        bridgesService.Update(bridge);
+    }
+    else
+    {
+        bridge = bridgesService.GetBridgeById(Id);
+    }
+    
     if (bridge != null)
     {
         var lat = @bridge.Lat;
@@ -35,8 +52,8 @@
                     <hr />
                     <p>@bridge.Description</p>
                     <hr />
-                    <p>Lng: @bridge.Lng.ToString("#.#######")</p>
                     <p>Lat: @bridge.Lat.ToString("#.#######")</p>
+                    <p>Lng: @bridge.Lng.ToString("#.#######")</p>
                     <p>Zoom (for google maps) :@bridge.Zoom.ToString("#.##")</p>
                     <p>Height (for google maps) :@bridge.Height.ToString("#.##")</p>
                     <a href="bridgesdetaileditview/@bridge.Id"><p>Edit</p></a>
@@ -52,20 +69,20 @@
 
 @code
 {
-    [Parameter]
-    public int Id { get; set; }
-    [Parameter]
-    public string Name{ get; set; }
-    [Parameter]
-    public string Filename { get; set; }
-    [Parameter]
-    public string Desc { get; set; }
-    [Parameter]
-    public decimal Lat { get; set; }
-    [Parameter]
-    public decimal Lng { get; set; }
-    [Parameter]
-    public decimal Zoom { get; set; }
-    [Parameter]
-    public decimal Height { get; set; }
-}
+        [Parameter]
+        public int Id { get; set; }
+        [Parameter]
+        public string Name { get; set; }
+        [Parameter]
+        public string Filename { get; set; }
+        [Parameter]
+        public string Desc { get; set; }
+        [Parameter]
+        public decimal Lat { get; set; }
+        [Parameter]
+        public decimal Lng { get; set; }
+        [Parameter]
+        public decimal Zoom { get; set; }
+        [Parameter]
+        public decimal Height { get; set; }
+    }

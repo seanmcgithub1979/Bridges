@@ -25,8 +25,32 @@
 
     <script src="js/jquery-3.5.1.js"></script>
     @*<script src="js/scripts.js"></script>*@
-    
     @*<script src="_framework/blazor.server.js"></script>*@
+    
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSave").click(function () {
+                var id = $("#inputId").val();
+                var name = $("#inputName").val();
+                var filename = $("#inputFilename").val();
+                var desc = $("#inputDesc").val();
+                var lat = $("#inputLat").val();
+                var lng = $("#inputLng").val();
+                var zoom = $("#inputZoom").val();
+                var height = $("#inputHeight").val();
+                var url = "bridgesdetailview/"
+                    + encodeURIComponent(id) + "/"
+                    + encodeURIComponent(name) + "/"
+                    + encodeURIComponent(filename) + "/"
+                    + encodeURIComponent(desc) + "/"
+                    + encodeURIComponent(lat) + "/"
+                    + encodeURIComponent(lng) + "/"
+                    + encodeURIComponent(zoom) + "/"
+                    + encodeURIComponent(height) + "/";
+                window.location.href = url;
+            });
+        });
+    </script>
     
 </head>
 <body>

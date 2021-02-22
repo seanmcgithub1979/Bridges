@@ -29,7 +29,7 @@
 
             foreach (var bridge in bridgesService.GetBridgesInRange(imagesPerPage, (Page - 1) * imagesPerPage))
             {
-                <td style="horiz-align: center; vertical-align: center; background-color: lightgoldenrodyellow; color: darkslategray;">
+                <td style="horiz-align: center; vertical-align: center; background-color: lightgoldenrodyellow; color: darkslategray; opacity: 0.9;">
                     <a href="bridgesdetailview/@bridge.Id">
                         <h6>@bridge.Name</h6>
                         <img alt="No image found for @bridge.Name with Filename: @bridge.Filename" title="@bridge.Description" src="Images/Thumbs/@bridge.Filename" />

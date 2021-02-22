@@ -9,6 +9,12 @@
     input {
         width:600px;
     }
+
+    td {
+        background-color: darkslategray; 
+        color: white; 
+        opacity: 0.8;
+    }
 </style>
 
 @{
@@ -25,44 +31,50 @@
         <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%;">
             <hr />
             <tr>
-                <td><label for="name">Name</label></td>
-                <td><input type="text" id="name" name="name" value="@bridge.Name" /></td>
-            </tr>
-            <tr>
-                <td><label for="name">Filename</label></td>
-                <td><input type="text" id="filename" name="filename" value="@bridge.Filename" /></td>
-            </tr>
-            <tr>
-                <td><label for="name">Description</label></td>
-                <td><textarea style="width:600px; height:200px;">@bridge.Description"</textarea></td>
-                
-            </tr>
-            <tr>
-                <td><label for="name">Lat</label></td>
-                <td><input type="text" id="desc" name="desc" value="@bridge.Lat" /></td>
-            </tr>
-            <tr>
-                <td><label for="name">Lng</label></td>
-                <td><input type="text" id="lng" name="lng" value="@bridge.Lng" /></td>
-            </tr>
-            <tr>
-                <td><label for="name">Zoom</label></td>
-                <td><input type="text" id="zoom" name="zoom" value="@bridge.Zoom" /></td>
-            </tr>
-            <tr>
-                <td><label for="name">Height</label></td>
-                <td><input type="text" id="height" name="height" value="@bridge.Height" /></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align: right; background-color: darkslategray; color: white; opacity: 0.8;">
-                    <a href="bridgesdetailview/@bridge.Id/@bridge.Name/@bridge.Filename/@bridge.Description/@bridge.Lat/@bridge.Lng/@bridge.Zoom/@bridge.Height"><p>Save</p></a>
+                <td style="background-color: lightgoldenrodyellow">
+                    <a href="Images/Original/@bridge.Filename">
+                        <img alt="No image found for bridge with name: @bridge.Name" height="600px" width="800px" src="Images/Original/@bridge.Filename" />
+                    </a>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td><label for="name">Name</label></td>
+                            <td><input type="text" id="name" name="name" value="@bridge.Name" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Filename</label></td>
+                            <td><input type="text" id="filename" name="filename" value="@bridge.Filename" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Description</label></td>
+                            <td><textarea style="width:600px; height:200px;">@bridge.Description</textarea></td>
+
+                        </tr>
+                        <tr>
+                            <td><label for="name">Lat</label></td>
+                            <td><input type="text" id="desc" name="desc" value="@bridge.Lat" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Lng</label></td>
+                            <td><input type="text" id="lng" name="lng" value="@bridge.Lng" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Zoom</label></td>
+                            <td><input type="text" id="zoom" name="zoom" value="@bridge.Zoom" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Height</label></td>
+                            <td><input type="text" id="height" name="height" value="@bridge.Height" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: right; background-color: darkslategray; color: white; opacity: 0.8;">
+                                <a href="bridgesdetailview/@bridge.Id/@bridge.Name/@bridge.Filename/@bridge.Description/@bridge.Lat/@bridge.Lng/@bridge.Zoom/@bridge.Height"><p>Save</p></a>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
-            @*<tr>
-                <td colspan="2" style="text-align: right; background-color: darkslategray; color: white; opacity: 0.8;">
-                    <input type="submit" value="Save">
-                </td>
-            </tr>*@
         </table>
     </form>
     }

@@ -43,9 +43,9 @@ namespace BridgesRepo
             return GetAllBridges().Skip(startIdx).Take(noOfBridges);
         }
 
-        public Bridge FindBridgeNyName(string name)
+        public Bridge FindBridgeId(int id)
         {
-            return context.Bridges.FirstOrDefault(x => x.Name == name);
+            return context.Bridges.FirstOrDefault(x => x.Id == id);
         }
     }
 }

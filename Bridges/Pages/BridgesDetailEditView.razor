@@ -1,0 +1,80 @@
+﻿@page "/bridgesdetaileditview/{id:int}"
+
+@inject IBridgesService bridgesService;
+
+@using BridgesDomain.Model
+@using Bridges.Interfaces
+
+<style>
+    input {
+        width:600px;
+    }
+</style>
+
+@{
+    Bridge bridge = bridgesService.GetBridgeById(Id);
+
+    if (bridge != null)
+    {
+        var lat = @bridge.Lat;
+        var lng = @bridge.Lng;
+        var zoom = @bridge.Zoom;
+        var height = @bridge.Height;
+
+    <form action="/xxx">
+        <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%;">
+            <hr />
+            <tr>
+                <td><label for="name">Name</label></td>
+                <td><input type="text" id="name" name="name" value="@bridge.Name" /></td>
+            </tr>
+            <tr>
+                <td><label for="name">Filename</label></td>
+                <td><input type="text" id="filename" name="filename" value="@bridge.Filename" /></td>
+            </tr>
+            <tr>
+                <td><label for="name">Description</label></td>
+                <td><textarea tyle="width:600px; height:200px;">@bridge.Description"></textarea></td>
+                
+            </tr>
+            <tr>
+                <td><label for="name">Lat</label></td>
+                <td><input type="text" id="desc" name="desc" value="@bridge.Lat" /></td>
+            </tr>
+            <tr>
+                <td><label for="name">Lng</label></td>
+                <td><input type="text" id="lng" name="lng" value="@bridge.Lng" /></td>
+            </tr>
+            <tr>
+                <td><label for="name">Zoom</label></td>
+                <td><input type="text" id="zoom" name="zoom" value="@bridge.Zoom" /></td>
+            </tr>
+            <tr>
+                <td><label for="name">Height</label></td>
+                <td><input type="text" id="height" name="height" value="@bridge.Height" /></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right; background-color: darkslategray; color: white; opacity: 0.8;">
+                    <a href="bridgesdetailview/@bridge.Id/@bridge.Name/@bridge.Filename/@bridge.Description/@bridge.Lat/@bridge.Lng/@bridge.Zoom/@bridge.Height"><p>Save</p></a>
+                </td>
+            </tr>
+            @*<tr>
+                <td colspan="2" style="text-align: right; background-color: darkslategray; color: white; opacity: 0.8;">
+                    <input type="submit" value="Save">
+                </td>
+            </tr>*@
+        </table>
+    </form>
+    }
+    else
+    {
+        <p>No bridge found for bridge with Id: @Id</p>
+    }
+}
+
+
+@code
+{
+    [Parameter]
+    public int Id { get; set; }
+}

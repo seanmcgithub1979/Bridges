@@ -29,9 +29,9 @@ namespace BridgesRepo
             return GetMockBridges().Skip(startIdx).Take(noOfBridges);
         }
 
-        public Bridge FindBridgeNyName(string name)
+        public Bridge FindBridgeId(int id)
         {
-            return GetMockBridges().FirstOrDefault(x => x.Name == name);
+            return GetMockBridges().FirstOrDefault(x => x.Id == id);
         }
 
         private static IList<Bridge> GetMockBridges()
@@ -41,7 +41,7 @@ namespace BridgesRepo
 
             for (var i = 1; i <= n; i++)
             {
-                retVal.Add(new Bridge {Filename = $"Image{i}.jpg", Name = $"Image {i}"});
+                retVal.Add(new Bridge {Id = i, Filename = $"Image{i}.jpg", Name = $"Image {i}"});
             }
 
             return retVal;

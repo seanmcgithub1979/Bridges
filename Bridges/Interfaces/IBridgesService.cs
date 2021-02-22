@@ -7,7 +7,7 @@ namespace Bridges.Interfaces
     {
         IEnumerable<Bridge> GetAllBridges();
         IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx);
-        Bridge GetBridge(string name);
+        Bridge GetBridgeById(int id);
         void Update(Bridge bridge);
         void ExportToCsv();
     }

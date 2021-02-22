@@ -26,9 +26,9 @@ namespace Bridges.Services
             return repo.GetBridgesInRange(noOfBridges, startIdx);
         }
 
-        public Bridge GetBridge(string name)
+        public Bridge GetBridgeById(int id)
         {
-            return repo.FindBridgeNyName(name);
+            return repo.FindBridgeId(id);
         }
 
         public void Update(Bridge bridge)

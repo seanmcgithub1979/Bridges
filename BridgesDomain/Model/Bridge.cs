@@ -1,7 +1,13 @@
-﻿namespace BridgesDomain.Model
+﻿using System.Runtime.CompilerServices;
+
+namespace BridgesDomain.Model
 {
     public class Bridge
     {
+        public Bridge()
+        {
+        }
+
         public Bridge(
             string filename = "No filename specifed for this bridge yet.", 
             string name = "No name entered for this bridge yet.", 

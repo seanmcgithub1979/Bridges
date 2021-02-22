@@ -10,6 +10,6 @@ namespace BridgesRepo.Interfaces
         void Update(Bridge bridge);
         IList<Bridge> GetAllBridges();
         IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx);
-        Bridge FindBridgeNyName(string name);
+        Bridge FindBridgeId(int id);
     }
 }

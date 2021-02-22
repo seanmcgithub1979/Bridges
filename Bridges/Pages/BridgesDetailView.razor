@@ -1,24 +1,23 @@
-﻿@page "/bridgesdetailview/{name}"
+﻿@page "/bridgesdetailview/{id:int}"
 
 @inject IBridgesService bridgesService;
 
 @using BridgesDomain.Model
 @using Bridges.Interfaces
 
-<form method="post">
-    @{
-        Bridge bridge = bridgesService.GetBridge(Name);
+@{
+    Bridge bridge = bridgesService.GetBridgeById(Id);
 
-        if (bridge != null)
-        {
-            var lat = @bridge.Lat;
-            var lng = @bridge.Lng;
-            var zoom = @bridge.Zoom;
-            var height = @bridge.Height;
-            var satParams = "!3m1!1e3";
-            var url = $"https://www.google.co.uk/maps/@{lat},{lng},{height}m/data={satParams}";
+    if (bridge != null)
+    {
+        var lat = @bridge.Lat;
+        var lng = @bridge.Lng;
+        var zoom = @bridge.Zoom;
+        var height = @bridge.Height;
+        var satParams = "!3m1!1e3";
+        var url = $"https://www.google.co.uk/maps/@{lat},{lng},{height}m/data={satParams}";
 
-            <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%;">
+        <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%;">
             <hr />
             <tr>
                 <td colspan="2" style="text-align: left; background-color: darkslategray; color: white; opacity: 0.8;">
@@ -40,26 +39,19 @@
                     <p>Lat: @bridge.Lat.ToString("#.#######")</p>
                     <p>Zoom (for google maps) :@bridge.Zoom.ToString("#.##")</p>
                     <p>Height (for google maps) :@bridge.Height.ToString("#.##")</p>
+                    <a href="bridgesdetaileditview/@bridge.Id"><p>Edit</p></a>
                 </td>
             </tr>
-            <tr>
-                <td colspan="2" style="text-align: right; background-color: darkslategray; color: white; opacity: 0.8;">
-                    Actions:
-                    <button>Edit</button>
-                    <button>Save</button>
-                </td>
-            </tr>
-            </table>
-        }
-        else
-        {
-            <p>No bridge found for:[@Name]</p>
-        }
+        </table>
     }
-</form>
+    else
+    {
+        <p>No bridge found for bridge with Id: @Id</p>
+    }
+}
 
 @code
 {
     [Parameter]
-    public string Name { get; set; }
+    public int Id { get; set; }
 }

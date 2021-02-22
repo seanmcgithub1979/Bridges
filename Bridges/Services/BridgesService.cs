@@ -31,9 +31,19 @@ namespace Bridges.Services
             return repo.FindBridgeId(id);
         }
 
+        public void Add(Bridge bridge)
+        {
+            repo.Add(bridge);
+        }
+
         public void Update(Bridge bridge)
         {
             repo.Update(bridge);
+        }
+
+        public void Delete(Bridge bridge)
+        {
+            repo.Delete(bridge);
         }
 
         public void ExportToCsv()

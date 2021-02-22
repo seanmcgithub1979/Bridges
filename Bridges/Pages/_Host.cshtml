@@ -38,7 +38,7 @@
                 var lng = $("#inputLng").val();
                 var zoom = $("#inputZoom").val();
                 var height = $("#inputHeight").val();
-                var url = "bridgesdetailview/"
+                var url = "bridgesdetailview/update/"
                     + encodeURIComponent(id) + "/"
                     + encodeURIComponent(name) + "/"
                     + encodeURIComponent(filename) + "/"
@@ -47,6 +47,22 @@
                     + encodeURIComponent(lng) + "/"
                     + encodeURIComponent(zoom) + "/"
                     + encodeURIComponent(height) + "/";
+
+                window.location.href = url;
+            });
+
+            $("#btnDelete").click(function () {
+                var id = $("#inputId").val();
+                var name = $("#inputName").val();
+                var filename = $("#inputFilename").val();
+                var desc = $("#inputDesc").val();
+                var lat = $("#inputLat").val();
+                var lng = $("#inputLng").val();
+                var zoom = $("#inputZoom").val();
+                var height = $("#inputHeight").val();
+                var url = "bridgesdetailview/delete/"
+                    + encodeURIComponent(id) + "/";
+
                 window.location.href = url;
             });
         });

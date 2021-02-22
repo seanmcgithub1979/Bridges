@@ -8,7 +8,9 @@ namespace Bridges.Interfaces
         IEnumerable<Bridge> GetAllBridges();
         IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx);
         Bridge GetBridgeById(int id);
-        void Update(Bridge bridge);
         void ExportToCsv();
+        void Add(Bridge bridge);
+        void Update(Bridge bridge);
+        void Delete(Bridge bridge);
     }
 }

@@ -76,7 +76,7 @@
 
         @if (!string.IsNullOrEmpty(msgText))
         {
-            <tr colspan="2"><msg>@msgText</msg></tr>
+            <msg><h6>@msgText</h6></msg>
             <hr />
         }
 
@@ -90,19 +90,19 @@
             <td><h6>Height</h6></td>
             <td></td>
         </tr>
-        
+
         @foreach (var bridge in bridgesService.GetBridgesInRange(bridgesPerPage, (Page - 1) * bridgesPerPage))
         {
-        <tr>
-            <td>@bridge.Name</td>
-            <td>@bridge.Description</td>
-            <td>@bridge.Filename</td>
-            <td>@bridge.Lng</td>
-            <td>@bridge.Lat</td>
-            <td>@bridge.Zoom</td>
-            <td>@bridge.Height</td>
-            <td><a href="bridgesdetaileditview/view/@bridge.Id">Edit</a></td>
-        </tr>
+            <tr>
+                <td>@bridge.Name</td>
+                <td>@bridge.Description</td>
+                <td>@bridge.Filename</td>
+                <td>@bridge.Lng</td>
+                <td>@bridge.Lat</td>
+                <td>@bridge.Zoom</td>
+                <td>@bridge.Height</td>
+                <td><a href="bridgesdetaileditview/view/@bridge.Id">Edit</a></td>
+            </tr>
         }
         <tr>
             <td colspan="3" style="text-align: left; background-color: darkslategray; color: blue">

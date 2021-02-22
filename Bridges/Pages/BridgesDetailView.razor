@@ -5,7 +5,6 @@
 @using Bridges.Interfaces
 
 @{
-    <hr />
     Bridge bridge = null;
     var msgText = string.Empty;
 
@@ -23,7 +22,7 @@
 
                         bridgesService.Add(bridge);
 
-                        msgText = $"Bridge Id: {@bridge.Id} successfully added";
+                        msgText = $"SUCCESS - Bridge Id: {@bridge.Id} added";
                     }
                     else
                     {
@@ -39,13 +38,11 @@
 
                         msgText = $"SUCCESS - Bridge Id: {@bridge.Id} updated";
                     }
-
                     break;
                 }
             default:
                 {
                     bridge = bridgesService.GetBridgeById(Id);
-
                     break;
                 }
         }
@@ -65,13 +62,17 @@
         var url = $"https://www.google.co.uk/maps/@{lat},{lng},{height}m/data={satParams}";
 
 <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%;">
+    
+    <hr/>
+    
     @if (!string.IsNullOrEmpty(msgText))
     {
-        <tr colspan="2"><msg>@msgText</msg></tr>
+        <msg><h6>@msgText</h6></msg>
         <hr />
     }
+    
     <tr>
-        <td colspan="2" style="text-align: left; background-color: darkslategray; color: white; opacity: 0.8;">
+        <td colspan="2" style="text-align: left; background-color: darkslategray; color: white;">
             <h6 style="color: whitesmoke">@bridge.Name<a href=@url> Show in maps</a></h6>
         </td>
     </tr>

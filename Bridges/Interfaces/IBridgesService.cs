@@ -7,13 +7,18 @@ namespace Bridges.Interfaces
     {
         IEnumerable<Bridge> GetAllBridges();
         IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx);
+        
         Bridge GetBridgeById(int id);
+        
+        Bridge GetBridgeByName(string name);
+        
         void Add(Bridge bridge);
         void Update(Bridge bridge);
         void Delete(Bridge bridge);
-        void ExportToCsv();
-        void ExportToTxt(string? delim = "\t");
-        void ExportToHtml();
-        void ExportToXml();
+        
+        string ExportToCsv();
+        string ExportToTxt(string? delim = "\t");
+        string ExportToHtml();
+        string ExportToXml();
     }
 }

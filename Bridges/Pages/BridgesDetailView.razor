@@ -5,41 +5,40 @@
 @using Bridges.Interfaces
 
 @{
+    <hr />
     Bridge bridge = null;
+    var msgText = string.Empty;
 
     if (!string.IsNullOrEmpty(Action))
     {
         switch (Action.ToLowerInvariant())
         {
-            case "add":
-                {
-                    bridge = new Bridge(Name, Filename, Desc, Lat, Lng, Zoom, Height);
 
-                    bridgesService.Add(bridge);
-
-                    break;
-                }
             case "update":
                 {
                     bridge = bridgesService.GetBridgeById(Id);
-                    bridge.Name = Name;
-                    bridge.Filename = Filename;
-                    bridge.Description = Desc;
-                    bridge.Lat = Lat;
-                    bridge.Lng = Lng;
-                    bridge.Zoom = Zoom;
-                    bridge.Height = Height;
+                    if (bridge == null) // Assumes add bridge
+                    {
+                        bridge = new Bridge(Name, Filename, Desc, Lat, Lng, Zoom, Height);
 
-                    bridgesService.Update(bridge);
+                        bridgesService.Add(bridge);
 
-                    break;
-                }
-            case "delete":
-                {
-                    bridge = bridgesService.GetBridgeById(Id);
-                    bridgesService.Delete(bridge);
+                        msgText = $"Bridge Id: {@bridge.Id} successfully added";
+                    }
+                    else
+                    {
+                        bridge.Name = Name;
+                        bridge.Filename = Filename;
+                        bridge.Description = Desc;
+                        bridge.Lat = Lat;
+                        bridge.Lng = Lng;
+                        bridge.Zoom = Zoom;
+                        bridge.Height = Height;
 
-                    bridge = null;
+                        bridgesService.Update(bridge);
+
+                        msgText = $"SUCCESS - Bridge Id: {@bridge.Id} updated";
+                    }
 
                     break;
                 }
@@ -65,32 +64,38 @@
         var satParams = "!3m1!1e3";
         var url = $"https://www.google.co.uk/maps/@{lat},{lng},{height}m/data={satParams}";
 
-        <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%;">
+<table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%;">
+    @if (!string.IsNullOrEmpty(msgText))
+    {
+        <tr colspan="2"><msg>@msgText</msg></tr>
+        <hr />
+    }
+    <tr>
+        <td colspan="2" style="text-align: left; background-color: darkslategray; color: white; opacity: 0.8;">
+            <h6 style="color: whitesmoke">@bridge.Name<a href=@url> Show in maps</a></h6>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color: lightgoldenrodyellow">
+            <a href="Images/Original/@bridge.Filename">
+                <img alt="No image found for bridge with name: @bridge.Name" height="600" width="800" src="Images/Original/@bridge.Filename" />
+            </a>
+        </td>
+        <td style="horiz-align: left; vertical-align: text-top; background-color: lightgoldenrodyellow; color: darkslategray; width: 100%">
+            <h6>Description</h6><a href=@url> Show in maps</a>
             <hr />
-            <tr>
-                <td colspan="2" style="text-align: left; background-color: darkslategray; color: white; opacity: 0.8;">
-                    <h6 style="color: whitesmoke">@bridge.Name<a href=@url> Show in maps</a></h6>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: lightgoldenrodyellow">
-                    <a href="Images/Original/@bridge.Filename">
-                        <img alt="No image found for bridge with name: @bridge.Name" height="600" width="800" src="Images/Original/@bridge.Filename" />
-                    </a>
-                </td>
-                <td style="horiz-align: left; vertical-align: text-top; background-color: lightgoldenrodyellow; color: darkslategray; width: 100%">
-                    <h6>Description</h6><a href=@url> Show in maps</a>
-                    <hr />
-                    <p>@bridge.Description</p>
-                    <hr />
-                    <p>Lat: @bridge.Lat.ToString("#.#######")</p>
-                    <p>Lng: @bridge.Lng.ToString("#.#######")</p>
-                    <p>Zoom (for google maps) :@bridge.Zoom.ToString("#.##")</p>
-                    <p>Height (for google maps) :@bridge.Height.ToString("#.##")</p>
-                    <a href="bridgesdetaileditview/view/@bridge.Id"><p>Edit</p></a>
-                </td>
-            </tr>
-        </table>
+            <p>@bridge.Description</p>
+            <hr />
+            <p>Lat: @bridge.Lat.ToString("#.#######")</p>
+            <p>Lng: @bridge.Lng.ToString("#.#######")</p>
+            <p>Zoom (for google maps) :@bridge.Zoom.ToString("#.##")</p>
+            <p>Height (for google maps) :@bridge.Height.ToString("#.##")</p>
+            <a href="bridgesdetaileditview/view/@bridge.Id">
+                <p>Edit</p>
+            </a>
+        </td>
+    </tr>
+</table>
     }
     else
     {

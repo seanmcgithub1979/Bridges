@@ -8,9 +8,10 @@ namespace BridgesRepo.Interfaces
         IList<Bridge> GetAllBridges();
         
         IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx);
-        
-        Bridge FindBridgeId(int id);
-        
+
+        Bridge GetBridgeById(int id);
+        Bridge GetBridgeByName(string name);
+
         void Add(Bridge bridge);
         void Delete(Bridge bridge);
         void Update(Bridge bridge);

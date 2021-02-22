@@ -28,7 +28,12 @@ namespace Bridges.Services
 
         public Bridge GetBridgeById(int id)
         {
-            return repo.FindBridgeId(id);
+            return repo.GetBridgeById(id);
+        }
+
+        public Bridge GetBridgeByName(string name)
+        {
+            return repo.GetBridgeByName(name);
         }
 
         public void Add(Bridge bridge)
@@ -46,7 +51,7 @@ namespace Bridges.Services
             repo.Delete(bridge);
         }
 
-        public void ExportToCsv()
+        public string ExportToCsv()
         {
             try
             {
@@ -59,6 +64,7 @@ namespace Bridges.Services
                     sw.WriteLine($"{@bridge.Id},{@bridge.Filename},{@bridge.Name},{@bridge.Description},{@bridge.Lng},{@bridge.Lat},{@bridge.Zoom},{@bridge.Height}");
                 }
 
+                return filename;
             }
             catch (Exception e)
             {
@@ -67,7 +73,7 @@ namespace Bridges.Services
             }
         }
 
-        public void ExportToTxt(string? delim = "\t")
+        public string ExportToTxt(string? delim = "\t")
         {
             try
             {
@@ -80,6 +86,8 @@ namespace Bridges.Services
                     sw.WriteLine($"{@bridge.Id}{delim}{@bridge.Filename}{delim}{@bridge.Name}{delim}{@bridge.Description}{delim}{@bridge.Lng}{delim}{@bridge.Lat}{delim}{@bridge.Zoom}{delim}{@bridge.Height}");
                 }
 
+                return filename;
+
             }
             catch (Exception e)
             {
@@ -88,7 +96,7 @@ namespace Bridges.Services
             }
         }
 
-        public void ExportToHtml()
+        public string ExportToHtml()
         {
             try
             {
@@ -101,6 +109,8 @@ namespace Bridges.Services
                     sw.WriteLine($"{@bridge.Id},{@bridge.Filename},{@bridge.Name},{@bridge.Description},{@bridge.Lng},{@bridge.Lat},{@bridge.Zoom},{@bridge.Height}");
                 }
 
+                return filename;
+
             }
             catch (Exception e)
             {
@@ -109,7 +119,7 @@ namespace Bridges.Services
             }
         }
 
-        public void ExportToXml()
+        public string ExportToXml()
         {
             try
             {
@@ -121,6 +131,8 @@ namespace Bridges.Services
                 {
                     sw.WriteLine($"{@bridge.Id},{@bridge.Filename},{@bridge.Name},{@bridge.Description},{@bridge.Lng},{@bridge.Lat},{@bridge.Zoom},{@bridge.Height}");
                 }
+
+                return filename;
 
             }
             catch (Exception e)

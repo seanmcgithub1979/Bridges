@@ -7,6 +7,21 @@ namespace BridgesRepo
 {
     public class BridgeRepoMock : IBridgeRepo
     {
+        public IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx)
+        {
+            return GetMockBridges().Skip(startIdx).Take(noOfBridges);
+        }
+
+        public Bridge GetBridgeById(int id)
+        {
+            return GetMockBridges().FirstOrDefault(x => x.Id == id);
+        }
+
+        public Bridge GetBridgeByName(string name)
+        {
+            return GetMockBridges().FirstOrDefault(x => x.Name == name);
+        }
+
         public void Add(Bridge bridge)
         {
         }
@@ -23,17 +38,7 @@ namespace BridgesRepo
         {
             return GetMockBridges();
         }
-
-        public IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx)
-        {
-            return GetMockBridges().Skip(startIdx).Take(noOfBridges);
-        }
-
-        public Bridge FindBridgeId(int id)
-        {
-            return GetMockBridges().FirstOrDefault(x => x.Id == id);
-        }
-
+        
         private static IList<Bridge> GetMockBridges()
         {
             var n = 62;

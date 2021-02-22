@@ -1,8 +1,9 @@
-﻿@page "/bridgeslistview/{action}/{page:int}"
+﻿@page "/bridgeslistview/{action}/{page:int?}/{id:int?}"
 
 @inject IBridgesService bridgesService;
 
 @using Bridges.Interfaces
+@using BridgesDomain.Model
 
 <style>
     tr:hover {
@@ -16,69 +17,97 @@
         color: darkslategray;
         width: 100%
     }
+
+    p {
+        border: 2px solid yellow;
+        color: white;
+        padding: 2px;
+    }
 </style>
 
-<table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%; opacity: 0.8;">
-    <hr />
-    <tr style="background-color: darkslategray; color: white" >
-        <td><h6>Name</h6></td>
-        <td><h6>Description</h6></td>
-        <td><h6>Filename</h6></td>
-        <td><h6>Lng</h6></td>
-        <td><h6>Lat</h6></td>
-        <td><h6>Zoom</h6></td>
-        <td><h6>Height</h6></td>
-        <td></td>
-    </tr>
+@{
+    var bridgeCount = bridgesService.GetAllBridges().Count();
+    var bridgesPerPage = 15;
+    var colCount = 7;
+    var msgText = string.Empty;
+    var exportedFilename = string.Empty;
 
-    @{
-        var bridgeCount = bridgesService.GetAllBridges().Count();
-        var bridgesPerPage = 15;
-        var colCount = 7;
-
-        var bridgesInRange = bridgesService.GetBridgesInRange(bridgesPerPage, (Page - 1) * bridgesPerPage);
-
-        switch (Action.ToLowerInvariant())
-        {
-            case "exporttocsv":
-                {
-                    ExportToCsv();
-                    break;
-                }
-            case "exporttotxt":
-                {
-                    ExportToTxt();
-                    break;
-                }
-            case "exporttohtml":
-                {
-                    ExportToHtml();
-                    break;
-                }
-            case "exporttoxml":
+    switch (Action.ToLowerInvariant())
+    {
+        case "delete":
             {
-                    ExportToXml();
-                    break;
+                Bridge bridge = bridgesService.GetBridgeById(Id);
+
+                if (bridge != null) // This is annoying as could be called with the back button or manual url input.
+                {
+                    bridgesService.Delete(bridge);
+                    msgText = $"SUCCESS - Bridge Id: {Id} deleted";
                 }
+                break;
+            }
+        case "exporttocsv":
+            {
+                exportedFilename = ExportToCsv();
+                msgText = $"SUCCESS - Exported {@exportedFilename}";
+                break;
+            }
+        case "exporttotxt":
+            {
+                exportedFilename = ExportToTxt();
+                msgText = $"SUCCESS - Exported {@exportedFilename}";
+                break;
+            }
+        case "exporttohtml":
+            {
+                exportedFilename = ExportToHtml();
+                msgText = $"SUCCESS - Exported {@exportedFilename}";
+                break;
+            }
+        case "exporttoxml":
+            {
+                exportedFilename = ExportToXml();
+                msgText = $"SUCCESS - Exported {@exportedFilename}";
+                break;
+            }
+    }
+
+    <hr />
+    <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%; opacity: 0.8;">
+
+        @if (!string.IsNullOrEmpty(msgText))
+        {
+            <tr colspan="2"><msg>@msgText</msg></tr>
+            <hr />
         }
 
-        foreach (var bridge in bridgesInRange)
+        <tr style="background-color: darkslategray; color: white">
+            <td><h6>Name</h6></td>
+            <td><h6>Description</h6></td>
+            <td><h6>Filename</h6></td>
+            <td><h6>Lng</h6></td>
+            <td><h6>Lat</h6></td>
+            <td><h6>Zoom</h6></td>
+            <td><h6>Height</h6></td>
+            <td></td>
+        </tr>
+        
+        @foreach (var bridge in bridgesService.GetBridgesInRange(bridgesPerPage, (Page - 1) * bridgesPerPage))
         {
-            <tr>
-                <td>@bridge.Name</td>
-                <td>@bridge.Description</td>
-                <td>@bridge.Filename</td>
-                <td>@bridge.Lng</td>
-                <td>@bridge.Lat</td>
-                <td>@bridge.Zoom</td>
-                <td>@bridge.Height</td>
-                <td><a href="bridgesdetaileditview/view/@bridge.Id">Edit</a></td>
-            </tr>
+        <tr>
+            <td>@bridge.Name</td>
+            <td>@bridge.Description</td>
+            <td>@bridge.Filename</td>
+            <td>@bridge.Lng</td>
+            <td>@bridge.Lat</td>
+            <td>@bridge.Zoom</td>
+            <td>@bridge.Height</td>
+            <td><a href="bridgesdetaileditview/view/@bridge.Id">Edit</a></td>
+        </tr>
         }
         <tr>
             <td colspan="3" style="text-align: left; background-color: darkslategray; color: blue">
                 <div class="pagination">
-                    @for (int i = 1; i <= (bridgeCount / bridgesPerPage) + 1; i++)
+                    @for (var i = 1; i <= (bridgeCount / bridgesPerPage) + 1; i++)
                     {
                         <span><a href="bridgeslistview/list/@i">@i</a></span>
                     }
@@ -86,7 +115,7 @@
             </td>
             <td column="4" style="text-align: center; background-color: darkslategray; color: white;">
                 <input type="button" id="btnAdd" width="50px" value="Add"
-                       style="color: darkslategray;  max-width: 100px; width: 100px" />
+                       style="color: darkslategray; max-width: 100px; width: 100px" />
             </td>
             <td colspan="@colCount - 4" style="text-align: right; background-color: darkslategray; color: white;">
                 Export to:
@@ -95,13 +124,13 @@
                 <input type="button" id="btnExportToTxt" width="50px" value="txt"
                        style="color: darkslategray; max-width: 100px; width: 100px" />
                 <input type="button" id="btnExportToHtml" width="50px" value="html"
-                       style="color: darkslategray;  max-width: 100px; width: 100px" />
+                       style="color: darkslategray; max-width: 100px; width: 100px" />
                 <input type="button" id="btnExportToXml" width="50px" value="xml"
-                       style="color: darkslategray;  max-width: 100px; width: 100px" />
+                       style="color: darkslategray; max-width: 100px; width: 100px" />
             </td>
         </tr>
-    }
-</table>
+    </table>
+}
 
 @code
 {
@@ -109,25 +138,28 @@
     public string Action { get; set; }
 
     [Parameter]
+    public int Id { get; set; }
+
+    [Parameter]
     public int Page { get; set; }
 
-    public void ExportToCsv()
+    public string ExportToCsv()
     {
-        bridgesService.ExportToCsv();
+        return bridgesService.ExportToCsv();
     }
 
-    public void ExportToTxt()
+    public string ExportToTxt()
     {
-        bridgesService.ExportToTxt();
+        return bridgesService.ExportToTxt();
     }
 
-    public void ExportToHtml()
+    public string ExportToHtml()
     {
-        bridgesService.ExportToHtml();
+        return bridgesService.ExportToHtml();
     }
 
-    public void ExportToXml()
+    public string ExportToXml()
     {
-        bridgesService.ExportToXml();
+        return bridgesService.ExportToXml();
     }
 }

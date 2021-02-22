@@ -31,9 +31,7 @@
         $(function () {
 
             $("#btnAdd").click(function () {
-                var url = "bridgesdetaileditview/add/";
-
-                window.location.href = url;
+                window.location.href = "bridgesdetaileditview/add/";
             });
 
             $("#btnSave").click(function () {
@@ -64,7 +62,7 @@
                 //if (alert === alert.ok) {
                     var id = $("#inputId").val();
                     
-                    var url = "bridgesdetailview/delete/"
+                    var url = "bridgeslistview/delete/1/"
                         + encodeURIComponent(id) + "/";
 
                         window.location.href = url;

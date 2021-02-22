@@ -50,13 +50,22 @@ html, body {
 }
 
 body {
-    font-family: 'Century Gothic', 'Berlin Sans FB', Broadway;
+    font-family: 'Century Gothic', 'Berlin Sans FB';
     background-image: url("/Images/bkgrd.jpg");
     background-size: cover;
 }
 
 a, .btn-link {
-    color: #0366d6;
+    color: black;
+}
+
+msg {
+    border: 2px solid darkslategray;
+    border-radius: 25px;
+    color: darkslategray;
+    background-color: lightgoldenrodyellow;
+    padding: 10px;
+    align-content: center;
 }
 
 .btn-primary {

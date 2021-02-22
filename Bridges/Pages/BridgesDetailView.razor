@@ -1,4 +1,4 @@
-﻿@page "/bridgesdetailview/{id:int}"
+﻿@page "/bridgesdetailview/{id:int}/{name?}/{filename?}/{desc?}/{lat:decimal?}/{lng:decimal?}/{zoom:decimal?}/{height:decimal?}"
 
 @inject IBridgesService bridgesService;
 
@@ -54,4 +54,18 @@
 {
     [Parameter]
     public int Id { get; set; }
+    [Parameter]
+    public string Name{ get; set; }
+    [Parameter]
+    public string Filename { get; set; }
+    [Parameter]
+    public string Desc { get; set; }
+    [Parameter]
+    public decimal Lat { get; set; }
+    [Parameter]
+    public decimal Lng { get; set; }
+    [Parameter]
+    public decimal Zoom { get; set; }
+    [Parameter]
+    public decimal Height { get; set; }
 }

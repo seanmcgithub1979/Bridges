@@ -122,7 +122,6 @@ input[type=date], input[type=datetime-local], input[type=month], input[type=time
     -webkit-appearance: listbox
 }
 
-
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;

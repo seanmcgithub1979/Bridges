@@ -1,14 +1,13 @@
-using Bridges.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Builder;
-using Bridges.Services;
 using BridgesRepo;
 using BridgesRepo.Data;
 using BridgesRepo.Interfaces;
+using BridgesService.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bridges
@@ -38,7 +37,7 @@ namespace Bridges
             
             services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
             //services.AddScoped<IBridgeRepo, BridgeRepoMock>();
-            services.AddScoped<IBridgesService, BridgesService>();
+            services.AddScoped<IBridgesService, BridgesService.Services.BridgesService>();
             
             //services.Configure<EmailSettingsOptions>(Configuration.GetSection("EmailSettings"));
         }

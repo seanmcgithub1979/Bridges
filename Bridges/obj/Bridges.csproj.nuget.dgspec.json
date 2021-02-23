@@ -134,6 +134,71 @@
         }
       }
     },
+    "C:\\SeansStuff\\Code\\Bridges\\BridgesService\\BridgesService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\SeansStuff\\Code\\Bridges\\BridgesService\\BridgesService.csproj",
+        "projectName": "BridgesService",
+        "projectPath": "C:\\SeansStuff\\Code\\Bridges\\BridgesService\\BridgesService.csproj",
+        "packagesPath": "C:\\Users\\cex\\.nuget\\packages\\",
+        "outputPath": "C:\\SeansStuff\\Code\\Bridges\\BridgesService\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\cex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Users\\cex\\.nuget\\packages\\": {},
+          "https://www.nuget.org/api/v2/": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\SeansStuff\\Code\\Bridges\\BridgesDomain\\BridgesDomain.csproj": {
+                "projectPath": "C:\\SeansStuff\\Code\\Bridges\\BridgesDomain\\BridgesDomain.csproj"
+              },
+              "C:\\SeansStuff\\Code\\Bridges\\BridgesRepo\\BridgesRepo.csproj": {
+                "projectPath": "C:\\SeansStuff\\Code\\Bridges\\BridgesRepo\\BridgesRepo.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\SeansStuff\\Code\\Bridges\\Bridges\\Bridges.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -167,6 +232,9 @@
               },
               "C:\\SeansStuff\\Code\\Bridges\\BridgesRepo\\BridgesRepo.csproj": {
                 "projectPath": "C:\\SeansStuff\\Code\\Bridges\\BridgesRepo\\BridgesRepo.csproj"
+              },
+              "C:\\SeansStuff\\Code\\Bridges\\BridgesService\\BridgesService.csproj": {
+                "projectPath": "C:\\SeansStuff\\Code\\Bridges\\BridgesService\\BridgesService.csproj"
               }
             }
           }

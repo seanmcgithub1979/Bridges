@@ -3,7 +3,7 @@
 @inject IBridgesService bridgesService;
 
 @using BridgesDomain.Model
-@using Bridges.Interfaces
+@using BridgesService.Interfaces
 
 <style>
     input {
@@ -72,8 +72,8 @@
                         </tr>
                         <tr>
                             <td colspan="2" style="text-align: right; horiz-align: right; background-color: darkslategray; color: white;">
-                                <input type="button" id="btnUpdate" onclick="UpdateBridge();" />
-                                <input type="button" id="btnDelete" onclick="DeleteBridge();" style="background-color: red"/>
+                                <input type="button" id="btnUpdate" onclick="UpdateBridge();" value="Update" />
+                                <input type="button" id="btnDelete" onclick="DeleteBridge();" value="Delete" style="background-color: red"/>
                             </td>
                         </tr>
                     </table>

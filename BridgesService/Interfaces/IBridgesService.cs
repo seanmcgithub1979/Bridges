@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using BridgesDomain.Model;
 
-namespace Bridges.Interfaces
+namespace BridgesService.Interfaces
 {
     public interface IBridgesService
     {

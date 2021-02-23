@@ -1506,6 +1506,20 @@
         "runtime": {
           "bin/placeholder/BridgesRepo.dll": {}
         }
+      },
+      "BridgesService/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "BridgesDomain": "1.0.0",
+          "BridgesRepo": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BridgesService.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BridgesService.dll": {}
+        }
       }
     }
   },
@@ -5728,12 +5742,18 @@
       "type": "project",
       "path": "../BridgesRepo/BridgesRepo.csproj",
       "msbuildProject": "../BridgesRepo/BridgesRepo.csproj"
+    },
+    "BridgesService/1.0.0": {
+      "type": "project",
+      "path": "../BridgesService/BridgesService.csproj",
+      "msbuildProject": "../BridgesService/BridgesService.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "BridgesDomain >= 1.0.0",
       "BridgesRepo >= 1.0.0",
+      "BridgesService >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 5.0.2",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.2"
     ]
@@ -5775,6 +5795,9 @@
             },
             "C:\\SeansStuff\\Code\\Bridges\\BridgesRepo\\BridgesRepo.csproj": {
               "projectPath": "C:\\SeansStuff\\Code\\Bridges\\BridgesRepo\\BridgesRepo.csproj"
+            },
+            "C:\\SeansStuff\\Code\\Bridges\\BridgesService\\BridgesService.csproj": {
+              "projectPath": "C:\\SeansStuff\\Code\\Bridges\\BridgesService\\BridgesService.csproj"
             }
           }
         }

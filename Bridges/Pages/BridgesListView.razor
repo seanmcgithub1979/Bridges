@@ -2,8 +2,8 @@
 
 @inject IBridgesService bridgesService;
 
-@using Bridges.Interfaces
 @using BridgesDomain.Model
+@using BridgesService.Interfaces
 
 <style>
     tr:hover {
@@ -119,10 +119,10 @@
             </td>
             <td colspan="@colCount - 4" style="text-align: right; background-color: darkslategray; color: white;">
                 Export to:
-                <input type="button" id="btnExportToCsv" onclick="ExportToCsv();" width="50px" value="csv" />
-                <input type="button" id="btnExportToTxt"onclick="ExportToTxt();" width="50px" value="txt" />
-                <input type="button" id="btnExportToHtml"onclick="ExportToHtml();" width="50px" value="html"  />
-                <input type="button" id="btnExportToXml"onclick="ExportToXml();" width="50px" value="xml" />
+                <input type="button" id="btnExportToCsv" onclick="ExportToCsv();" value="csv" />
+                <input type="button" id="btnExportToTxt"onclick="ExportToTxt();" value="txt" />
+                <input type="button" id="btnExportToHtml"onclick="ExportToHtml();" value="html"  />
+                <input type="button" id="btnExportToXml"onclick="ExportToXml();" value="xml" />
             </td>
         </tr>
     </table>

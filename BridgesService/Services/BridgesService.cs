@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Bridges.Interfaces;
 using BridgesDomain.Model;
 using BridgesRepo.Interfaces;
+using BridgesService.Interfaces;
 
-namespace Bridges.Services
+namespace BridgesService.Services
 {
     public class BridgesService : IBridgesService
     {

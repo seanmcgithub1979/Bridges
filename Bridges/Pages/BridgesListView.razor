@@ -115,19 +115,14 @@
                 </div>
             </td>
             <td column="4" style="text-align: center; background-color: darkslategray; color: white;">
-                <input type="button" id="btnAdd" width="50px" value="Add"
-                       style="color: darkslategray; max-width: 100px; width: 100px" />
+                <input type="button" id="btnAdd" onclick="AddBridge();" width="50px" value="Add" />
             </td>
             <td colspan="@colCount - 4" style="text-align: right; background-color: darkslategray; color: white;">
                 Export to:
-                <input type="button" id="btnExportToCsv" width="50px" value="csv"
-                       style="color: darkslategray; max-width: 100px; width: 100px" />
-                <input type="button" id="btnExportToTxt" width="50px" value="txt"
-                       style="color: darkslategray; max-width: 100px; width: 100px" />
-                <input type="button" id="btnExportToHtml" width="50px" value="html"
-                       style="color: darkslategray; max-width: 100px; width: 100px" />
-                <input type="button" id="btnExportToXml" width="50px" value="xml"
-                       style="color: darkslategray; max-width: 100px; width: 100px" />
+                <input type="button" id="btnExportToCsv" onclick="ExportToCsv();" width="50px" value="csv" />
+                <input type="button" id="btnExportToTxt"onclick="ExportToTxt();" width="50px" value="txt" />
+                <input type="button" id="btnExportToHtml"onclick="ExportToHtml();" width="50px" value="html"  />
+                <input type="button" id="btnExportToXml"onclick="ExportToXml();" width="50px" value="xml" />
             </td>
         </tr>
     </table>

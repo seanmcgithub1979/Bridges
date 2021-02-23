@@ -15,9 +15,9 @@ namespace Bridges
 
         private static IHostBuilder CreateHostBuilder(string[] args)
         {
-            IHostBuilder configureWebHostDefaults = Host.CreateDefaultBuilder(args);
+            IHostBuilder defaultBuilder = Host.CreateDefaultBuilder(args);
 
-            IHostBuilder configureAppConfiguration = configureWebHostDefaults.ConfigureAppConfiguration((hostingContext, builder) =>
+            IHostBuilder configureAppConfiguration = defaultBuilder.ConfigureAppConfiguration((hostingContext, builder) =>
             {
                 //IHostEnvironment env = hostingContext.HostingEnvironment;
                 builder.Sources.Clear();
@@ -35,7 +35,7 @@ namespace Bridges
 
             configureAppConfiguration.ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
 
-            return configureWebHostDefaults;
+            return defaultBuilder;
         }
     }
 }

@@ -13,7 +13,7 @@
     tr {
         vertical-align: text-top;
         background-color: lightgoldenrodyellow;
-        /*opacity: 0.8;*/
+        opacity: 0.8;
         color: darkslategray;
         width: 100%
     }
@@ -76,11 +76,12 @@
 
         @if (!string.IsNullOrEmpty(msgText))
         {
-            <msg><h6>@msgText</h6></msg>
+            <img style="border: none; height: 45px; width: 45px;" src="Images/info.png"/>
+            <msg>@msgText</msg>
             <hr />
         }
 
-        <tr style="background-color: darkslategray; color: white">
+        <tr style="background-color: darkslategray; color: white; opacity: 0.8">
             <td><h6>Name</h6></td>
             <td><h6>Description</h6></td>
             <td><h6>Filename</h6></td>

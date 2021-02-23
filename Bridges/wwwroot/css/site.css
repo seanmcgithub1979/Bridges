@@ -60,13 +60,13 @@ a, .btn-link {
 }
 
 msg {
-    border: 2px solid darkslategray;
+    border: 2px solid white;
     border-radius: 25px;
-    color: yellow;
-    background-color: cornflowerblue;
+    color: white;
+    /*background-color: salmon;*/
     padding: 10px;
-    align-content: center;
-    width: 100%;
+    alignment: right;
+    opacity: 1.0;
 }
 
 .btn-primary {

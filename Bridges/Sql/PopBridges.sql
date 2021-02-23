@@ -55,7 +55,11 @@ insert into Bridges select 'Bridge51', 'Bridge 51', 'Image51.jpg', -1.3697736, 5
 insert into Bridges select 'Bridge52', 'Bridge 52', 'Image52.jpg', -1.3697736, 54.9136984,  14.25, 1222;
 insert into Bridges select 'Bridge53', 'Bridge 53', 'Image53.jpg', -1.3697736, 54.9136984,  14.25, 1222;
 insert into Bridges select 'Bridge54', 'Bridge 54', 'Image54.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge55', 'Bridge 55', 'Image55.jpg', -1.3697736, 54.9136984,  14.25, 1222;
+insert into Bridges select 'Wearmouth Bridge', 'The current road and foot bridge dates from 1927-29, and was built to accommodate the increasing traffic into Sunderland.  Remarkably, the bridge was kept open to traffic throughout this building period and the new bridge was built over the top of the old one.
+
+It was finally opened on 31 October, 1929.  The photograph shows the bridge as it looks today.
+
+Dei’ (‘Do not despair, trust in God’) comes from Horace’s Odes, Book I, Ode vii, and can also be found on the city’s crest. The ornate ironwork crests that adorn the railings in the middle of each side of the current bridge are copies of those that stood in a similar position on Stephenson’s bridge.', 'Image55.jpg', -1.3829977, 54.9100102,  14.25, 1222;
 insert into Bridges select 'Bridge56', 'Bridge 56', 'Image56.jpg', -1.3697736, 54.9136984,  14.25, 1222;
 insert into Bridges select 'Bridge57', 'Bridge 57', 'Image57.jpg', -1.3697736, 54.9136984,  14.25, 1222;
 insert into Bridges select 'Bridge58', 'Bridge 58', 'Image58.jpg', -1.3697736, 54.9136984,  14.25, 1222;

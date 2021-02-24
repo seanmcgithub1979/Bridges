@@ -63,10 +63,7 @@ msg {
     border: 2px solid white;
     border-radius: 25px;
     color: white;
-    /*background-color: salmon;*/
     padding: 10px;
-    alignment: right;
-    opacity: 1.0;
 }
 
 button {

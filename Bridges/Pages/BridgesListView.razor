@@ -71,16 +71,14 @@
             }
     }
 
-    <hr />
+    <br />
+    @if (!string.IsNullOrEmpty(msgText))
+    {
+        <img style="border: none; height: 45px; width: 45px;" src="Images/info.png" />
+        <msg>@msgText</msg>
+        <hr />
+    }
     <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%; opacity: 0.8;">
-
-        @if (!string.IsNullOrEmpty(msgText))
-        {
-            <img style="border: none; height: 45px; width: 45px;" src="Images/info.png"/>
-            <msg>@msgText</msg>
-            <hr />
-        }
-
         <tr style="background-color: darkslategray; color: white; opacity: 0.8">
             <td><h6>Name</h6></td>
             <td><h6>Description</h6></td>
@@ -120,9 +118,9 @@
             <td colspan="@colCount - 4" style="text-align: right; background-color: darkslategray; color: white;">
                 Export to:
                 <input type="button" id="btnExportToCsv" onclick="ExportToCsv();" value="csv" />
-                <input type="button" id="btnExportToTxt"onclick="ExportToTxt();" value="txt" />
-                <input type="button" id="btnExportToHtml"onclick="ExportToHtml();" value="html"  />
-                <input type="button" id="btnExportToXml"onclick="ExportToXml();" value="xml" />
+                <input type="button" id="btnExportToTxt" onclick="ExportToTxt();" value="txt" />
+                <input type="button" id="btnExportToHtml" onclick="ExportToHtml();" value="html" />
+                <input type="button" id="btnExportToXml" onclick="ExportToXml();" value="xml" />
             </td>
         </tr>
     </table>

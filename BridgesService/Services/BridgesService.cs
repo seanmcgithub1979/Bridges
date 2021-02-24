@@ -55,7 +55,7 @@ namespace BridgesService.Services
         {
             try
             {
-                var filename = $"{DateTime.Now:yyyymmdd}_Bridges.csv";
+                var filename = $"{DateTime.Now:yyyyMMddhhmm}_Bridges.csv";
 
                 using StreamWriter sw = new(filename, false);
                 sw.WriteLine("Id,Filennme,Name,Desc,Lng,Lat,Zoom,Height");
@@ -103,11 +103,23 @@ namespace BridgesService.Services
                 var filename = $"{DateTime.Now:yyyymmdd}_Bridges.html";
 
                 using StreamWriter sw = new(filename, false);
-                sw.WriteLine("Id,Filennme,Name,Desc,Lng,Lat,Zoom,Height");
+                sw.WriteLine("<html><body><table>");
+                sw.WriteLine("<td>Id</td><td>Filename</td><td>Name</td><td>Desc</td><td>Lng</td><td>Lat</td><td>Zoom</td><td>Height</td>");
                 foreach (Bridge bridge in GetAllBridges())
                 {
-                    sw.WriteLine($"{@bridge.Id},{@bridge.Filename},{@bridge.Name},{@bridge.Description},{@bridge.Lng},{@bridge.Lat},{@bridge.Zoom},{@bridge.Height}");
+                    sw.WriteLine("<tr>");
+                    sw.WriteLine(
+                        $"<td>{@bridge.Id}</td>" +
+                        $"<td>{@bridge.Filename}</td>" +
+                        $"<td>{@bridge.Name}</td>" +
+                        $"<td>{@bridge.Description}</td>" + 
+                        $"<td>{@bridge.Lng}</td>" +
+                        $"<td>{ @bridge.Lat}</td>" + 
+                        $"<td>{@bridge.Zoom}</td>" +
+                        $" < td >{ @bridge.Height}");
+                    sw.WriteLine("</tr>");
                 }
+                sw.WriteLine("</table></body></html>");
 
                 return filename;
 
@@ -126,11 +138,23 @@ namespace BridgesService.Services
                 var filename = $"{DateTime.Now:yyyymmdd}_Bridges.xml";
 
                 using StreamWriter sw = new(filename, false);
-                sw.WriteLine("Id,Filennme,Name,Desc,Lng,Lat,Zoom,Height");
+
+                sw.WriteLine("<xml>");
                 foreach (Bridge bridge in GetAllBridges())
                 {
-                    sw.WriteLine($"{@bridge.Id},{@bridge.Filename},{@bridge.Name},{@bridge.Description},{@bridge.Lng},{@bridge.Lat},{@bridge.Zoom},{@bridge.Height}");
+                    sw.WriteLine("<Bridge>");
+                    sw.WriteLine(
+                        $"<Id>{@bridge.Id}</Id>" +
+                        $"<Filename>{@bridge.Filename}</Filename>" +
+                        $"<Name>{@bridge.Name}</Name>" +
+                        $"<Description>{@bridge.Description}</Description>" +
+                        $"<Lat>{@bridge.Lat}</Lat>" +
+                        $"<Lng>{ @bridge.Lng}<Lng>" +
+                        $"<Zoom>{@bridge.Zoom}</Zoom>" +
+                        $"<Height>{ @bridge.Height}</Height>");
+                    sw.WriteLine("</Bridge>");
                 }
+                sw.WriteLine("</xml>");
 
                 return filename;
 

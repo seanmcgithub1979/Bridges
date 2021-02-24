@@ -7,7 +7,7 @@
 
 <style>
     input {
-        width: 600px;
+        width: 400px;
     }
 
     td {
@@ -51,7 +51,7 @@
                         </tr>
                         <tr>
                             <td><label>Description</label></td>
-                            <td><textarea id="inputDesc" style="width: 600px; height: 100px;">@bridge.Description</textarea></td>
+                            <td><textarea id="inputDesc" style="width: 400px; height: 100px;">@bridge.Description</textarea></td>
 
                         </tr>
                         <tr>
@@ -72,8 +72,18 @@
                         </tr>
                         <tr>
                             <td colspan="2" style="text-align: right; horiz-align: right; background-color: darkslategray; color: white;">
-                                <input type="button" id="btnUpdate" onclick="UpdateBridge();" value="Update" />
-                                <input type="button" id="btnDelete" onclick="DeleteBridge();" value="Delete" style="background-color: red"/>
+                                <input type="button" id="btnUpdate" value="Update" 
+                                       onclick="UpdateBridge(
+                                                    inputId.value,
+                                                    inputName.value,
+                                                    inputFilename.value,
+                                                    inputDesc.value,
+                                                    inputLat.value,
+                                                    inputLng.value,
+                                                    inputZoom.value,
+                                                    inputHeight.value);"/>
+                                <input type="button" id="btnDelete" style="background-color: red" value="Delete" 
+                                       onclick="DeleteBridge(inputId.value);"/>
                             </td>
                         </tr>
                     </table>

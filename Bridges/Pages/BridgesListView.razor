@@ -23,55 +23,56 @@
     var bridgeCount = bridgesService.GetAllBridges().Count();
     var bridgesPerPage = 15;
     var colCount = 7;
-    var msgText = string.Empty;
     var exportedFilename = string.Empty;
 
     switch (Action.ToLowerInvariant())
     {
         case "delete":
-            {
-                Bridge bridge = bridgesService.GetBridgeById(Id);
+        {
+            Bridge bridge = bridgesService.GetBridgeById(Id);
 
-                if (bridge != null) // This is annoying as could be called with the back button or manual url input.
-                {
-                    bridgesService.Delete(bridge);
-                    msgText = $"SUCCESS - Bridge Id: {Id} deleted";
-                }
-                break;
+            if (bridge != null) // This is annoying as could be called with the back button or manual url input.
+            {
+                bridgesService.Delete(bridge);
             }
+            break;
+        }
         case "exporttocsv":
-            {
-                exportedFilename = ExportToCsv();
-                msgText = $"SUCCESS - Exported {@exportedFilename}";
-                break;
-            }
+        {
+            exportedFilename = ExportToCsv();
+            break;
+        }
         case "exporttotxt":
-            {
-                exportedFilename = ExportToTxt();
-                msgText = $"SUCCESS - Exported {@exportedFilename}";
-                break;
-            }
+        {
+            exportedFilename = ExportToTxt();
+            break;
+        }
         case "exporttohtml":
-            {
-                exportedFilename = ExportToHtml();
-                msgText = $"SUCCESS - Exported {@exportedFilename}";
-                break;
-            }
+        {
+            exportedFilename = ExportToHtml();
+            break;
+        }
         case "exporttoxml":
-            {
-                exportedFilename = ExportToXml();
-                msgText = $"SUCCESS - Exported {@exportedFilename}";
-                break;
-            }
+        {
+            exportedFilename = ExportToXml();
+            break;
+        }
+    }
+    <br/>
+    if (Action.ToLowerInvariant().StartsWith("export"))
+    {
+        <img style="border: none; height: 45px; width: 45px;" src="Images/info.png"/>
+        <msg>SUCCESS - Exported <a href="file:///C:/SeansStuff/Code/Bridges/Bridges/@exportedFilename">@exportedFilename</a></msg>
+        <hr/>
     }
 
-    <br />
-    @if (!string.IsNullOrEmpty(msgText))
+    if (Action.ToLowerInvariant() == "delete")
     {
-        <img style="border: none; height: 45px; width: 45px;" src="Images/info.png" />
-        <msg>@msgText</msg>
-        <hr />
+        <img style="border: none; height: 45px; width: 45px;" src="Images/info.png"/>
+        <msg>SUCCESS - Bridge @Id deleted</msg>
+        <hr/>
     }
+
     <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%; opacity: 0.8;">
         <tr style="background-color: darkslategray; color: white; opacity: 0.8">
             <td><h6>Name</h6></td>
@@ -107,14 +108,14 @@
                 </div>
             </td>
             <td column="4" style="text-align: center; background-color: darkslategray; color: white;">
-                <input type="button" id="btnAdd" onclick="AddBridge();" width="50px" value="Add" />
+                <input type="button" id="btnAdd" onclick="AddBridge();" width="50px" value="Add"/>
             </td>
             <td colspan="@colCount - 4" style="text-align: right; background-color: darkslategray; color: white;">
                 Export to:
-                <input type="button" id="btnExportToCsv" onclick="ExportToCsv();" value="csv" />
-                <input type="button" id="btnExportToTxt" onclick="ExportToTxt();" value="txt" />
-                <input type="button" id="btnExportToHtml" onclick="ExportToHtml();" value="html" />
-                <input type="button" id="btnExportToXml" onclick="ExportToXml();" value="xml" />
+                <input type="button" id="btnExportToCsv" onclick="ExportToCsv();" value="csv"/>
+                <input type="button" id="btnExportToTxt" onclick="ExportToTxt();" value="txt"/>
+                <input type="button" id="btnExportToHtml" onclick="ExportToHtml();" value="html"/>
+                <input type="button" id="btnExportToXml" onclick="ExportToXml();" value="xml"/>
             </td>
         </tr>
     </table>
@@ -122,32 +123,32 @@
 
 @code
 {
-    [Parameter]
-    public string Action { get; set; }
+        [Parameter]
+        public string Action { get; set; }
 
-    [Parameter]
-    public int Id { get; set; }
+        [Parameter]
+        public int Id { get; set; }
 
-    [Parameter]
-    public int Page { get; set; }
+        [Parameter]
+        public int Page { get; set; }
 
-    public string ExportToCsv()
-    {
-        return bridgesService.ExportToCsv();
+        public string ExportToCsv()
+        {
+            return bridgesService.ExportToCsv();
+        }
+
+        public string ExportToTxt()
+        {
+            return bridgesService.ExportToTxt();
+        }
+
+        public string ExportToHtml()
+        {
+            return bridgesService.ExportToHtml();
+        }
+
+        public string ExportToXml()
+        {
+            return bridgesService.ExportToXml();
+        }
     }
-
-    public string ExportToTxt()
-    {
-        return bridgesService.ExportToTxt();
-    }
-
-    public string ExportToHtml()
-    {
-        return bridgesService.ExportToHtml();
-    }
-
-    public string ExportToXml()
-    {
-        return bridgesService.ExportToXml();
-    }
-}

@@ -77,7 +77,7 @@ namespace BridgesService.Services
         {
             try
             {
-                var filename = $"{DateTime.Now:yyyymmdd}_Bridges.txt";
+                var filename = $"{DateTime.Now:yyyyMMddhhmm}_Bridges.txt";
 
                 using StreamWriter sw = new(filename, false);
                 sw.WriteLine($"Id{delim}Filennme{delim}Name{delim}Desc{delim}Lng{delim}Lat{delim}Zoom{delim}Height");
@@ -100,7 +100,7 @@ namespace BridgesService.Services
         {
             try
             {
-                var filename = $"{DateTime.Now:yyyymmdd}_Bridges.html";
+                var filename = $"{DateTime.Now:yyyyMMddhhmm}_Bridges.html";
 
                 using StreamWriter sw = new(filename, false);
                 sw.WriteLine("<html><body><table>");
@@ -135,10 +135,9 @@ namespace BridgesService.Services
         {
             try
             {
-                var filename = $"{DateTime.Now:yyyymmdd}_Bridges.xml";
+                var filename = $"{DateTime.Now:yyyyMMddhhmm}_Bridges.xml";
 
                 using StreamWriter sw = new(filename, false);
-
                 sw.WriteLine("<xml>");
                 foreach (Bridge bridge in GetAllBridges())
                 {

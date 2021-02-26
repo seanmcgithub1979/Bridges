@@ -3,7 +3,7 @@ using System.Linq;
 using BridgesDomain.Model;
 using BridgesRepo.Interfaces;
 
-namespace BridgesRepo
+namespace BridgesRepo.Mocks
 {
     public class BridgeRepoMock : IBridgeRepo
     {
@@ -46,7 +46,7 @@ namespace BridgesRepo
 
             for (var i = 1; i <= n; i++)
             {
-                retVal.Add(new() 
+                retVal.Add(new Bridge() 
                 { 
                     Id = i, 
                     Name = $"Bridge{i}", 

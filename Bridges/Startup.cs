@@ -1,6 +1,7 @@
 using BridgesRepo;
 using BridgesRepo.Data;
 using BridgesRepo.Interfaces;
+using BridgesRepo.Mocks;
 using BridgesService.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,10 +35,16 @@ namespace Bridges
             services.Configure<RazorPagesOptions>(options => options.RootDirectory = "/Pages");
             
             services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<CommentsDbContext>(options => options.UseSqlServer(connectionString));
             
-            services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
-            //services.AddScoped<IBridgeRepo, BridgeRepoMock>();
+            services.AddScoped<ICommentRepo, CommentRepoSqlServer>();
+            //services.AddScoped<ICommentRepo, CommentRepoMock>();
+
+            //services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
+            services.AddScoped<IBridgeRepo, BridgeRepoMock>();
+            
             services.AddScoped<IBridgesService, BridgesService.Services.BridgesService>();
+            services.AddScoped<ICommentService, BridgesService.Services.CommentService>();
             
             //services.Configure<EmailSettingsOptions>(Configuration.GetSection("EmailSettings"));
         }

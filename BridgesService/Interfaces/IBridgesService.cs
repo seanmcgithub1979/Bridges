@@ -9,7 +9,6 @@ namespace BridgesService.Interfaces
         IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx);
         
         Bridge GetBridgeById(int id);
-        
         Bridge GetBridgeByName(string name);
         
         void Add(Bridge bridge);

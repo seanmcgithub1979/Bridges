@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BridgesDomain", "BridgesDom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BridgesUnitTests", "BridgesUnitTests\BridgesUnitTests.csproj", "{955E3711-0455-4439-B611-22ABBEF5C192}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgesService", "BridgesService\BridgesService.csproj", "{B322C8E4-2220-452C-8D88-60E257BF1496}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BridgesService", "BridgesService\BridgesService.csproj", "{B322C8E4-2220-452C-8D88-60E257BF1496}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -40,3 +40,11 @@ function ExportToHtml() {
 function ExportToXml() {
     window.location.href = "bridgeslistview/exporttoxml/1";;
 };
+
+function AddComment() {
+    window.location.href = "commentsdetaileditview";
+};
+
+function SaveComment(comment) {
+    window.location.href = "/savecomment/" + comment;
+};

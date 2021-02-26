@@ -16,3 +16,15 @@ CREATE TABLE Bridges
 	Height			DECIMAL(28,10)
 );
 GO
+
+IF EXISTS (SELECT 1 FROM sys.tables WHERE name = 'Comments') 
+	DROP TABLE Comments;
+GO
+
+CREATE TABLE Comments
+(
+	[Id]			INT IDENTITY (1, 1)	PRIMARY KEY,
+	CommentContent	VARCHAR(MAX),
+	CommentDate		DATETIME
+);
+GO

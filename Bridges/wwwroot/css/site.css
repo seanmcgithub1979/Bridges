@@ -68,11 +68,20 @@ msg {
 
 button {
     border-radius: 0;
+    background-color: darkslategray;
+    color: white;
 }
 
 button:focus {
     outline: 1px dotted;
-    outline: 5px auto -webkit-focus-ring-color
+    outline: 5px auto -webkit-focus-ring-color;
+}
+
+button:hover {
+    outline: 1px dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    background-color: white;
+    color: darkslategray;
 }
 
 button, input, optgroup, select, textarea {
@@ -164,11 +173,11 @@ app {
 }
 
 .pagination a {
-    color: black;
+    color: white;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
-    border: 1px solid #ddd;
+    border: 1px solid white;
 }
 
     .pagination a.active {

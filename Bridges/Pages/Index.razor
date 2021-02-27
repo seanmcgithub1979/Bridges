@@ -27,7 +27,7 @@
     <body>
     <br/>
     <table class="table" width="80%" height="80%" style=" horiz-align: center; vertical-align: center; opacity: 0.8;
-        background-color: darkslategray; color: lightgoldenrodyellow;
+        background-color: lightgoldenrodyellow; color: darkslategray;
         border-width: 1px; border-color: lightgoldenrodyellow">
         <tr>
             <td >
@@ -46,23 +46,20 @@
     <div class="ex1">
         <table class="table" style="width: 800px; horiz-align: center; vertical-align: center; background-color: lightgoldenrodyellow; opacity: 0.8; color: darkslategray;">
             <tr style="background-color: darkslategray; color: white">
-                <td colspan="2"><h3>Comments</h3></td>
+                <td><h3>Comments</h3></td>
+                <td style="text-align: right; horiz-align: right;"><input type="button" id="tbnAddComment" onclick="AddComment();" value="Add" /></td>
             </tr>
             @foreach (Comment comment in commentService.GetAllComments().OrderByDescending(x => x.CommentDate))
             {
                 <tr>
-                    <td style="width: 10%">@comment.CommentDate</td>
-                    <td style="width: 30%">@comment.CommentContent</td>
+                    <td>@comment.CommentDate</td>
+                    <td>@comment.CommentContent</td>
                 </tr>
             }
         </table>
     </div>
     <br/>
-    <div>
-        <input type="button" id="tbnAddComment" onclick="AddComment();" value="Add" />
-    </div>
     </body>
-}
 
 @code
 {

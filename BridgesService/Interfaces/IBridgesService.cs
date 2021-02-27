@@ -16,7 +16,7 @@ namespace BridgesService.Interfaces
         void Delete(Bridge bridge);
         
         string ExportToCsv();
-        string ExportToTxt(string? delim = "\t");
+        string ExportToTxt(string delim = "\t");
         string ExportToHtml();
         string ExportToXml();
     }

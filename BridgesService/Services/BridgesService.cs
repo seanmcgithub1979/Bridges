@@ -73,7 +73,7 @@ namespace BridgesService.Services
             }
         }
 
-        public string ExportToTxt(string? delim = "\t")
+        public string ExportToTxt(string delim = "\t")
         {
             try
             {

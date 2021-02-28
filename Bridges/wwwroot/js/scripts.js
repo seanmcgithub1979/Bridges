@@ -45,6 +45,6 @@ function AddComment() {
     window.location.href = "commentsdetaileditview";
 };
 
-function SaveComment(comment) {
-    window.location.href = "/savecomment/" + comment;
+function SaveComment(comment, from, emailAddress) {
+    window.location.href = "/savecomment/" + comment + "/" + from +  "/" + emailAddress;
 };

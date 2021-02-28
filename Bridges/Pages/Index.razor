@@ -1,4 +1,4 @@
-﻿@page "/{action?}/{comment?}/"
+﻿@page "/{action?}/{comment?}/{from?}/{emailaddress?}"
 
 @inject ICommentService commentService;
 
@@ -7,7 +7,7 @@
 
 <style>
     div.ex1 {
-        width: 817px;
+        width: 822px;
         height: 410px;
         overflow-y: scroll;
     }
@@ -16,50 +16,45 @@
 @{
     if (!string.IsNullOrEmpty(Action) && Action.ToLowerInvariant() == "savecomment")
     {
-        commentService.AddComment(Comment);
+        commentService.AddComment(Comment, From, EmailAddress);
         <br/>
         <img style="border: none; height: 45px; width: 45px;" src="Images/info.png"/>
-        <msg>SUCCESS - Comment added</msg>
+        <msginfo>SUCCESS - Comment added</msginfo>
         <hr/>
     }
 }
 
-    <body>
-    <br/>
-    <table class="table" width="80%" height="80%" style=" horiz-align: center; vertical-align: center; opacity: 0.8;
-        background-color: lightgoldenrodyellow; color: darkslategray;
-        border-width: 1px; border-color: lightgoldenrodyellow">
-        <tr>
-            <td >
-                <h3>Welcome to blah blah</h3>
-                <hr/>
-                <p>Welcome to blah blah</p>
-                <p>Welcome to blah blah</p>
-                <p>Welcome to blah blah</p>
-                <p>Welcome to blah blah</p>
-                <p>Welcome to blah blah</p>
-            </td>
-        </tr>
-
-    </table>
-    <br/>
-    <div class="ex1">
-        <table class="table" style="width: 800px; horiz-align: center; vertical-align: center; background-color: lightgoldenrodyellow; opacity: 0.8; color: darkslategray;">
-            <tr style="background-color: darkslategray; color: white">
-                <td><h3>Comments</h3></td>
-                <td style="text-align: right; horiz-align: right;"><input type="button" id="tbnAddComment" onclick="AddComment();" value="Add" /></td>
-            </tr>
-            @foreach (Comment comment in commentService.GetAllComments().OrderByDescending(x => x.CommentDate))
-            {
-                <tr>
-                    <td>@comment.CommentDate</td>
-                    <td>@comment.CommentContent</td>
-                </tr>
-            }
-        </table>
+<body>
+<br/>
+    <div style="background-color: lightgoldenrodyellow; opacity: 0.8;">
+        <h3>Welcome to our site.</h3>
+        <hr />
+        <p>Here you can view and read about bridges over the river Wear.</p>
+        <br />
+        <p>Please leave a comment below.</p>
+        <p>Thanks for visiting the site.</p>
+        <br/>
     </div>
-    <br/>
-    </body>
+<br/>
+<div class="ex1">
+    <table>
+        <thead>
+        <h6>
+            <th>Comments</th>
+            <th style="text-align: right;"><input type="button" id="tbnAddComment" onclick="AddComment();" value="Add" /></th>
+        </h6>
+        </thead>
+        @foreach (Comment comment in commentService.GetAllComments().OrderByDescending(x => x.CommentDate))
+        {
+            <tr>
+                <td>@comment.CommentDate</td>
+                <td>@comment.CommentContent</td>
+            </tr>
+        }
+    </table>
+</div>
+<br/>
+</body>
 
 @code
 {
@@ -68,4 +63,10 @@
 
     [Parameter]
     public string Comment { get; set; }
+
+    [Parameter]
+    public string From { get; set; }
+
+    [Parameter]
+    public string EmailAddress { get; set; }
 }

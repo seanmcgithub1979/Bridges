@@ -18,10 +18,10 @@ namespace BridgesService.Services
         {
             return repo.GetAllComments();
         }
-
-        public void AddComment(string comment)
+        
+        public void AddComment(string comment, string from, string emailAddress)
         {
-            repo.AddComment(new Comment(comment));
+            repo.AddComment(new Comment(comment, from, emailAddress));
         }
     }
 }

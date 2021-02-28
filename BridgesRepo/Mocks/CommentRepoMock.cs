@@ -11,7 +11,7 @@ namespace BridgesRepo.Mocks
             IList<Comment> comments = new List<Comment>();
             for (var i = 0; i < 20; i++)
             {
-                comments.Add(new Comment($"Comment: {i + 1}"));
+                comments.Add(new Comment($"Comment: {i + 1}", "from ...", "emailAddress..."));
             }
 
             return comments;

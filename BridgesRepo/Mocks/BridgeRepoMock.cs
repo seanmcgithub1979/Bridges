@@ -52,8 +52,8 @@ namespace BridgesRepo.Mocks
                     Name = $"Bridge{i}", 
                     Filename  = $"Image{i}.jpg", 
                     Description = "Some desc here...", 
-                    Lat = 50m,
-                    Lng = 50m, 
+                    Lat = 50.111111m,
+                    Lng = 50.111111m, 
                     Height = 1222m, 
                     Zoom = 14.25m
                 });

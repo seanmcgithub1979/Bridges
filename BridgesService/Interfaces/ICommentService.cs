@@ -7,6 +7,6 @@ namespace BridgesService.Interfaces
     {
         IEnumerable<Comment> GetAllComments();
         
-        void AddComment(string comment);
+        void AddComment(string comment, string from, string emailAddress);
     }
 }

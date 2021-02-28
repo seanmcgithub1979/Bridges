@@ -20,16 +20,29 @@
 
     <br/>
    
-    <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%;">
+    <table>
+        <thead>
+            <h6>
+        <th colspan="2">Add comment</th>
+        </h6>
+        </thead>
         <tr>
             <td><label>Comment</label></td>
-            <td><textarea id="inputCommentContent" style="height: 400px; width: 100%;">@comment.CommentContent</textarea></td>
+            <td><textarea id="inputCommentContent">@comment.CommentContent</textarea></td>
         </tr>
         <tr>
-            <td colspan="2" style="text-align: right; horiz-align: right; background-color: darkslategray; color: lightgoldenrodyellow;">
-                <input type="button" id="btnSave" value="Save"
-                       onclick="SaveComment(inputCommentContent.value);" />
-            </td>
+            <td><label>From</label></td>
+            <td><textarea id="inputCommentFrom">@comment.From</textarea></td>
         </tr>
+        <tr>
+            <td><label>Email</label></td>
+            <td><textarea id="inputCommentEmailAddress">@comment.EmailAddress</textarea></td>
+        </tr>
+        <tfoot>
+        <th colspan="2"  style="text-align: right;">
+            <input type="button" id="btnSave" value="Save"
+                   onclick="SaveComment(inputCommentContent.value, inputCommentFrom.value, inputCommentEmailAddress.value);"/>
+        </th>
+        </tfoot>
     </table>
 }

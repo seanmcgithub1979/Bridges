@@ -5,16 +5,6 @@
 @using BridgesDomain.Model
 @using BridgesService.Interfaces
 
-<style>
-    input {
-        width: 400px;
-    }
-
-    td {
-        opacity: 0.9;
-    }
-</style>
-
 @{
     Bridge bridge = null;
 
@@ -28,15 +18,20 @@
         var height = @bridge.Height;
 
         <br/>
-        <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%;">
+        <table class="table">
+            <thead>
+            <th colspan="2">
+                <h6>@bridge.Name</h6>
+            </th>
+            </thead>
             <tr>
-                <td>
+                <td style="width: 40%;">
                     <a href="Images/Original/@bridge.Filename">
-                        <img alt="No image found for bridge with Id: @bridge.Id" height="600px" width="800px" src="Images/Original/@bridge.Filename" style="opacity: 1.0;" />
+                        <img alt="No image found for bridge with Id: @bridge.Id" height="600px" width="800px" src="Images/Original/@bridge.Filename"/>
                     </a>
                 </td>
                 <td>
-                    <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%;">
+                    <table>
                         <tr>
                             <td><label>Id</label></td>
                             <td><input type="text" readonly="true" id="inputId" name="name" value="@bridge.Id"/></td>
@@ -51,7 +46,7 @@
                         </tr>
                         <tr>
                             <td><label>Description</label></td>
-                            <td><textarea id="inputDesc" style="width: 400px; height: 100px;">@bridge.Description</textarea></td>
+                            <td><textarea id="inputDesc">@bridge.Description</textarea></td>
                         </tr>
                         <tr>
                             <td><label>Lat</label></td>
@@ -69,22 +64,15 @@
                             <td><label>Height</label></td>
                             <td><input type="text" id="inputHeight" name="height" value="@bridge.Height.ToString("#.##")"/></td>
                         </tr>
-                        <tr>
-                            <td colspan="2" style="text-align: right; horiz-align: right; background-color: darkslategray; color: white;">
-                                <input type="button" id="btnUpdate" value="Update" 
-                                       onclick="UpdateBridge(
-                                                    inputId.value,
-                                                    inputName.value,
-                                                    inputFilename.value,
-                                                    inputDesc.value,
-                                                    inputLat.value,
-                                                    inputLng.value,
-                                                    inputZoom.value,
-                                                    inputHeight.value);"/>
-                                <input type="button" id="btnDelete" style="background-color: red" value="Delete" 
-                                       onclick="DeleteBridge(inputId.value);"/>
-                            </td>
-                        </tr>
+                        <tfoot>
+                            <th colspan="2" style="text-align: right;">
+                                <input type="button" id="btnUpdate" value="Update"
+                                       onclick="UpdateBridge(inputId.value, inputName.value, inputFilename.value, inputDesc.value, inputLat.value, inputLng.value, inputZoom.value, inputHeight.value);"/>
+                                <input type="button" id="btnDelete" value="Delete"
+                                       onclick="DeleteBridge(inputId.value);"
+                                       style="background-color: red;"/>
+                            </th>
+                        </tfoot>
                     </table>
                 </td>
             </tr>

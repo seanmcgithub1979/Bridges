@@ -47,8 +47,10 @@
         @foreach (Comment comment in commentService.GetAllComments().OrderByDescending(x => x.CommentDate))
         {
             <tr>
-                <td>@comment.CommentDate</td>
-                <td>@comment.CommentContent</td>
+                <td style="width: 50px">@comment.CommentDate</td>
+                <td style="width: 500px">@comment.CommentContent</td>
+                <td>@comment.From</td>
+                <td>@comment.EmailAddress</td>
             </tr>
         }
     </table>

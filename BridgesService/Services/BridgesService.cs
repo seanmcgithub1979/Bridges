@@ -114,7 +114,7 @@ namespace BridgesService.Services
         {
             try
             {
-                var filename = $"{DateTime.Now:yyyyMMddhhmm}_Bridges.csv";
+                var filename = $"{DateTime.Now:yyyyMMddHHmm}_Bridges.csv";
 
                 using StreamWriter sw = new(filename, false);
                 sw.WriteLine("Id,Filennme,Name,Desc,Lng,Lat,Zoom,Height");
@@ -136,7 +136,7 @@ namespace BridgesService.Services
         {
             try
             {
-                var filename = $"{DateTime.Now:yyyyMMddhhmm}_Bridges.txt";
+                var filename = $"{DateTime.Now:yyyyMMddHHmm}_Bridges.txt";
 
                 using StreamWriter sw = new(filename, false);
                 sw.WriteLine($"Id{delim}Filennme{delim}Name{delim}Desc{delim}Lng{delim}Lat{delim}Zoom{delim}Height");
@@ -159,7 +159,7 @@ namespace BridgesService.Services
         {
             try
             {
-                var filename = $"{DateTime.Now:yyyyMMddhhmm}_Bridges.html";
+                var filename = $"{DateTime.Now:yyyyMMddHHmm}_Bridges.html";
 
                 using StreamWriter sw = new(filename, false);
                 sw.WriteLine("<html><body><table>");
@@ -194,7 +194,7 @@ namespace BridgesService.Services
         {
             try
             {
-                var filename = $"{DateTime.Now:yyyyMMddhhmm}_Bridges.xml";
+                var filename = $"{DateTime.Now:yyyyMMddHHmm}_Bridges.xml";
 
                 using StreamWriter sw = new(filename, false);
                 sw.WriteLine("<xml>");

@@ -40,26 +40,42 @@
         <br/>
     </div>
 <br/>
-<div class="ex1">
-    <table>
-        <thead>
-        <h6>
-            <th>Comments</th>
-            <th colspan="3" style="text-align: right;"><input type="button" id="tbnAddComment" onclick="AddComment();" value="Add" /></th>
-        </h6>
-        </thead>
-        @foreach (Comment comment in commentService.GetAllComments().OrderByDescending(x => x.CommentDate))
-        {
-            <tr>
-                <td style="width: 50px">@comment.CommentDate</td>
-                <td style="width: 500px">@comment.CommentContent</td>
-                <td>@comment.From</td>
-                <td>@comment.EmailAddress</td>
-            </tr>
-        }
-    </table>
-</div>
-<br/>
+<table>
+    <tr>
+        <td>
+            <div class="ex1">
+                <table>
+                    <tr>
+                        <thead>
+                        <h6>
+                            <th>Comments</th>
+                            <th colspan="3" style="text-align: right;"><input type="button" id="tbnAddComment" onclick="AddComment();" value="Add" /></th>
+                        </h6>
+                        </thead>
+                        <td>
+                            @foreach (Comment comment in commentService.GetAllComments().OrderByDescending(x => x.CommentDate))
+                            {
+                                <tr>
+                                    <td style="width: 50px">@comment.CommentDate</td>
+                                    <td style="width: 500px">@comment.CommentContent</td>
+                                    <td>@comment.From</td>
+                                    <td>@comment.EmailAddress</td>
+                                </tr>
+                            }
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+        <td>
+            <img src="Images/riverwear.png" width="600px"/>
+        </td>
+    </tr>
+</table>
+
+
+<br />
+
 </body>
 
 @code

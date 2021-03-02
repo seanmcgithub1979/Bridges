@@ -9,13 +9,13 @@ namespace BridgesDomain.Model
             AssignRiver(new River(54.9136984, -1.3697736, 54.75, -2.2225));
         }
 
+        public int Id { get; set; }
+
         public Bridge(string name,
             string filename,
             string description,
             double lat,
             double lng,
-            double distanceFromSourceKm = 0.0,
-            double distanceToMouthKm = 0.0,
             double zoom = 14.22,
             double height = 1222)
         {
@@ -24,15 +24,12 @@ namespace BridgesDomain.Model
             Description = description;
             Lat = lat;
             Lng = lng;
-            DistanceFromSourceKm = distanceFromSourceKm;
-            DistanceToMouthKm = distanceToMouthKm;
             Zoom = zoom;
             Height = height;
             
             AssignRiver(new River(54.9136984, -1.3697736, 54.75, -2.2225));  // River wear for now...;))
         }
 
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Filename { get; set; }
         public byte[] FileBytes { get; set; }

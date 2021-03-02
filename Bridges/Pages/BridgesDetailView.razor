@@ -18,7 +18,7 @@
                     bridge = bridgesService.GetBridgeById(Id);
                     if (bridge == null) // Assumes add bridge
                     {
-                        bridge = new Bridge(Name, Filename, Desc, Lat, Lng, 0, 0, Zoom, Height);
+                        bridge = new Bridge(Name, Filename, Desc, Lat, Lng, Zoom, Height);
 
                         bridgesService.Add(bridge);
 
@@ -92,7 +92,7 @@
                         <tr><td>Distance from source (km)</td><td>@bridge.DistanceFromSourceKm.ToString("#.##")</td></tr>
                         <tr><td>Zoom</td><td>@bridge.Zoom.ToString("#.##")</td></tr>
                         <tr><td>Height</td><td>@bridge.Height.ToString("#.##")</td></tr>
-                        <tr><td>Last modified</td><td>@bridge.LastModified.ToString("dd/MM/yyyy hh:mm")</td></tr>
+                        <tr><td>Last modified</td><td>@bridge.LastModified.ToString("dd/MM/yyyy HH:mm")</td></tr>
                     </table>
                     <hr />
 

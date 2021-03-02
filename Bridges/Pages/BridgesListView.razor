@@ -91,13 +91,15 @@
         {
             var satParams = "!3m1!1e3";
             var url = $"https://www.google.co.uk/maps/@{@bridge.Lat},{@bridge.Lng},{@bridge.Height}m/data={satParams}";
+            @*<tr style="background-color: aquamarine">*@
             <tr>
                 <td>@bridge.Name</td>
                 <td>@bridge.Description</td>
                 <td>@bridge.Filename</td>
                 <td>@bridge.Lat.ToString("##.######")</td>
                 <td>@bridge.Lng.ToString("##.######")</td>
-                <td>@bridge.DistanceToMouthKm.ToString("#.##")</td>
+                @*TODO: Add color based on heat map to db*@
+                <td style="background-color: #bbbbff">@bridge.DistanceToMouthKm.ToString("#.##")</td>
                 <td>@bridge.DistanceFromSourceKm.ToString("#.##")</td>
                 <td>@bridge.Zoom.ToString("#.##")</td>
                 <td>@bridge.Height.ToString("#.##")</td>

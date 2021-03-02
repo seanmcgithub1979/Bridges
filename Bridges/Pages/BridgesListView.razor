@@ -7,9 +7,10 @@
 
 <style>
     img {
-        width: 32px;
-        height: 32px;
+        width: 48px;
+        height: 48px;
         border: none;
+        horiz-align: center;
     }
 </style>
 
@@ -79,7 +80,6 @@
             <th>Height</th>
             <th></th>
             <th></th>
-            <th></th>
         </h6>
         </thead>
         @foreach (var bridge in bridgesService.GetBridgesInRange(bridgesPerPage, (Page - 1) * bridgesPerPage))
@@ -97,7 +97,6 @@
                 <td>@bridge.Zoom.ToString("#.##")</td>
                 <td>@bridge.Height.ToString("#.##")</td>
                 <td><a href="@url"><img src="Images/maps-icon.jfif"/></a></td>
-                <td><a href="bridgesdetaileditview/add/0"><img src="Images/A-icon.png" /></a></td>
                 <td><a href="bridgeslistview/delete/1/@bridge.Id"><img src="Images/D-icon.png" /></a></td>
             </tr>
         }
@@ -111,14 +110,21 @@
             </div>
         </th>
         <th column="4">
-            <input type="button" id="btnAdd" onclick="AddBridge();" width="50px" value="Add" />
+            Add:
+            <a href="bridgesdetaileditview/add/0"><img src="Images/A-icon.png"/></a>
+            @*<input type="button" id="btnAdd" onclick="AddBridge();" width="50px" value="Add" />*@
         </th>
-        <th colspan="12" style="text-align: right;">
+        <th colspan="11" style="text-align: right;">
             Export to:
-            <input type="button" id="btnExportToCsv" onclick="ExportToCsv();" value="csv" />
+            <a href="bridgeslistview/exporttocsv/1"><img src="Images/exToCsv.svg" /></a>
+            <a href="bridgeslistview/exporttotxt/1"><img src="Images/exToTxt.svg" /></a>
+            <a href="bridgeslistview/exporttohtml/1"><img src="Images/exToHtml.svg" /></a>
+            <a href="bridgeslistview/exporttoxml/1"><img src="Images/exToXml.svg" /></a>
+
+            @*<input type="button" id="btnExportToCsv" onclick="ExportToCsv();" value="csv" />
             <input type="button" id="btnExportToTxt" onclick="ExportToTxt();" value="txt" />
             <input type="button" id="btnExportToHtml" onclick="ExportToHtml();" value="html" />
-            <input type="button" id="btnExportToXml" onclick="ExportToXml();" value="xml" />
+            <input type="button" id="btnExportToXml" onclick="ExportToXml();" value="xml" />*@
         </th>
         </tfoot>
     </table>

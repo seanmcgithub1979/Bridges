@@ -17,8 +17,8 @@ CREATE TABLE Bridges
 	DistanceFromSourceKm	FLOAT,
 	Zoom					FLOAT,
 	Height					FLOAT,
-	DateCreated				DATETIME NOT NULL DEFAULT (GETDATE()),
-	DateModified			DATETIME);
+	DateCreated				DATETIME NOT NULL DEFAULT GETDATE(),
+	LastModified			DATETIME NOT NULL DEFAULT GETDATE());
 GO
 
 IF EXISTS (SELECT 1 FROM sys.tables WHERE name = 'Comments') 

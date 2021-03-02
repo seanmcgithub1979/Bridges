@@ -4,21 +4,18 @@ namespace BridgesDomain.Model
 {
     public class Bridge
     {
-        public Bridge(
-            double zoom = 14.22,
-            double height = 1222)
+        public Bridge()
         {
-            Zoom = zoom;
-            Height = height;
         }
 
-        public Bridge(
-            string name,
+        public Bridge(string name,
             string filename,
             string description,
             double lat,
             double lng,
-            double zoom = 14.22,     
+            double distanceFromSourceKm = 0.0,
+            double distanceToMouthKm = 0.0,
+            double zoom = 14.22,
             double height = 1222)
         {
             Name = name;
@@ -26,6 +23,8 @@ namespace BridgesDomain.Model
             Description = description;
             Lat = lat;
             Lng = lng;
+            DistanceFromSourceKm = distanceFromSourceKm;
+            DistanceToMouthKm = distanceToMouthKm;
             Zoom = zoom;
             Height = height;
             

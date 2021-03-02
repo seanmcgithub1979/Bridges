@@ -1,15 +1,12 @@
 ﻿@page "/bridgesdetaileditview/{action}/{id:int?}"
 
 @inject IBridgesService bridgesService;
-@inject ICoordsService coordsService;
 
 @using BridgesDomain.Model
 @using BridgesService.Interfaces
 
 @{
-    Bridge bridge = null;
-
-    bridge = Action.ToLowerInvariant() == "add" ? new Bridge() : bridgesService.GetBridgeById(Id);
+    Bridge bridge = Action.ToLowerInvariant() == "add" ? new Bridge() : bridgesService.GetBridgeById(Id);
 
     if (bridge != null)
     {
@@ -27,8 +24,8 @@
                 <td>
                     <table>
                         <tr>
-                            <td><label>Id</label></td>
-                            <td><input type="text" readonly="true" id="inputId" name="id" value="@bridge.Id"/></td>
+                            @*<td><label>Id</label></td>*@
+                            <input type="hidden" id="inputId" name="id" value="@bridge.Id"/>
                         </tr>
                         <tr>
                             <td><label>Name</label></td>
@@ -42,10 +39,10 @@
                                 <br />
                             </td>
                         </tr>
-                        <tr>
-                            <td><label>Filename</label></td>
-                            <td><input type="text" readonly="true" id="inputFilename" name="filename" value="@bridge.Filename"/></td>
-                        </tr>
+                        @*<tr>
+                            <td><label>Filename</label></td>*@
+                            <input type="hidden" id="inputFilename" name="filename" value="@bridge.Filename"/>
+                        @*</tr>*@
                         <tr>
                             <td><label>Description</label></td>
                             <td><textarea id="inputDesc">@bridge.Description</textarea></td>
@@ -60,19 +57,23 @@
                         </tr>
                         <tr>
                             <td><label>Distance To Mouth (Km)</label></td>
-                            <td><input type="text" readonly="true" id="distToMouthId" name="distToMouth" value="@coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.MouthLat, bridge.River.MouthLng).ToString("#.##")"/></td>
+                            <td><input type="text" id="distToMouthId" name="distToMouth" value=@bridge.DistanceToMouthKm.ToString("#.##")/></td>
                         </tr>
                         <tr>
                             <td><label>Distance To Source (Km)</label></td>
-                            <td><input type="text" readonly="true" id="distToSourceId" name="distToMouth" value=@coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.SourceLat, bridge.River.SourceLng).ToString("#.##")/></td>
+                            <td><input type="text" id="distToSourceId" name="distToMouth" value=@bridge.DistanceFromSourceKm.ToString("#.##")/></td>
                         </tr>
                         <tr>
                             <td><label>Zoom</label></td>
-                            <td><input type="text" id="inputZoom" name="zoom" value="@bridge.Zoom.ToString("#.##")" /></td>
+                            <td><input type="text" id="inputZoom" name="zoom" value="@bridge.Zoom.ToString("#.##")"/></td>
                         </tr>
                         <tr>
                             <td><label>Height</label></td>
-                            <td><input type="text" id="inputHeight" name="height" value="@bridge.Height.ToString("#.##")" /></td>
+                            <td><input type="text" id="inputHeight" name="height" value="@bridge.Height.ToString("#.##")"/></td>
+                        </tr>
+                        <tr>
+                            <td><label>Last modified</label></td>
+                            <td><input type="text" id="inputHeight" name="height" value="@bridge.LastModified.ToString("dd/MM/yyyy hh:mm")" /></td>
                         </tr>
                         <tfoot>
                         <th colspan="2" style="text-align: right;">

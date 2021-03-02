@@ -10,10 +10,12 @@ namespace BridgesService.Services
     public class BridgesService : IBridgesService
     {
         private readonly IBridgeRepo repo;
-        
+        private readonly ICoordsService coordsService;
+
         public BridgesService(IBridgeRepo repo)
         {
             this.repo = repo;
+            coordsService = new CoordService();;
         }
 
         public IEnumerable<Bridge> GetAllBridges()
@@ -36,7 +38,7 @@ namespace BridgesService.Services
             return repo.GetBridgeByName(name);
         }
 
-        public Bridge AddImageToBridge(Bridge bridge)
+        public void AddImageToBridge(ref Bridge bridge)
         {
             var filename = bridge.Filename;
 
@@ -46,8 +48,11 @@ namespace BridgesService.Services
             var bytes = br.ReadBytes((int) sr.Length);
 
             bridge.FileBytes = bytes;
+        }
 
-            return bridge;
+        private static void StampModifiedDate(ref Bridge bridge)
+        {
+            bridge.LastModified = DateTime.UtcNow;
         }
 
         public void Add(Bridge bridge)
@@ -55,11 +60,25 @@ namespace BridgesService.Services
             repo.Add(bridge);
         }
 
+        private void StampCalculatedDistances(ref Bridge bridge)
+        {
+            bridge.DistanceToMouthKm = coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.MouthLat, bridge.River.MouthLng);
+            bridge.DistanceFromSourceKm = coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.SourceLat, bridge.River.SourceLng);
+        }
+
         public void Update(Bridge bridge)
         {
-            Bridge newBridge = AddImageToBridge(bridge);
-            repo.Update(newBridge);
+            object syncObj = new();
+            lock (syncObj)
+            {
+                AddImageToBridge(ref bridge);
+                StampCalculatedDistances(ref bridge);
+                StampModifiedDate(ref bridge);
+            }
+
+            repo.Update(bridge);
         }
+
 
         public void Delete(Bridge bridge)
         {

@@ -1,15 +1,21 @@
 ﻿@page "/bridgeslistview/{action}/{page:int?}/{id:int?}"
 
 @inject IBridgesService bridgesService;
-@inject ICoordsService coordsService;
 
 @using BridgesDomain.Model
 @using BridgesService.Interfaces
 
+<style>
+    img {
+        width: 32px;
+        height: 32px;
+        border: none;
+    }
+</style>
+
 @{
     var bridgeCount = bridgesService.GetAllBridges().Count();
     var bridgesPerPage = 15;
-    var colCount = 7;
     var exportedFilename = string.Empty;
 
     switch (Action.ToLowerInvariant())
@@ -68,25 +74,31 @@
             <th>Lat</th>
             <th>Lng</th>
             <th>Distance To Mouth (km)</th>
-            <th>Distance To Source (km)</th>
+            <th>Distance From Source (km)</th>
             <th>Zoom</th>
             <th>Height</th>
+            <th></th>
+            <th></th>
             <th></th>
         </h6>
         </thead>
         @foreach (var bridge in bridgesService.GetBridgesInRange(bridgesPerPage, (Page - 1) * bridgesPerPage))
         {
+            var satParams = "!3m1!1e3";
+            var url = $"https://www.google.co.uk/maps/@{@bridge.Lat},{@bridge.Lng},{@bridge.Height}m/data={satParams}";
             <tr>
                 <td>@bridge.Name</td>
                 <td>@bridge.Description</td>
                 <td>@bridge.Filename</td>
                 <td>@bridge.Lat.ToString("##.######")</td>
                 <td>@bridge.Lng.ToString("##.######")</td>
-                <td>@coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.MouthLat, bridge.River.MouthLng).ToString("#.##")</td>
-                <td>@coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.SourceLat, bridge.River.SourceLng).ToString("#.##")</td>
+                <td>@bridge.DistanceToMouthKm.ToString("#.##")</td>
+                <td>@bridge.DistanceFromSourceKm.ToString("#.##")</td>
                 <td>@bridge.Zoom.ToString("#.##")</td>
                 <td>@bridge.Height.ToString("#.##")</td>
-                <td><a href="bridgesdetaileditview/view/@bridge.Id">Edit</a></td>
+                <td><a href="@url"><img src="Images/maps-icon.jfif"/></a></td>
+                <td><a href="bridgesdetaileditview/add/0"><img src="Images/A-icon.png" /></a></td>
+                <td><a href="bridgeslistview/delete/1/@bridge.Id"><img src="Images/D-icon.png" /></a></td>
             </tr>
         }
         <tfoot>
@@ -101,7 +113,7 @@
         <th column="4">
             <input type="button" id="btnAdd" onclick="AddBridge();" width="50px" value="Add" />
         </th>
-        <th colspan="@colCount - 4" style="text-align: right;">
+        <th colspan="12" style="text-align: right;">
             Export to:
             <input type="button" id="btnExportToCsv" onclick="ExportToCsv();" value="csv" />
             <input type="button" id="btnExportToTxt" onclick="ExportToTxt();" value="txt" />

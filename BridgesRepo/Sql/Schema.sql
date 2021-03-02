@@ -13,9 +13,12 @@ CREATE TABLE Bridges
 	[FileBytes]				VARBINARY(MAX),
 	Lng						FLOAT,
 	Lat						FLOAT,
+	DistanceToMouthKm		FLOAT,
+	DistanceFromSourceKm	FLOAT,
 	Zoom					FLOAT,
-	Height					FLOAT
-);
+	Height					FLOAT,
+	DateCreated				DATETIME NOT NULL DEFAULT (GETDATE()),
+	DateModified			DATETIME);
 GO
 
 IF EXISTS (SELECT 1 FROM sys.tables WHERE name = 'Comments') 

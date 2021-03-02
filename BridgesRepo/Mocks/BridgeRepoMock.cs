@@ -54,7 +54,7 @@ namespace BridgesRepo.Mocks
                     FileBytes = null,
                     Description = "Some desc here...",
                     Lat = 50.111111,
-                    Lng = 50.111111, 
+                    Lng = 50.111111,
                     Height = 1222, 
                     Zoom = 14.25
                 });

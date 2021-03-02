@@ -1,59 +1,10 @@
 ﻿@page "/bridgeslistview/{action}/{page:int?}/{id:int?}"
 
 @inject IBridgesService bridgesService;
+@inject ICoordsService coordsService;
 
 @using BridgesDomain.Model
 @using BridgesService.Interfaces
-
-<style>
-/*    tr:hover {
-        background: salmon;
-    }
-
-    tr {
-        vertical-align: text-top;
-        background-color: lightgoldenrodyellow;
-        opacity: 0.8;
-        color: darkslategray;
-        width: 100%
-    }*/
-
-/*#bridgeslisttable {*/
-         /*font-family: Arial, Helvetica, sans-serif;*/
-         /*border-collapse: collapse;
-         width: 100%;
- }
-
-#bridgeslisttable td, #bridgeslisttable th {
-    border: 1px solid darkslategray;
-    padding: 8px;
-}
-
-#bridgeslisttable tr:nth-child(even)
-{
-    background-color: #f2f2f2;}
-
-#bridgeslisttable tr:hover 
-{
-    background-color: salmon;
-}
-
-#bridgeslisttable th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: darkslategray;
-    color: white;
-}
-
-#bridgeslisttable tfoot {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: darkslategray;
-    color: white;
-}*/
-</style>
 
 @{
     var bridgeCount = bridgesService.GetAllBridges().Count();
@@ -64,63 +15,64 @@
     switch (Action.ToLowerInvariant())
     {
         case "delete":
-        {
-            Bridge bridge = bridgesService.GetBridgeById(Id);
-
-            if (bridge != null) // This is annoying as could be called with the back button or manual url input.
             {
-                bridgesService.Delete(bridge);
+                Bridge bridge = bridgesService.GetBridgeById(Id);
+
+                if (bridge != null) // This is annoying as could be called with the back button or manual url input.
+                {
+                    bridgesService.Delete(bridge);
+
+                    <hr />
+                    <img style="border: none; height: 45px; width: 45px;" src="/Images/info.png" />
+                    <msgwarn>SUCCESS - Bridge @Id deleted</msgwarn>
+                    <hr />
+                }
+                break;
             }
-            break;
-        }
         case "exporttocsv":
-        {
-            exportedFilename = ExportToCsv();
-            break;
-        }
+            {
+                exportedFilename = ExportToCsv();
+                break;
+            }
         case "exporttotxt":
-        {
-            exportedFilename = ExportToTxt();
-            break;
-        }
+            {
+                exportedFilename = ExportToTxt();
+                break;
+            }
         case "exporttohtml":
-        {
-            exportedFilename = ExportToHtml();
-            break;
-        }
+            {
+                exportedFilename = ExportToHtml();
+                break;
+            }
         case "exporttoxml":
-        {
-            exportedFilename = ExportToXml();
-            break;
-        }
+            {
+                exportedFilename = ExportToXml();
+                break;
+            }
     }
-    <br/>
+
     if (Action.ToLowerInvariant().StartsWith("export"))
     {
-        <img style="border: none; height: 45px; width: 45px;" src="/Images/info.png"/>
+        <hr />
+        <img style="border: none; height: 45px; width: 45px;" src="/Images/info.png" />
         <msginfo>SUCCESS - Exported <a href="file:///C:/SeansStuff/Code/Bridges/Bridges/@exportedFilename">@exportedFilename</a></msginfo>
-        <hr/>
+        <hr />
     }
-
-    if (Action.ToLowerInvariant() == "delete")
-    {
-        <img style="border: none; height: 45px; width: 45px;"src="/Images/info.png"/>
-        <msgwarn>SUCCESS - Bridge @Id deleted</msgwarn>
-        <hr/>
-    }
-
+    
     <table id="bridgeslisttable">
         <thead>
-            <h6>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Filename</th>
-                <th>Lat</th>
-                <th>Lng</th>
-                <th>Zoom</th>
-                <th>Height</th>
-                <th></th>
-            </h6>
+        <h6>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Filename</th>
+            <th>Lat</th>
+            <th>Lng</th>
+            <th>Distance To Mouth (km)</th>
+            <th>Distance To Source (km)</th>
+            <th>Zoom</th>
+            <th>Height</th>
+            <th></th>
+        </h6>
         </thead>
 
         @foreach (var bridge in bridgesService.GetBridgesInRange(bridgesPerPage, (Page - 1) * bridgesPerPage))
@@ -129,32 +81,34 @@
                 <td>@bridge.Name</td>
                 <td>@bridge.Description</td>
                 <td>@bridge.Filename</td>
-                <td>@bridge.Lat</td>
-                <td>@bridge.Lng</td>
-                <td>@bridge.Zoom</td>
-                <td>@bridge.Height</td>
+                <td>@bridge.Lat.ToString("##.######")</td>
+                <td>@bridge.Lng.ToString("##.######")</td>
+                <td>@coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.MouthLat, bridge.River.MouthLng).ToString("#.##")</td>
+                <td>@coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.SourceLat, bridge.River.SourceLng).ToString("#.##")</td>
+                <td>@bridge.Zoom.ToString("#.##")</td>
+                <td>@bridge.Height.ToString("#.##")</td>
                 <td><a href="bridgesdetaileditview/view/@bridge.Id">Edit</a></td>
             </tr>
         }
         <tfoot>
-            <th colspan="3">
-                <div class="pagination">
-                    @for (var i = 1; i <= (bridgeCount / bridgesPerPage) + 1; i++)
-                    {
-                        <span><a href="bridgeslistview/list/@i">@i</a></span>
-                    }
-                </div>
-            </th>
-            <th column="4">
-                <input type="button" id="btnAdd" onclick="AddBridge();" width="50px" value="Add"/>
-            </th>
-            <th colspan="@colCount - 4" style="text-align: right;">
-                Export to:
-                <input type="button" id="btnExportToCsv" onclick="ExportToCsv();" value="csv"/>
-                <input type="button" id="btnExportToTxt" onclick="ExportToTxt();" value="txt"/>
-                <input type="button" id="btnExportToHtml" onclick="ExportToHtml();" value="html"/>
-                <input type="button" id="btnExportToXml" onclick="ExportToXml();" value="xml"/>
-            </th>
+        <th colspan="3">
+            <div class="pagination">
+                @for (var i = 1; i <= (bridgeCount / bridgesPerPage) + 1; i++)
+                {
+                    <span><a href="bridgeslistview/list/@i">@i</a></span>
+                }
+            </div>
+        </th>
+        <th column="4">
+            <input type="button" id="btnAdd" onclick="AddBridge();" width="50px" value="Add" />
+        </th>
+        <th colspan="@colCount - 4" style="text-align: right;">
+            Export to:
+            <input type="button" id="btnExportToCsv" onclick="ExportToCsv();" value="csv" />
+            <input type="button" id="btnExportToTxt" onclick="ExportToTxt();" value="txt" />
+            <input type="button" id="btnExportToHtml" onclick="ExportToHtml();" value="html" />
+            <input type="button" id="btnExportToXml" onclick="ExportToXml();" value="xml" />
+        </th>
         </tfoot>
     </table>
 }
@@ -166,7 +120,6 @@
 
     [Parameter]
     public int Id { get; set; }
-
     [Parameter]
     public int Page { get; set; }
 

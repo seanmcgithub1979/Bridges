@@ -3,7 +3,13 @@
 };
 
 function UpdateBridge(id, name, filename, desc, lat, lng, zoom, height) {
-    var url = "bridgesdetailview/update/"
+    //var fReader = new FileReader();
+
+    //fReader.readAsDataURL(file);
+    //fReader.onloadend = function (event) {
+    //}
+
+var url = "bridgesdetailview/update/"
         + encodeURIComponent(id) + "/"
         + encodeURIComponent(name) + "/"
         + encodeURIComponent(filename) + "/"
@@ -14,6 +20,16 @@ function UpdateBridge(id, name, filename, desc, lat, lng, zoom, height) {
         + encodeURIComponent(height) + "/";
 
     window.location.href = url;
+};
+
+function UploadFile(file) {
+    var fReader = new FileReader();
+
+    fReader.readAsDataURL(file);
+    fReader.onloadend = function(event) {
+        var img = document.getElementById("imgBridge");
+        img.src = event.target.result;
+    }
 };
 
 function DeleteBridge(id) {

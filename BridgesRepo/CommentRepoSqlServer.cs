@@ -7,9 +7,9 @@ namespace BridgesRepo
 {
     public class CommentRepoSqlServer : ICommentRepo
     {
-        private readonly CommentsDbContext context;
+        private readonly BridgesDbContext context;
 
-        public CommentRepoSqlServer(CommentsDbContext context)
+        public CommentRepoSqlServer(BridgesDbContext context)
         {
             this.context = context;
         }

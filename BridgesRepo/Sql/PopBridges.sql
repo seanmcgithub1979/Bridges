@@ -1,71 +1,28 @@
 --sp_tables;
-truncate table Bridges;
-select * from Bridges;
-insert into Bridges select 'Bridge1', 'Bridge 1', 'Image1.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge2', 'Bridge 2', 'Image2.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge3', 'Bridge 3', 'Image3.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge4', 'Bridge 4', 'Image4.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge5', 'Bridge 5', 'Image5.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge6', 'Bridge 6', 'Image6.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge7', 'Bridge 7', 'Image7.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge8', 'Bridge 8', 'Image8.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge9', 'Bridge 9', 'Image9.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge10', 'Bridge 10', 'Image10.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge11', 'Bridge 11', 'Image11.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge12', 'Bridge 12', 'Image12.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge13', 'Bridge 13', 'Image13.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge14', 'Bridge 14', 'Image14.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge15', 'Bridge 15', 'Image15.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge16', 'Bridge 16', 'Image16.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge17', 'Bridge 17', 'Image17.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge18', 'Bridge 18', 'Image18.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge19', 'Bridge 19', 'Image19.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge20', 'Bridge 20', 'Image20.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge21', 'Bridge 21', 'Image21.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge22', 'Bridge 22', 'Image22.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge23', 'Bridge 23', 'Image23.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge24', 'Bridge 24', 'Image24.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge25', 'Bridge 25', 'Image25.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge26', 'Bridge 26', 'Image26.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge27', 'Bridge 27', 'Image27.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge28', 'Bridge 28', 'Image28.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge29', 'Bridge 29', 'Image29.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge30', 'Bridge 30', 'Image30.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge31', 'Bridge 31', 'Image31.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge32', 'Bridge 32', 'Image32.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge33', 'Bridge 33', 'Image33.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge34', 'Bridge 34', 'Image34.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge35', 'Bridge 35', 'Image35.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge36', 'Bridge 36', 'Image36.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge37', 'Bridge 37', 'Image37.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge38', 'Bridge 38', 'Image38.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge39', 'Bridge 39', 'Image39.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge40', 'Bridge 40', 'Image40.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge41', 'Bridge 41', 'Image41.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge42', 'Bridge 42', 'Image42.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge43', 'Bridge 43', 'Image43.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge44', 'Bridge 44', 'Image44.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge45', 'Bridge 45', 'Image45.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge46', 'Bridge 46', 'Image46.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge47', 'Bridge 47', 'Image47.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge48', 'Bridge 48', 'Image48.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge49', 'Bridge 49', 'Image49.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge50', 'Bridge 50', 'Image50.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge51', 'Bridge 51', 'Image51.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge52', 'Bridge 52', 'Image52.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge53', 'Bridge 53', 'Image53.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge54', 'Bridge 54', 'Image54.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Wearmouth Bridge', 'The current road and foot bridge dates from 1927-29, and was built to accommodate the increasing traffic into Sunderland.  Remarkably, the bridge was kept open to traffic throughout this building period and the new bridge was built over the top of the old one.
+SET NOCOUNT ON;
 
-It was finally opened on 31 October, 1929.  The photograph shows the bridge as it looks today.
+TRUNCATE TABLE Bridges;
+GO
 
-Dei’ (‘Do not despair, trust in God’) comes from Horace’s Odes, Book I, Ode vii, and can also be found on the city’s crest. The ornate ironwork crests that adorn the railings in the middle of each side of the current bridge are copies of those that stood in a similar position on Stephenson’s bridge.', 'Image55.jpg', -1.3829977, 54.9100102,  14.25, 1222;
-insert into Bridges select 'Bridge56', 'Bridge 56', 'Image56.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge57', 'Bridge 57', 'Image57.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge58', 'Bridge 58', 'Image58.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge59', 'Bridge 59', 'Image59.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge60', 'Bridge 60', 'Image60.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge61', 'Bridge 61', 'Image61.jpg', -1.3697736, 54.9136984,  14.25, 1222;
-insert into Bridges select 'Bridge62', 'Bridge 62', 'Image62.jpg', -1.3697736, 54.9136984,  14.25, 1222;
+DECLARE @i	int = 1;
+DECLARE @commentDate DATETIME;
 
-select * from Bridges;
+WHILE (@i <= 62)
+BEGIN
+
+	INSERT INTO Bridges([Name], [Description], [Filename], FileBytes, Lat, Lng,  Zoom, Height)
+	SELECT 																			
+		'Bridge ' + CONVERT(VARCHAR(255),@i), 
+		'Bridge1 description ' + CONVERT(VARCHAR(255),@i), 
+		'Image' + CONVERT(VARCHAR(255),@i) + '.jpg', 
+		NULL,
+		51.111111,
+		-1.155555,
+		1222,
+		14.25
+	
+	SELECT @i = @i+1;
+END
+GO
+
+--select * from Bridges;

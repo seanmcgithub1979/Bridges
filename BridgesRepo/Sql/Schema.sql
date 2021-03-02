@@ -6,14 +6,15 @@ GO
 
 CREATE TABLE Bridges
 (
-	[Id]			INT IDENTITY (1, 1)	PRIMARY KEY,
-	Name			VARCHAR(255),
-	[Description]	VARCHAR(MAX),
-	[Filename]		VARCHAR(255),
-	Lng				DECIMAL(28,10),
-	Lat				DECIMAL(28,10),
-	Zoom			DECIMAL(28,10),
-	Height			DECIMAL(28,10)
+	[Id]					INT IDENTITY (1, 1)	PRIMARY KEY,
+	[Name]					VARCHAR(255),
+	[Description]			VARCHAR(MAX),
+	[Filename]				VARCHAR(255),
+	[FileBytes]				VARBINARY(MAX),
+	Lng						FLOAT,
+	Lat						FLOAT,
+	Zoom					FLOAT,
+	Height					FLOAT
 );
 GO
 

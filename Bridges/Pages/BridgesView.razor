@@ -4,35 +4,26 @@
 
 @using BridgesService.Interfaces
 
-<style>
-    img:hover {
-        box-shadow: 0 0 2px 1px salmon;
-        zoom: 1.5;
-    }
-</style>
-
 <br />
 <table>
+    <thead>
+    <h6>
+        <th colspan="@Colcount">Bridges</th>
+    </h6>
+    </thead>
     <tr>
-        @if (Colcount != 0)
-        {
+        @{
             var i = 1;
 
             var bridgeCount = bridgesService.GetAllBridges().Count();
             var imagesPerPage = 16;
-
-            <thead>
-                <h6>
-                    <th colspan="@Colcount">Bridges</th>
-                </h6>
-            </thead>
-
+            
             foreach (var bridge in bridgesService.GetBridgesInRange(imagesPerPage, (Page - 1) * imagesPerPage))
             {
                 <td>
-                    <a href="bridgesdetailview/view/@bridge.Id">
+                    <a href="bridgesdetailview/view/@bridge.Id/@bridge.Name/@bridge.Filename/@bridge.Description/@bridge.Lat/@bridge.Lng/@bridge.Zoom/@bridge.Height/">
                         <h6>@bridge.Name</h6>
-                        <img alt="No image found for @bridge.Name with Filename: @bridge.Filename" title="@bridge.Description" src="Images/Thumbs/@bridge.Filename" />
+                        <img alt="No image found for @bridge.Name with Filename: @bridge.Filename" title="@bridge.Description" src="Images/Thumbs/@bridge.Filename"/>
                     </a>
                 </td>
 
@@ -42,27 +33,26 @@
                     @:<tr>
                 }
 
-                    i++;
+                i++;
             }
-            <tr>
-                <td colspan="@Colcount">
+            <tfoot>
+                <th colspan="@Colcount">
                     <div class="pagination">
                         @for (i = 1; i <= (bridgeCount / imagesPerPage) + 1; i++)
                         {
                             <span><a href="bridgesview/@Colcount/@i">@i</a></span>
                         }
                     </div>
-                </td>
-            </tr>
+                </th>
+            </tfoot>
         }
-        </tr>
-    </table>
+    </tr>
+</table>
 
 @code
 {
     [Parameter]
     public int Colcount { get; set; }
-    
     [Parameter]
     public int Page { get; set; }
 }

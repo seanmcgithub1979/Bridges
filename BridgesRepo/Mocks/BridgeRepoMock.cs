@@ -49,13 +49,14 @@ namespace BridgesRepo.Mocks
                 retVal.Add(new Bridge() 
                 { 
                     Id = i, 
-                    Name = $"Bridge{i}", 
+                    Name = $"Bridge{i}",
+                    Description = "Some desc here...",
                     Filename  = $"Image{i}.jpg", 
-                    Description = "Some desc here...", 
-                    Lat = 50.111111m,
-                    Lng = 50.111111m, 
-                    Height = 1222m, 
-                    Zoom = 14.25m
+                    FileBytes = null,
+                    Lat = 50.111111,
+                    Lng = 50.111111, 
+                    Height = 1222, 
+                    Zoom = 14.25
                 });
             }
 

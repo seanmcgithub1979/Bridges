@@ -35,16 +35,16 @@ namespace Bridges
             services.Configure<RazorPagesOptions>(options => options.RootDirectory = "/Pages");
             
             services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));
-            services.AddDbContext<CommentsDbContext>(options => options.UseSqlServer(connectionString));
             
             services.AddScoped<ICommentRepo, CommentRepoSqlServer>();
             //services.AddScoped<ICommentRepo, CommentRepoMock>();
 
-            //services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
-            services.AddScoped<IBridgeRepo, BridgeRepoMock>();
+            services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
+            //services.AddScoped<IBridgeRepo, BridgeRepoMock>();
             
             services.AddScoped<IBridgesService, BridgesService.Services.BridgesService>();
             services.AddScoped<ICommentService, BridgesService.Services.CommentService>();
+            services.AddScoped<ICoordsService, BridgesService.Services.CoordService>();
             
             //services.Configure<EmailSettingsOptions>(Configuration.GetSection("EmailSettings"));
         }

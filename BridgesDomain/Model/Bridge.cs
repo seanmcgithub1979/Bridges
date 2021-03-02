@@ -1,36 +1,46 @@
-﻿namespace BridgesDomain.Model
+﻿using System;
+
+namespace BridgesDomain.Model
 {
     public class Bridge
     {
-        public Bridge()
-        {
-        }
-
         public Bridge(
-            string filename = "No filename specifed for this bridge yet.", 
-            string name = "No name entered for this bridge yet.", 
-            string description = "No desc entered for this bridge yet................................................................",
-            decimal lat = 54.9136984m,   // Default to the river
-            decimal lng = -1.3697736m,   // Default to the river
-            decimal zoom = 14.25m,       // Google param
-            decimal height = 1222.0m)    // Google param
+            string name = "No name entered for this bridge yet.",
+            string description =  "No desc entered for this bridge yet................................................................",
+            string filename = "No filename specifed for this bridge yet.",
+            double lat = 54.9136984,      // Default to the river wear mouth
+            double lng = -1.3697736,      // Default to the river wear mouth
+            double zoom = 14.22,       
+            double height = 1222)
+
         {
-            Filename = filename;
             Name = name;
             Description = description;
+            Filename = filename;
             Lat = lat;
             Lng = lng;
             Zoom = zoom;
             Height = height;
+
+            AssignRiver(new River(54.9136984, -1.3697736, 54.9136984, -1.3697736));  // River wear for now...;))
         }
 
         public int Id { get; set; }
-        public string Filename { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public decimal Lat { get; set; }
-        public decimal Lng { get; set; }
-        public decimal Zoom { get; set; }
-        public decimal Height { get; set; }
+        public string Filename { get; set; }
+        public byte[] FileBytes { get; set; }
+        public double Lat { get; set; }
+        public double Lng { get; set; }
+        public double DistanceToMouthKm { get; set; }
+        public double DistanceToSourceKm { get; set; }
+        public double Zoom { get; set; }
+        public double Height { get; set; }
+        public River River;
+
+        public void AssignRiver(River river)
+        {
+            River = river;
+        }
     }
 }

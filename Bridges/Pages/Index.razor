@@ -7,7 +7,7 @@
 
 <style>
     div.ex1 {
-        width: 822px;
+        width: 1000px;
         height: 410px;
         overflow-y: scroll;
     }
@@ -17,7 +17,7 @@
     if (!string.IsNullOrEmpty(Action) && Action.ToLowerInvariant() == "savecomment")
     {
         commentService.AddComment(Comment, From, EmailAddress);
-        <br/>
+        <hr/>
         <img style="border: none; height: 45px; width: 45px;" src="Images/info.png"/>
         <msginfo>SUCCESS - Comment added</msginfo>
         <hr/>
@@ -41,7 +41,7 @@
         <thead>
         <h6>
             <th>Comments</th>
-            <th style="text-align: right;"><input type="button" id="tbnAddComment" onclick="AddComment();" value="Add" /></th>
+            <th colspan="3" style="text-align: right;"><input type="button" id="tbnAddComment" onclick="AddComment();" value="Add" /></th>
         </h6>
         </thead>
         @foreach (Comment comment in commentService.GetAllComments().OrderByDescending(x => x.CommentDate))
@@ -65,10 +65,8 @@
 
     [Parameter]
     public string Comment { get; set; }
-
     [Parameter]
     public string From { get; set; }
-
     [Parameter]
     public string EmailAddress { get; set; }
 }

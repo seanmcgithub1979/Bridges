@@ -9,39 +9,39 @@
     input {
         width: 400px;
     }
-
-    td {
-        opacity: 0.9;
-    }
 </style>
-
 @{
     Comment comment = new();;
 
     <br/>
-   
     <table>
         <thead>
             <h6>
-        <th colspan="2">Add comment</th>
-        </h6>
+        <th colspan="2">Add comment</th></h6>
         </thead>
-        <tr>
-            <td><label>Comment</label></td>
-            <td><textarea id="inputCommentContent">@comment.CommentContent</textarea></td>
-        </tr>
-        <tr>
-            <td><label>From</label></td>
-            <td><textarea id="inputCommentFrom">@comment.From</textarea></td>
-        </tr>
-        <tr>
-            <td><label>Email</label></td>
-            <td><textarea id="inputCommentEmailAddress">@comment.EmailAddress</textarea></td>
-        </tr>
+        <td style="width: 20%; vertical-align: top;">
+            <table>
+                <tr>@DateTime.Now</tr>
+                <hr />
+                <tr><label>From</label></tr>
+                <tr><input type="text" id="inputCommentFrom">@comment.From</tr>
+                <tr><label>Email</label></tr>
+                <tr><input type="email" id="inputCommentEmailAddress">@comment.EmailAddress</tr>
+            </table>
+        </td>
+        <td style="vertical-align: top;">
+            <table>
+                <tr><label style="vertical-align: top;">Comment</label></tr>
+                <tr><textarea id="inputCommentContent" style="height: 300px">@comment.CommentContent</textarea></tr>
+            </table>
+        </td>
         <tfoot>
-        <th colspan="2"  style="text-align: right;">
+        <th colspan="2" style="text-align: right;">
             <input type="button" id="btnSave" value="Save"
-                   onclick="SaveComment(inputCommentContent.value, inputCommentFrom.value, inputCommentEmailAddress.value);"/>
+                   onclick="SaveComment(
+                                inputCommentContent.value,
+                                inputCommentFrom.value,
+                                inputCommentEmailAddress.value);" />
         </th>
         </tfoot>
     </table>

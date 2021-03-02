@@ -13,11 +13,6 @@
 
     if (bridge != null)
     {
-        var lat = @bridge.Lat;
-        var lng = @bridge.Lng;
-        var zoom = @bridge.Zoom;
-        var height = @bridge.Height;
-
         <br/>
         <table>
             <thead>
@@ -49,7 +44,7 @@
                         </tr>
                         <tr>
                             <td><label>Filename</label></td>
-                            <td><input type="text" id="inputFilename" name="filename" value="@bridge.Filename" /></td>
+                            <td><input type="text" readonly="true" id="inputFilename" name="filename" value="@bridge.Filename"/></td>
                         </tr>
                         <tr>
                             <td><label>Description</label></td>
@@ -57,17 +52,19 @@
                         </tr>
                         <tr>
                             <td><label>Lat</label></td>
-                            <td><input type="text" id="inputLat" name="desc" value="@bridge.Lat.ToString("#.######")" /></td>
+                            <td><input type="text" id="inputLat" name="lat" value="@bridge.Lat.ToString("#.######")"/></td>
                         </tr>
                         <tr>
                             <td><label>Lng</label></td>
-                            <td><input type="text" id="inputLng" name="lng" value="@bridge.Lng.ToString("#.######")" /></td>
-                        </tr><tr>
+                            <td><input type="text" id="inputLng" name="lng" value="@bridge.Lng.ToString("#.######")"/></td>
+                        </tr>
+                        <tr>
                             <td><label>Distance To Mouth (Km)</label></td>
-                            <td><input type="text" id="inputLng" name="lng" value="@coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.MouthLat, bridge.River.MouthLng).ToString("#.##")"/></td>
-                        </tr><tr>
+                            <td><input type="text" readonly="true" id="distToMouthId" name="distToMouth" value="@coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.MouthLat, bridge.River.MouthLng).ToString("#.##")"/></td>
+                        </tr>
+                        <tr>
                             <td><label>Distance To Source (Km)</label></td>
-                            <td><input type="text" id="inputLng" name="lng" value=@coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.SourceLat, bridge.River.SourceLng).ToString("#.##")/></td>
+                            <td><input type="text" readonly="true" id="distToSourceId" name="distToMouth" value=@coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.SourceLat, bridge.River.SourceLng).ToString("#.##")/></td>
                         </tr>
                         <tr>
                             <td><label>Zoom</label></td>
@@ -81,14 +78,15 @@
                         <th colspan="2" style="text-align: right;">
                             <input type="button" id="btnUpdate" value="Update"
                                    onclick="UpdateBridge(
-                                            inputId.value,
-                                            inputName.value,
-                                            inputFilename.value,
-                                            inputDesc.value,
-                                            inputLat.value,
-                                            inputLng.value,
-                                            inputZoom.value,
-                                            inputHeight.value);" />
+                                                inputId.value,
+                                                inputName.value,
+                                                inputFilename.value,
+                                                inputDesc.value,
+                                                inputLat.value,
+                                                inputLng.value,
+                                                inputZoom.value,
+                                                inputHeight.value,
+                                                fileToUpload);" />
                             <input type="button" id="btnDelete" value="Delete"
                                    onclick="DeleteBridge(inputId.value);"
                                    style="background-color: red;" />

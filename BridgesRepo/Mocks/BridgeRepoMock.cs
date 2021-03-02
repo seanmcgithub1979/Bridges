@@ -50,9 +50,9 @@ namespace BridgesRepo.Mocks
                 { 
                     Id = i, 
                     Name = $"Bridge{i}",
-                    Description = "Some desc here...",
-                    Filename  = $"Image{i}.jpg", 
+                    Filename = $"Image{i}.jpg",
                     FileBytes = null,
+                    Description = "Some desc here...",
                     Lat = 50.111111,
                     Lng = 50.111111, 
                     Height = 1222, 

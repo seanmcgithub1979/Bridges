@@ -25,4 +25,15 @@ BEGIN
 END
 GO
 
+--INSERT INTO Bridges([Name], [Description], [Filename], FileBytes, Lat, Lng,  Zoom, Height)
+--	SELECT 																			
+--		'Northern Spire', 
+--		'This is the northern spire bridge.',
+--		'800px-NorthernSpire2018.jpg',
+--		NULL,
+--		54.5500,
+--		-1.2528,
+--		1222,
+--		14.25
+
 --select * from Bridges;

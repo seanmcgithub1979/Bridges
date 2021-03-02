@@ -36,6 +36,20 @@ namespace BridgesService.Services
             return repo.GetBridgeByName(name);
         }
 
+        public Bridge AddImageToBridge(Bridge bridge)
+        {
+            var filename = bridge.Filename;
+
+            using Stream sr = new FileStream($@"wwwroot\Images\Original\{filename}", FileMode.Open);
+            using BinaryReader br = new(sr);
+
+            var bytes = br.ReadBytes((int) sr.Length);
+
+            bridge.FileBytes = bytes;
+
+            return bridge;
+        }
+
         public void Add(Bridge bridge)
         {
             repo.Add(bridge);
@@ -43,7 +57,8 @@ namespace BridgesService.Services
 
         public void Update(Bridge bridge)
         {
-            repo.Update(bridge);
+            Bridge newBridge = AddImageToBridge(bridge);
+            repo.Update(newBridge);
         }
 
         public void Delete(Bridge bridge)

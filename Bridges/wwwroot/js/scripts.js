@@ -2,14 +2,13 @@
     window.location.href = "bridgesdetaileditview/add/0/";
 };
 
-function UpdateBridge(id, name, filename, desc, lat, lng, zoom, height) {
-    //var fReader = new FileReader();
+function UpdateBridge(id, name, filename, desc, lat, lng, zoom, height, fileToUpload) {
 
-    //fReader.readAsDataURL(file);
-    //fReader.onloadend = function (event) {
-    //}
-
-var url = "bridgesdetailview/update/"
+    if (fileToUpload != null && fileToUpload.files.length > 0) {
+        filename = fileToUpload.files[0].name;
+    }
+    
+    var url = "bridgesdetailview/update/"
         + encodeURIComponent(id) + "/"
         + encodeURIComponent(name) + "/"
         + encodeURIComponent(filename) + "/"

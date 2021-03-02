@@ -1,13 +1,11 @@
-﻿using System;
-
-namespace BridgesDomain.Model
+﻿namespace BridgesDomain.Model
 {
     public class Bridge
     {
         public Bridge(
-            string name = "No name entered for this bridge yet.",
-            string description =  "No desc entered for this bridge yet................................................................",
-            string filename = "No filename specifed for this bridge yet.",
+            string name = "[Name]",
+            string filename = "[Filename]",
+            string description = "[Desc]",
             double lat = 54.9136984,      // Default to the river wear mouth
             double lng = -1.3697736,      // Default to the river wear mouth
             double zoom = 14.22,       
@@ -15,8 +13,8 @@ namespace BridgesDomain.Model
 
         {
             Name = name;
-            Description = description;
             Filename = filename;
+            Description = description;
             Lat = lat;
             Lng = lng;
             Zoom = zoom;
@@ -27,9 +25,9 @@ namespace BridgesDomain.Model
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
         public string Filename { get; set; }
         public byte[] FileBytes { get; set; }
+        public string Description { get; set; }
         public double Lat { get; set; }
         public double Lng { get; set; }
         public double DistanceToMouthKm { get; set; }

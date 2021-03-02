@@ -11,42 +11,42 @@
         <th colspan="@Colcount">Bridges</th>
     </h6>
     </thead>
-    <tr>
-        @{
-            var i = 1;
+    @{
+        var i = 1;
 
-            var bridgeCount = bridgesService.GetAllBridges().Count();
-            var imagesPerPage = 16;
-            
-            foreach (var bridge in bridgesService.GetBridgesInRange(imagesPerPage, (Page - 1) * imagesPerPage))
+        var bridgeCount = bridgesService.GetAllBridges().Count();
+        var imagesPerPage = 16;
+        <tr>
+        @foreach (var bridge in bridgesService.GetBridgesInRange(imagesPerPage, (Page - 1) * imagesPerPage))
+        {
+            <td>
+                <a href="bridgesdetailview/view/@bridge.Id/@bridge.Name/@bridge.Filename/@bridge.Description/@bridge.Lat/@bridge.Lng/@bridge.Zoom/@bridge.Height/">
+                    <h6>@bridge.Name</h6>
+                    <img alt="No image found for @bridge.Name with Filename: @bridge.Filename" title="@bridge.Description" 
+                         src="Images/Thumbs/@bridge.Filename">
+                </a>
+            </td>
+
+            if (i % Colcount == 0)
             {
-                <td>
-                    <a href="bridgesdetailview/view/@bridge.Id/@bridge.Name/@bridge.Filename/@bridge.Description/@bridge.Lat/@bridge.Lng/@bridge.Zoom/@bridge.Height/">
-                        <h6>@bridge.Name</h6>
-                        <img alt="No image found for @bridge.Name with Filename: @bridge.Filename" title="@bridge.Description" src="Images/Thumbs/@bridge.Filename"/>
-                    </a>
-                </td>
-
-                if (i % Colcount == 0)
-                {
-                    @:</tr>
-                    @:<tr>
-                }
-
-                i++;
+                @:</tr>
+                @:<tr>
             }
-            <tfoot>
-                <th colspan="@Colcount">
-                    <div class="pagination">
-                        @for (i = 1; i <= (bridgeCount / imagesPerPage) + 1; i++)
-                        {
-                            <span><a href="bridgesview/@Colcount/@i">@i</a></span>
-                        }
-                    </div>
-                </th>
-            </tfoot>
+
+            i++;
         }
     </tr>
+        <tfoot>
+            <th colspan="@Colcount">
+                <div class="pagination">
+                    @for (i = 1; i <= (bridgeCount / imagesPerPage) + 1; i++)
+                    {
+                        <span><a href="bridgesview/@Colcount/@i">@i</a></span>
+                    }
+                </div>
+            </th>
+        </tfoot>
+    }
 </table>
 
 @code

@@ -10,7 +10,6 @@
             double lng = -1.3697736,      // Default to the river wear mouth
             double zoom = 14.22,       
             double height = 1222)
-
         {
             Name = name;
             Filename = filename;

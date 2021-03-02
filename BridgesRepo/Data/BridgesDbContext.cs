@@ -14,6 +14,7 @@ namespace BridgesRepo.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Bridge>().Ignore("FileBytes");
             modelBuilder.Entity<Bridge>().Ignore("DistanceToMouthKm");
             modelBuilder.Entity<Bridge>().Ignore("DistanceToSourceKm");
             //modelBuilder.Entity<Bridge>().Property(x => x.Lat).HasPrecision(28, 10);

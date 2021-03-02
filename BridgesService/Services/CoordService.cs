@@ -7,7 +7,7 @@ namespace BridgesService.Services
     {
         public double DistanceBetween(double startLat, double startLng, double endLat, double endLng)
         {
-            var radsOverDegs = (Math.PI / 180.0);
+            const double radsOverDegs = (Math.PI / 180.0);
 
             var startLatRads = startLat * radsOverDegs;
             var startLngRads = startLng * radsOverDegs;

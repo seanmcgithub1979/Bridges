@@ -44,8 +44,9 @@ namespace BridgesRepo
 
         public void Update(Bridge bridge)
         {
-            context.Bridges.Update(bridge);
             context.SaveChanges();
+            context.Bridges.Update(bridge);
+            context.SaveChangesAsync();
         }
 
         public IList<Bridge> GetAllBridges()

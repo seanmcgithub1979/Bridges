@@ -6,6 +6,7 @@ namespace BridgesDomain.Model
     {
         public Bridge()
         {
+            AssignRiver(new River(54.9136984, -1.3697736, 54.75, -2.2225));
         }
 
         public Bridge(string name,

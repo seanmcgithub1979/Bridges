@@ -7,6 +7,11 @@ namespace BridgesRepo.Mocks
 {
     public class BridgeRepoMock : IBridgeRepo
     {
+        public IEnumerable<Bridge> GetAllBridges()
+        {
+            return GetMockBridges();
+        }
+
         public IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx)
         {
             return GetMockBridges().Skip(startIdx).Take(noOfBridges);
@@ -33,12 +38,7 @@ namespace BridgesRepo.Mocks
         public void Update(Bridge bridge)
         {
         }
-        
-        public IList<Bridge> GetAllBridges()
-        {
-            return GetMockBridges();
-        }
-        
+
         private static IList<Bridge> GetMockBridges()
         {
             var n = 62;

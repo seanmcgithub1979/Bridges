@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using BridgesDomain.Model;
 using BridgesRepo.Interfaces;
 using BridgesService.Interfaces;
@@ -12,6 +13,8 @@ namespace BridgesService.Services
         private readonly IBridgeRepo repo;
         private readonly ICoordsService coordsService;
 
+        private readonly River river = new(54.9136984, -1.3697736, 54.75, -2.2225);
+
         public BridgesService(IBridgeRepo repo)
         {
             this.repo = repo;
@@ -20,12 +23,20 @@ namespace BridgesService.Services
 
         public IEnumerable<Bridge> GetAllBridges()
         {
-            return repo.GetAllBridges();
+            var allBridges = repo.GetAllBridges().ToList();
+            
+            AssignRiverToBridges(allBridges);
+
+            return allBridges;
         }
 
         public IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx)
         {
-            return repo.GetBridgesInRange(noOfBridges, startIdx);
+            var bridgesInRange = repo.GetBridgesInRange(noOfBridges, startIdx).ToList();
+            
+            AssignRiverToBridges(bridgesInRange);
+            
+            return bridgesInRange;
         }
 
         public Bridge GetBridgeById(int id)
@@ -35,35 +46,16 @@ namespace BridgesService.Services
 
         public Bridge GetBridgeByName(string name)
         {
-            return repo.GetBridgeByName(name);
+            Bridge bridge = repo.GetBridgeByName(name);
+            
+            bridge.AssignRiver(river);
+            
+            return bridge;
         }
-
-        public void AddImageToBridge(ref Bridge bridge)
-        {
-            var filename = bridge.Filename;
-
-            using Stream sr = new FileStream($@"wwwroot\Images\Original\{filename}", FileMode.Open);
-            using BinaryReader br = new(sr);
-
-            var bytes = br.ReadBytes((int) sr.Length);
-
-            bridge.FileBytes = bytes;
-        }
-
-        private static void StampModifiedDate(ref Bridge bridge)
-        {
-            bridge.LastModified = DateTime.UtcNow;
-        }
-
+        
         public void Add(Bridge bridge)
         {
             repo.Add(bridge);
-        }
-
-        private void StampCalculatedDistances(ref Bridge bridge)
-        {
-            bridge.DistanceToMouthKm = coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.MouthLat, bridge.River.MouthLng);
-            bridge.DistanceFromSourceKm = coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.SourceLat, bridge.River.SourceLng);
         }
 
         public void Update(Bridge bridge)
@@ -71,9 +63,9 @@ namespace BridgesService.Services
             object syncObj = new();
             lock (syncObj)
             {
-                AddImageToBridge(ref bridge);
-                StampCalculatedDistances(ref bridge);
-                StampModifiedDate(ref bridge);
+                AddImageToBridge(bridge);
+                StampCalculatedDistances(bridge);
+                StampModifiedDate(bridge);
             }
 
             repo.Update(bridge);
@@ -83,6 +75,39 @@ namespace BridgesService.Services
         public void Delete(Bridge bridge)
         {
             repo.Delete(bridge);
+        }
+
+        private void AddImageToBridge(Bridge bridge)
+        {
+            var filename = bridge.Filename;
+
+            using Stream sr = new FileStream($@"wwwroot\Images\Original\{filename}", FileMode.Open);
+            using BinaryReader br = new(sr);
+
+            var bytes = br.ReadBytes((int)sr.Length);
+
+            bridge.FileBytes = bytes;
+        }
+
+        private void StampModifiedDate(Bridge bridge)
+        {
+            bridge.LastModified = DateTime.UtcNow;
+        }
+
+
+        private void StampCalculatedDistances(Bridge bridge)
+        {
+            bridge.DistanceToMouthKm = coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.MouthLat, bridge.River.MouthLng);
+            bridge.DistanceFromSourceKm = coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.SourceLat, bridge.River.SourceLng);
+        }
+
+        // TODO: Remove hack
+        private void AssignRiverToBridges(IEnumerable<Bridge> allBridges)
+        {
+            foreach (Bridge bridge in allBridges)
+            {
+                bridge.AssignRiver(river);
+            }
         }
 
         public string ExportToCsv()

@@ -12,15 +12,17 @@ namespace BridgesService.Services
     {
         private readonly IBridgeRepo repo;
         private readonly ICoordsService coordsService;
+        private IDictionary<int, string> colorMap;
 
         private readonly River river = new(54.9136984, -1.3697736, 54.75, -2.2225);
 
         public BridgesService(IBridgeRepo repo)
         {
             this.repo = repo;
-            coordsService = new CoordService();;
+            coordsService = new CoordService();
+            BuildColourMap();
         }
-
+        
         public IEnumerable<Bridge> GetAllBridges()
         {
             var allBridges = repo.GetAllBridges().ToList();
@@ -222,6 +224,44 @@ namespace BridgesService.Services
                 Console.WriteLine(e);
                 throw;
             }
+        }
+
+        public string GetHexColor(double distance)
+        {
+            if (distance < 0)
+            {
+                distance = 0;
+            }
+            else if (distance > 60)
+            {
+                distance = 60;
+            }
+
+            distance = distance / 4;
+
+            return colorMap[(int)distance];
+        }
+
+        private void BuildColourMap()
+        {
+            colorMap = new Dictionary<int, string>();
+
+            colorMap.Add(new KeyValuePair<int, string>(0, "#053a56"));
+            colorMap.Add(new KeyValuePair<int, string>(1, "#064667"));
+            colorMap.Add(new KeyValuePair<int, string>(2, "#075179"));
+            colorMap.Add(new KeyValuePair<int, string>(3, "#085d8a"));
+            colorMap.Add(new KeyValuePair<int, string>(4, "#09699b"));
+            colorMap.Add(new KeyValuePair<int, string>(5, "#0a75ad"));
+            colorMap.Add(new KeyValuePair<int, string>(6, "#2282b5"));
+            colorMap.Add(new KeyValuePair<int, string>(8, "#539ec5"));
+            colorMap.Add(new KeyValuePair<int, string>(7, "#3a90bd"));
+            colorMap.Add(new KeyValuePair<int, string>(9, "#6caccd"));
+            colorMap.Add(new KeyValuePair<int, string>(10, "#84bad6"));
+            colorMap.Add(new KeyValuePair<int, string>(11, "#9dc7de"));
+            colorMap.Add(new KeyValuePair<int, string>(12, "#b5d5e6"));
+            colorMap.Add(new KeyValuePair<int, string>(13, "#cee3ee"));
+            colorMap.Add(new KeyValuePair<int, string>(14, "#e6f1f6"));
+            colorMap.Add(new KeyValuePair<int, string>(15, "#ffffff"));
         }
     }
 }

@@ -7,8 +7,8 @@
 
 <style>
     img {
-        width: 48px;
-        height: 48px;
+        width: 32px;
+        height: 32px;
         border: none;
         horiz-align: center;
     }
@@ -20,7 +20,7 @@
 
 @{
     var bridgeCount = bridgesService.GetAllBridges().Count();
-    var bridgesPerPage = 10;
+    var bridgesPerPage = 15;
     var exportedFilename = string.Empty;
 
     switch (Action.ToLowerInvariant())
@@ -74,7 +74,7 @@
         <thead>
         <h6>
             <th>Name</th>
-            <th>Description</th>
+            @*<th>Description</th>*@
             <th>Filename</th>
             <th>Lat</th>
             <th>Lng</th>
@@ -93,17 +93,16 @@
             var url = $"https://www.google.co.uk/maps/@{@bridge.Lat},{@bridge.Lng},{@bridge.Height}m/data={satParams}";
             @*<tr style="background-color: aquamarine">*@
             <tr>
-                <td>@bridge.Name</td>
-                <td>@bridge.Description</td>
+                <td><a href="bridgesdetailview/view/@bridge.Id/@bridge.Name/@bridge.Filename/@bridge.Description/@bridge.Lat/@bridge.Lng/@bridge.Zoom/@bridge.Height/">@bridge.Name</a></td>
+                @*<td>@bridge.Description</td>*@
                 <td>@bridge.Filename</td>
                 <td>@bridge.Lat.ToString("##.######")</td>
                 <td>@bridge.Lng.ToString("##.######")</td>
-                @*TODO: Add color based on heat map to db*@
-                <td style="background-color: #bbbbff">@bridge.DistanceToMouthKm.ToString("#.##")</td>
+                <td style="background-color: @bridgesService.GetHexColor(@bridge.DistanceToMouthKm)">@bridge.DistanceToMouthKm.ToString("#.##")</td>
                 <td>@bridge.DistanceFromSourceKm.ToString("#.##")</td>
                 <td>@bridge.Zoom.ToString("#.##")</td>
                 <td>@bridge.Height.ToString("#.##")</td>
-                <td><a href="@url"><img src="Images/maps-icon.jfif"/></a></td>
+                <td><a href="@url" target="_blank"><img src="Images/maps-icon.jfif"/></a></td>
                 <td><a href="bridgesdetaileditview/view/@bridge.Id"><img src="Images/E-icon.png"/></a></td>
                 <td><img src="Images/D-icon.png" onclick="DeleteBridge(@bridge.Id)"/></td>
             </tr>

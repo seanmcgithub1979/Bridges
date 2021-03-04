@@ -5,6 +5,12 @@
 @using BridgesDomain.Model
 @using BridgesService.Interfaces
 
+<style>
+    input {
+        width: 650px;
+    }
+</style>
+
 @{
     Bridge bridge = Action.ToLowerInvariant() == "add" ? new Bridge() : bridgesService.GetBridgeById(Id);
 
@@ -17,7 +23,7 @@
                 <th colspan="2">@bridge.Name</th>
             </h6>
             </thead>
-            <tr>
+            <tr style="background-color: @bridgesService.GetHexColor(@bridge.DistanceToMouthKm)">
                 <td style="width: 40%;">
                     <img id="imgBridge" alt="No image" height="600px" width="800px" src="Images/Original/@bridge.Filename" />
                 </td>
@@ -45,7 +51,7 @@
                         @*</tr>*@
                         <tr>
                             <td><label>Description</label></td>
-                            <td><textarea id="inputDesc">@bridge.Description</textarea></td>
+                            <td><textarea id="inputDesc" style="height: 150px;">@bridge.Description</textarea></td>
                         </tr>
                         <tr>
                             <td><label>Lat</label></td>

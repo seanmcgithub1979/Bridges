@@ -19,5 +19,6 @@ namespace BridgesService.Interfaces
         string ExportToTxt(string delim = "\t");
         string ExportToHtml();
         string ExportToXml();
+        string GetHexColor(double distance);
     }
 }

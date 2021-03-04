@@ -1,4 +1,5 @@
 ﻿function AddBridge() {
+
     window.location.href = "bridgesdetaileditview/add/0/";
 };
 

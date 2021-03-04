@@ -9,6 +9,17 @@
     input {
         width: 650px;
     }
+
+    img {
+        width: 32px;
+        height: 32px;
+        border: none;
+        horiz-align: center;
+    }
+
+    img:hover {
+        box-shadow: 0 0 2px 1px darkslategray);
+    }
 </style>
 
 @{
@@ -83,20 +94,20 @@
                         </tr>
                         <tfoot>
                         <th colspan="2" style="text-align: right;">
-                            <input type="button" id="btnUpdate" value="Update"
-                                   onclick="UpdateBridge(
-                                                inputId.value,
-                                                inputName.value,
-                                                inputFilename.value,
-                                                inputDesc.value,
-                                                inputLat.value,
-                                                inputLng.value,
-                                                inputZoom.value,
-                                                inputHeight.value,
-                                                fileToUpload);" />
-                            <input type="button" id="btnDelete" value="Delete"
-                                   onclick="DeleteBridge(inputId.value);"
-                                   style="background-color: red;" />
+                            <img src="Images/D-icon.png"
+                                 onclick="DeleteBridge(inputId.value);"
+                                 style="background-color: red;" />
+                            <img src="Images/S-icon.jfif"
+                                 onclick="UpdateBridge(
+                                    inputId.value,
+                                    inputName.value,
+                                    inputFilename.value,
+                                    inputDesc.value,
+                                    inputLat.value,
+                                    inputLng.value,
+                                    inputZoom.value,
+                                    inputHeight.value,
+                                    fileToUpload);" />
                         </th>
                         </tfoot>
                     </table>

@@ -4,9 +4,11 @@ namespace BridgesDomain.Model
 {
     public class Bridge
     {
+        private readonly River riverWear = new (54.9136984, -1.3697736, 54.75, -2.2225);
+
         public Bridge()
         {
-            AssignRiver(new River(54.9136984, -1.3697736, 54.75, -2.2225));
+            AssignRiver(riverWear);
         }
 
         public int Id { get; set; }
@@ -17,7 +19,7 @@ namespace BridgesDomain.Model
             double lat,
             double lng,
             double zoom = 14.22,
-            double height = 1222)
+            double height = 200)
         {
             Name = name;
             Filename = filename;
@@ -26,8 +28,9 @@ namespace BridgesDomain.Model
             Lng = lng;
             Zoom = zoom;
             Height = height;
+
             
-            AssignRiver(new River(54.9136984, -1.3697736, 54.75, -2.2225));  // River wear for now...;))
+            AssignRiver(riverWear);
         }
 
         public string Name { get; set; }

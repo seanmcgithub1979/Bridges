@@ -6,6 +6,17 @@
 @using BridgesService.Interfaces
 
 <style>
+    img {
+        width: 32px;
+        height: 32px;
+        border: none;
+        horiz-align: center;
+    }
+
+    img:hover {
+        box-shadow: 0 0 2px 1px darkslategray);
+    }
+
     input {
         width: 400px;
     }
@@ -37,7 +48,7 @@
         </td>
         <tfoot>
         <th colspan="2" style="text-align: right;">
-            <input type="button" id="btnSave" value="Save"
+            <img src="Images/S-icon.jfif"
                    onclick="SaveComment(
                                 inputCommentContent.value,
                                 inputCommentFrom.value,

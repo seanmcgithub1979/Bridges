@@ -29,7 +29,7 @@ CREATE TABLE Comments
 (
 	[Id]			INT IDENTITY (1, 1)	PRIMARY KEY,
 	CommentContent	VARCHAR(MAX),
-	CommentDate		DATETIME,
+	CommentDate		DATETIME NOT NULL DEFAULT GETDATE(),
 	[From]			VARCHAR(255),
 	EmailAddress	VARCHAR(255)
 );

@@ -10,13 +10,6 @@
         width: 650px;
     }
 
-    img {
-        width: 32px;
-        height: 32px;
-        border: none;
-        horiz-align: center;
-    }
-
     img:hover {
         box-shadow: 0 0 2px 1px darkslategray);
     }
@@ -94,10 +87,8 @@
                         </tr>
                         <tfoot>
                         <th colspan="2" style="text-align: right;">
-                            <img src="Images/D-icon.png"
-                                 onclick="DeleteBridge(inputId.value);"
-                                 style="background-color: red;" />
-                            <img src="Images/S-icon.jfif"
+                            <img src="Images/D-icon.png" style="width: 32px; height: 32px; horiz-align: center;" onclick="DeleteBridge(inputId.value); "/>
+                            <img src="Images/S-icon.png" style="width: 32px; height: 32px; horiz-align: center;"
                                  onclick="UpdateBridge(
                                     inputId.value,
                                     inputName.value,

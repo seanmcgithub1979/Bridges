@@ -88,14 +88,19 @@
                         <tr><td>File name</td><td>@bridge.Filename</td></tr>
                         <tr><td>Lat</td><td>@bridge.Lat.ToString("##.#######")</td></tr>
                         <tr><td>Lng</td><td>@bridge.Lng.ToString("##.#######")</td></tr>
-                        <tr><td>Disance to mouth (km)</td><td>@bridge.DistanceToMouthKm</td></tr>
+                        <tr><td>Disance to mouth (km)</td><td>@bridge.DistanceToMouthKm.ToString("#.##")</td></tr>
                         <tr><td>Distance from source (km)</td><td>@bridge.DistanceFromSourceKm.ToString("#.##")</td></tr>
                         <tr><td>Zoom</td><td>@bridge.Zoom.ToString("#.##")</td></tr>
                         <tr><td>Height</td><td>@bridge.Height.ToString("#.##")</td></tr>
                         <tr><td>Last modified</td><td>@bridge.LastModified.ToString("dd/MM/yyyy HH:mm")</td></tr>
+                        <hr />
+                       <tfoot>
+                        <th colspan="2" style="text-align: right;">
+                            <a href="bridgesdetaileditview/view/@bridge.Id"><img src="Images/E-icon.png" style="width: 32px; height: 32px; horiz-align: center;"/></a>
+                            <img src="Images/D-icon.png" style="width: 32px; horiz-align: center;" onclick="DeleteBridge(inputId.value);"/>
+                        </th>
+                        </tfoot>
                     </table>
-                    <hr />
-                    <a href="bridgesdetaileditview/view/@bridge.Id"><img src="Images/E-icon.png" style="width: 32px;                                                                                                                                                                                                           horiz-align: center;" /></a>
                 </td>
             </tr>
         </table>
@@ -108,23 +113,23 @@
 
 @code
 {
-        [Parameter]
-        public string Action { get; set; }
+    [Parameter]
+    public string Action { get; set; }
 
-        [Parameter]
-        public int Id { get; set; }
-        [Parameter]
-        public string Name { get; set; }
-        [Parameter]
-        public string Filename { get; set; }
-        [Parameter]
-        public string Desc { get; set; }
-        [Parameter]
-        public double Lat { get; set; }
-        [Parameter]
-        public double Lng { get; set; }
-        [Parameter]
-        public double Zoom { get; set; }
-        [Parameter]
-        public double Height { get; set; }
-    }
+    [Parameter]
+    public int Id { get; set; }
+    [Parameter]
+    public string Name { get; set; }
+    [Parameter]
+    public string Filename { get; set; }
+    [Parameter]
+    public string Desc { get; set; }
+    [Parameter]
+    public double Lat { get; set; }
+    [Parameter]
+    public double Lng { get; set; }
+    [Parameter]
+    public double Zoom { get; set; }
+    [Parameter]
+    public double Height { get; set; }
+}

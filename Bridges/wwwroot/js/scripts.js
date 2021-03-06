@@ -23,13 +23,13 @@ function UpdateBridge(id, name, filename, desc, lat, lng, zoom, height, fileToUp
 };
 
 function UploadFile(file) {
-    var fReader = new FileReader();
+    //var fReader = new FileReader();
 
-    fReader.readAsDataURL(file);
-    fReader.onloadend = function(event) {
-        var img = document.getElementById("imgBridge");
-        img.src = event.target.result;
-    }
+    //fReader.readAsDataURL(file);
+    //fReader.onloadend = function(event) {
+    //    var img = document.getElementById("imgBridge");
+    //    img.src = event.target.result;
+    //}
 };
 
 function DeleteBridge(id) {
@@ -62,5 +62,6 @@ function AddComment() {
 };
 
 function SaveComment(comment, from, emailAddress) {
-    window.location.href = "/savecomment/" + comment + "/" + from +  "/" + emailAddress;
+    var url = "/savecomment/" + comment + "/" + from + "/" + emailAddress;
+    window.location.href = url;
 };

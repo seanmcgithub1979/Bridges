@@ -37,14 +37,14 @@ namespace Bridges
             services.AddServerSideBlazor();
 
             services.Configure<RazorPagesOptions>(options => options.RootDirectory = "/Pages");
-
+            
             services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
             services.AddScoped<ICommentRepo, CommentRepoSqlServer>();
 
             //services.AddScoped<IBridgeRepo, BridgeRepoMock>();
             //services.AddScoped<ICommentRepo, CommentRepoMock>();
-
+            
             services.AddScoped<IBridgesService, BridgesService.Services.BridgesService>();
             services.AddScoped<ICommentService, BridgesService.Services.CommentService>();
 

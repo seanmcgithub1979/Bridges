@@ -20,6 +20,9 @@
 
     if (bridge != null)
     {
+        var satParams = "!3m1!1e3";
+        var url = $"https://www.google.co.uk/maps/@{@bridge.Lat},{@bridge.Lng},{@bridge.Height}m/data={satParams}";
+
         <br/>
         <table>
             <thead>
@@ -87,18 +90,10 @@
                         </tr>
                         <tfoot>
                         <th colspan="2" style="text-align: right;">
+                            <a href="@url" target="_blank"><img src="Images/maps-icon.jfif" style="width: 32px; height: 32px; horiz-align: center;" /></a>
                             <img src="Images/D-icon.png" style="width: 32px; height: 32px; horiz-align: center;" onclick="DeleteBridge(inputId.value); "/>
                             <img src="Images/S-icon.png" style="width: 32px; height: 32px; horiz-align: center;"
-                                 onclick="UpdateBridge(
-                                    inputId.value,
-                                    inputName.value,
-                                    inputFilename.value,
-                                    inputDesc.value,
-                                    inputLat.value,
-                                    inputLng.value,
-                                    inputZoom.value,
-                                    inputHeight.value,
-                                    fileToUpload);" />
+                                 onclick="UpdateBridge(inputId.value, inputName.value, inputFilename.value, inputDesc.value, inputLat.value, inputLng.value, inputZoom.value, inputHeight.value, fileToUpload);"/>
                         </th>
                         </tfoot>
                     </table>

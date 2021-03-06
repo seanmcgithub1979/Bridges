@@ -41,7 +41,7 @@ namespace BridgesRepo.Mocks
 
         private static IList<Bridge> GetMockBridges()
         {
-            var n = 62;
+            var n = 40;
             IList<Bridge> retVal = new List<Bridge>(n);
 
             for (var i = 1; i <= n; i++)
@@ -55,8 +55,8 @@ namespace BridgesRepo.Mocks
                     Description = "Some desc here...",
                     Lat = 50.111111,
                     Lng = 50.111111,
-                    DistanceToMouthKm = 0,
-                    DistanceFromSourceKm = 0,
+                    DistanceToMouthKm = n - i,
+                    DistanceFromSourceKm = i,
                     Height = 1222, 
                     Zoom = 14.25
                 });

@@ -3,8 +3,13 @@ using BridgesRepo.Data;
 using BridgesRepo.Interfaces;
 using BridgesRepo.Mocks;
 using BridgesService.Interfaces;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -20,33 +25,50 @@ namespace Bridges
             Configuration = configuration;
         }
 
-        private IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("BridgesDbContext");
-            
+
             services.AddRazorPages();
-            
+
             services.AddServerSideBlazor();
-            
+
             services.Configure<RazorPagesOptions>(options => options.RootDirectory = "/Pages");
-            
-            services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));
-            
-            services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
-            services.AddScoped<ICommentRepo, CommentRepoSqlServer>();
 
-            //services.AddScoped<IBridgeRepo, BridgeRepoMock>();
-            //services.AddScoped<ICommentRepo, CommentRepoMock>();
+            //services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));
+            //services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
+            //services.AddScoped<ICommentRepo, CommentRepoSqlServer>();
 
-            //services.AddScoped<ICoordsService, BridgesService.Services.CoordService>();
+            services.AddScoped<IBridgeRepo, BridgeRepoMock>();
+            services.AddScoped<ICommentRepo, CommentRepoMock>();
+
             services.AddScoped<IBridgesService, BridgesService.Services.BridgesService>();
             services.AddScoped<ICommentService, BridgesService.Services.CommentService>();
 
-            //services.Configure<EmailSettingsOptions>(Configuration.GetSection("EmailSettings"));
+            services.AddAuthentication(sharedOptions =>
+            {
+                sharedOptions.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                sharedOptions.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+            })
+            .AddAzureAd(options => Configuration.Bind("AzureAd", options))
+            .AddCookie();
+
+            //services.AddMvc(options =>
+            //{
+            //    var policy = new AuthorizationPolicyBuilder()
+            //        .RequireAuthenticatedUser()
+            //        .Build();
+            //    options.Filters.Add(new AuthorizeFilter(policy));
+            //})
+            //.AddRazorPagesOptions(options =>
+            //{
+            //    options.Conventions.AllowAnonymousToFolder("/Account");
+            //});
+
+            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,17 +76,23 @@ namespace Bridges
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDirectoryBrowser();
+                //app.UseDeveloperExceptionPage();
             }
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseDeveloperExceptionPage();
+
             app.UseStaticFiles();
+            app.UseAuthentication();
+            //app.UseMvc();
+            
+            app.UseHttpsRedirection();
+            //app.UseStaticFiles();
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {

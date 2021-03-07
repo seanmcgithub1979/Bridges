@@ -80,6 +80,7 @@
             <th>Lng</th>
             <th>Distance To Mouth (km)</th>
             <th>Distance From Source (km)</th>
+            <th>Source - Mouth</th>
             <th>Zoom</th>
             <th>Height</th>
             <th></th>
@@ -98,14 +99,8 @@
                 @*<td>@bridge.Filename</td>*@
                 <td>@bridge.Lat.ToString("##.######")</td>
                 <td>@bridge.Lng.ToString("##.######")</td>
-                <td style="background-color: @bridgesService.GetHexColor(@bridge.DistanceToMouthKm)">
-                    @bridge.DistanceToMouthKm.ToString("#.##")
-                    <progress value="@bridge.DistanceToMouthKm" max="60"></progress>
-                </td>
-                <td>
-                    @bridge.DistanceFromSourceKm.ToString("#.##")
-                    <progress value="@bridge.DistanceFromSourceKm" max="60"></progress>
-                </td>
+                <td style="background-color: @bridgesService.GetHexColor(@bridge.DistanceToMouthKm)">@bridge.DistanceToMouthKm.ToString("#.##")</td><td>@bridge.DistanceFromSourceKm.ToString("#.##")</td>
+                <td><progress value="@bridge.DistanceFromSourceKm" max="57"></progress></td>
                 <td>@bridge.Zoom.ToString("#.##")</td>
                 <td>@bridge.Height.ToString("#.##")</td>
                 <td><a href="@url" target="_blank"><img src="Images/maps-icon.jfif"/></a></td>

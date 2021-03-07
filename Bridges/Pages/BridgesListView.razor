@@ -100,7 +100,7 @@
                 <td>@bridge.Lat.ToString("##.######")</td>
                 <td>@bridge.Lng.ToString("##.######")</td>
                 <td style="background-color: @bridgesService.GetHexColor(@bridge.DistanceToMouthKm)">@bridge.DistanceToMouthKm.ToString("#.##")</td><td>@bridge.DistanceFromSourceKm.ToString("#.##")</td>
-                <td><progress value="@bridge.DistanceFromSourceKm" max="57"></progress></td>
+                <td><progress value="@bridge.DistanceFromSourceKm" max="57" style="width: 100%; height: 50px;"></progress></td>
                 <td>@bridge.Zoom.ToString("#.##")</td>
                 <td>@bridge.Height.ToString("#.##")</td>
                 <td><a href="@url" target="_blank"><img src="Images/maps-icon.jfif"/></a></td>

@@ -18,17 +18,19 @@
         <table style="background-color: black; color: orangered;">
             @if (config.IsDevelopment)
             {
-                <td style="background-color: orangered; color: black;">Env: @config.Environment</td>
-                <td style="background-color: black; color: orangered;">ConnStr:
-                @{
-                    var configConnectionString = config.ConnectionString.Replace("User ID=mail.seanmccann@gmail.com@gsrm;Password=Ejifgi1979$;", "");
-                }
-                @configConnectionString</td>
+            <td style="background-color: orangered; color: black;">Env: @config.Environment</td>
             }
             else
             {
-                <td style="background-color: lightskyblue; color: black;">Env: @config.Environment</td>
+            <td style="background-color: lightskyblue; color: black;">Env: @config.Environment</td>
             }
+            <td style="background-color: black; color: orangered;">
+                ConnStr:
+                @{
+                    var connStrDisplay = config.ConnectionString.Replace("User ID=mail.seanmccann@gmail.com@gsrm;Password=Ejifgi1979$;", "");
+                }
+                @connStrDisplay
+            </td>
             <td style="background-color: black; color: orangered;"><a href="mailto:@config.EmailAddress" style="color: white;">Email</a></td>
             <td style="background-color: black; color: orangered; text-align: right;">Session started: @config.SessionStart</td>
         </table>

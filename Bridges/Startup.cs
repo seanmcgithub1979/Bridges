@@ -75,6 +75,7 @@ namespace Bridges
             }
             else
             {
+                config.Environment = "production";
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }

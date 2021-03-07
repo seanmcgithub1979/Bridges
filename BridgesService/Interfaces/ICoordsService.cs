@@ -2,6 +2,6 @@
 {
     public interface ICoordsService
     {
-        public double DistanceBetween(double StartLat, double StartLng, double EndLat, double EndLng);
+        public double DistanceBetween(double startLat, double startLng, double endLat, double endLng);
     }
 }

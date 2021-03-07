@@ -1,17 +1,36 @@
 ﻿@inherits LayoutComponentBase
 
-@*@using Microsoft.AspNetCore.Mvc.TagHelpers;*@
-@*@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers;*@
+@inject BridgesDomain.Interfaces.IConfig config;
 
 <div class="sidebar">
     <NavMenu />
 </div>
 
 <div class="main">
-    <div class="top-row pl-4" style="background-color: darkslategray; opacity: 0.6">
+    <div class="top-row pl-4" style="background-color: darkslategray; opacity: 0.6; @*position: fixed;*@">
         <h3><a href="bridgeslistview/view/1" style="color: white;">Bridges over the River Wear</a></h3>
     </div>
+    @*<header></header>*@
     <div>
         @Body
+    </div>
+    <div class="status-bottom">
+        <table style="background-color: black; color: orangered;">
+            @if (config.IsDevelopment)
+            {
+                <td style="background-color: orangered; color: black;">Env: @config.Environment</td>
+                <td style="background-color: black; color: orangered;">ConnStr:
+                @{
+                    var configConnectionString = config.ConnectionString.Replace("User ID=mail.seanmccann@gmail.com@gsrm;Password=Ejifgi1979$;", "");
+                }
+                @configConnectionString</td>
+            }
+            else
+            {
+                <td style="background-color: lightskyblue; color: black;">Env: @config.Environment</td>
+            }
+            <td style="background-color: black; color: orangered;"><a href="mailto:@config.EmailAddress" style="color: white;">Email</a></td>
+            <td style="background-color: black; color: orangered; text-align: right;">Session started: @config.SessionStart</td>
+        </table>
     </div>
 </div>

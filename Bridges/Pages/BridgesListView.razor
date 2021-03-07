@@ -20,7 +20,7 @@
 
 @{
     var bridgeCount = bridgesService.GetAllBridges().Count();
-    var bridgesPerPage = 15;
+    var bridgesPerPage = 12;
     var exportedFilename = string.Empty;
 
     switch (Action.ToLowerInvariant())
@@ -93,7 +93,7 @@
             var satParams = "!3m1!1e3";
             var url = $"https://www.google.co.uk/maps/@{@bridge.Lat},{@bridge.Lng},{@bridge.Height}m/data={satParams}";
             @*<tr style="background-color: aquamarine">*@
-            <tr>
+            <tr style="max-height: 14px;">
                 <td><a href="bridgesdetailview/view/@bridge.Id/@bridge.Name/@bridge.Filename/@bridge.Description/@bridge.Lat/@bridge.Lng/@bridge.Zoom/@bridge.Height/">@bridge.Name</a></td>
                 @*<td>@bridge.Description</td>*@
                 @*<td>@bridge.Filename</td>*@

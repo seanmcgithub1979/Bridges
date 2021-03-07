@@ -365,3 +365,19 @@ app {
         display: block;
     }
 }
+
+footer {
+    background-color: darkslategray;
+    opacity: 0.9;
+    color: white;
+}
+
+.status-bottom {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    color: darkorange;
+    font-size: 12px;
+}

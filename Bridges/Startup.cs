@@ -1,15 +1,14 @@
+using BridgesDomain.Interfaces;
+using BridgesDomain.Model;
 using BridgesRepo;
 using BridgesRepo.Data;
 using BridgesRepo.Interfaces;
-using BridgesRepo.Mocks;
 using BridgesService.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -20,23 +19,29 @@ namespace Bridges
 {
     public class Startup
     {
+        private readonly IConfiguration configuration;
+        private IConfig config;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
-
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("BridgesDbContext");
+            var connectionString = configuration.GetConnectionString("BridgesDbContext");
+
+            config = new Config { ConnectionString = connectionString };
 
             services.AddRazorPages();
 
             services.AddServerSideBlazor();
 
             services.Configure<RazorPagesOptions>(options => options.RootDirectory = "/Pages");
+
+            services.AddSingleton<IConfig, Config>();
+            services.AddSingleton(config);
             
             services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
@@ -44,7 +49,7 @@ namespace Bridges
 
             //services.AddScoped<IBridgeRepo, BridgeRepoMock>();
             //services.AddScoped<ICommentRepo, CommentRepoMock>();
-            
+
             services.AddScoped<IBridgesService, BridgesService.Services.BridgesService>();
             services.AddScoped<ICommentService, BridgesService.Services.CommentService>();
 
@@ -53,10 +58,10 @@ namespace Bridges
                 sharedOptions.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 sharedOptions.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
-            .AddAzureAd(options => Configuration.Bind("AzureAd", options))
+            .AddAzureAd(options => configuration.Bind("AzureAd", options))
             .AddCookie();
 
-            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
+            services.AddApplicationInsightsTelemetry(configuration["APPINSIGHTS_CONNECTIONSTRING"]);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +69,7 @@ namespace Bridges
         {
             if (env.IsDevelopment())
             {
+                config.Environment = "development";
                 //app.UseDirectoryBrowser();
                 //app.UseDeveloperExceptionPage();
             }

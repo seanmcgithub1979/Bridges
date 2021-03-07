@@ -70,11 +70,15 @@
                         </tr>
                         <tr>
                             <td><label>Distance To Mouth (Km)</label></td>
-                            <td><input type="text" id="distToMouthId" name="distToMouth" value=@bridge.DistanceToMouthKm.ToString("#.##")/></td>
+                            <td><input type="text" id="distToMouthId" name="distToMouth" readonly="true" value=@bridge.DistanceToMouthKm.ToString("#.##")/>
+                                <progress value="@bridge.DistanceToMouthKm" max="60"></progress></td>
                         </tr>
                         <tr>
                             <td><label>Distance To Source (Km)</label></td>
-                            <td><input type="text" id="distFromSourceId" name="distToMouth" value=@bridge.DistanceFromSourceKm.ToString("#.##")/></td>
+                            <td>
+                                <input type="text" id="distFromSourceId" name="distToMouth" readonly="true" value=@bridge.DistanceFromSourceKm.ToString("#.##")/>
+                                <progress value="@bridge.DistanceFromSourceKm" max="60"></progress>
+                            </td>
                         </tr>
                         <tr>
                             <td><label>Zoom</label></td>

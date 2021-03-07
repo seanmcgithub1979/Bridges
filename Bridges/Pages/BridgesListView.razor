@@ -66,7 +66,7 @@
     {
         <hr />
         <img style="border: none; height: 45px; width: 45px;" src="/Images/info.png" />
-        <msginfo>SUCCESS - Exported <a href="file:///C:/SeansStuff/Code/Bridges/Bridges/@exportedFilename">@exportedFilename</a></msginfo>
+        <msginfo>SUCCESS - Exported <a href="file:////Bridges/@exportedFilename">@exportedFilename</a></msginfo>
         <hr />
     }
     
@@ -75,7 +75,7 @@
         <h6>
             <th>Name</th>
             @*<th>Description</th>*@
-            <th>Filename</th>
+            @*<th>Filename</th>*@
             <th>Lat</th>
             <th>Lng</th>
             <th>Distance To Mouth (km)</th>
@@ -95,7 +95,7 @@
             <tr>
                 <td><a href="bridgesdetailview/view/@bridge.Id/@bridge.Name/@bridge.Filename/@bridge.Description/@bridge.Lat/@bridge.Lng/@bridge.Zoom/@bridge.Height/">@bridge.Name</a></td>
                 @*<td>@bridge.Description</td>*@
-                <td>@bridge.Filename</td>
+                @*<td>@bridge.Filename</td>*@
                 <td>@bridge.Lat.ToString("##.######")</td>
                 <td>@bridge.Lng.ToString("##.######")</td>
                 <td style="background-color: @bridgesService.GetHexColor(@bridge.DistanceToMouthKm)">@bridge.DistanceToMouthKm.ToString("#.##")</td>

@@ -19,7 +19,7 @@ namespace Bridges.Controllers
         }
 
         [HttpGet]
-        public IActionResult SignOut()
+        public new IActionResult SignOut()
         {
             var callbackUrl = Url.Page("/Account/SignedOut", pageHandler: null, values: null, protocol: Request.Scheme);
             return SignOut(

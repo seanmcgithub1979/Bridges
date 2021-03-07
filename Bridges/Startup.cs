@@ -56,18 +56,6 @@ namespace Bridges
             .AddAzureAd(options => Configuration.Bind("AzureAd", options))
             .AddCookie();
 
-            //services.AddMvc(options =>
-            //{
-            //    var policy = new AuthorizationPolicyBuilder()
-            //        .RequireAuthenticatedUser()
-            //        .Build();
-            //    options.Filters.Add(new AuthorizeFilter(policy));
-            //})
-            //.AddRazorPagesOptions(options =>
-            //{
-            //    options.Conventions.AllowAnonymousToFolder("/Account");
-            //});
-
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
         }
 

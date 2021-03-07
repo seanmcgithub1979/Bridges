@@ -62,6 +62,9 @@ function AddComment() {
 };
 
 function SaveComment(comment, from, emailAddress) {
-    var url = "/savecomment/" + comment + "/" + from + "/" + emailAddress;
+    var url = "/savecomment/" +
+        encodeURIComponent(comment) + "/"
+        + encodeURIComponent(from) + "/"
+        + encodeURIComponent(emailAddress) + "/";
     window.location.href = url;
 };

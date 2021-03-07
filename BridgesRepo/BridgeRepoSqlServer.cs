@@ -17,12 +17,15 @@ namespace BridgesRepo
 
         public IEnumerable<Bridge> GetAllBridges()
         {
-            return context.Bridges.ToList();
+            return context.Bridges;
         }
 
+        // Used in paging
         public IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx)
         {
-            return GetAllBridges().Skip(startIdx).Take(noOfBridges);
+            return GetAllBridges()
+                .Skip(startIdx)
+                .Take(noOfBridges);
         }
 
         public Bridge GetBridgeById(int id)

@@ -33,11 +33,11 @@ table {
 
 table td, table th {
     border: 1px solid darkslategray;
-    padding: 8px;
+    padding: 4px;
 }
 
 table tr {
-    padding: 8px;
+    padding: 2px;
 }
 
 table tr:nth-child(even) {
@@ -49,14 +49,14 @@ table tr:nth-child(odd) {
 }
 
 table th {
-    padding: 10px;
+    padding: 4px;
     text-align: left;
     background-color: darkslategray;
     color: white;
 }
 
 table tfoot {
-    padding: 10px;
+    padding: 4px;
     text-align: left;
     background-color: darkslategray;
     color: white;

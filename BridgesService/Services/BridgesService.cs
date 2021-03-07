@@ -25,20 +25,12 @@ namespace BridgesService.Services
         
         public IEnumerable<Bridge> GetAllBridges()
         {
-            var allBridges = repo.GetAllBridges().ToList();
-            
-            AssignRiverToBridges(allBridges);
-
-            return allBridges;
+            return repo.GetAllBridges();
         }
 
         public IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx)
         {
-            var bridgesInRange = repo.GetBridgesInRange(noOfBridges, startIdx).ToList();
-            
-            AssignRiverToBridges(bridgesInRange);
-            
-            return bridgesInRange;
+            return repo.GetBridgesInRange(noOfBridges, startIdx);
         }
 
         public Bridge GetBridgeById(int id)
@@ -101,15 +93,6 @@ namespace BridgesService.Services
         {
             bridge.DistanceToMouthKm = coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.MouthLat, bridge.River.MouthLng);
             bridge.DistanceFromSourceKm = coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.SourceLat, bridge.River.SourceLng);
-        }
-
-        // TODO: Remove hack
-        private void AssignRiverToBridges(IEnumerable<Bridge> allBridges)
-        {
-            foreach (Bridge bridge in allBridges)
-            {
-                bridge.AssignRiver(river);
-            }
         }
 
         public string ExportToCsv()

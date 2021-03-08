@@ -5,13 +5,13 @@ namespace BridgesRepo.Data
 {
    public class BridgesDbContext : DbContext
     {
-        public BridgesDbContext(DbContextOptions options) : base(options)
-        {
-        }
-
         public DbSet<Bridge> Bridges { get; set; }
         public DbSet<Comment> Comments { get; set; }
 
+        public BridgesDbContext(DbContextOptions options) : base(options)
+        {
+        }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Bridge>().Ignore("FileBytes");

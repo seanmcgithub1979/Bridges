@@ -33,7 +33,7 @@ namespace Bridges
                 //builder.AddCommandLine(args);
             });
 
-            configureAppConfiguration.ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+            configureAppConfiguration.ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
 
             return defaultBuilder;
         }

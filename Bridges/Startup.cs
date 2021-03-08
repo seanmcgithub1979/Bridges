@@ -1,3 +1,4 @@
+using Bridges.Extensions;
 using BridgesDomain.Interfaces;
 using BridgesDomain.Model;
 using BridgesRepo;

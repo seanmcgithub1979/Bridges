@@ -20,7 +20,7 @@
 
 @{
     var bridgeCount = bridgesService.GetAllBridges().Count();
-    var bridgesPerPage = 12;
+    var bridgesPerPage = 10;
     var exportedFilename = string.Empty;
 
     switch (Action.ToLowerInvariant())
@@ -121,12 +121,12 @@
             Add:
             <a href="bridgesdetaileditview/add/0" width="75px"><img src="Images/A-icon.png"/></a>
         </th>
-        <th colspan="12" style="text-align: right;">
+        <th colspan="10" style="text-align: right;">
             Export to:
-            <a href="bridgeslistview/exporttocsv/1"><img src="Images/exToCsv.svg" /></a>
-            <a href="bridgeslistview/exporttotxt/1"><img src="Images/exToTxt.svg" /></a>
-            <a href="bridgeslistview/exporttohtml/1"><img src="Images/exToHtml.svg" /></a>
-            <a href="bridgeslistview/exporttoxml/1"><img src="Images/exToXml.svg" /></a>
+            <a href="bridgeslistview/exporttocsv"><img src="Images/exToCsv.svg" /></a>
+            <a href="bridgeslistview/exporttotxt"><img src="Images/exToTxt.svg" /></a>
+            <a href="bridgeslistview/exporttohtml"><img src="Images/exToHtml.svg" /></a>
+            <a href="bridgeslistview/exporttoxml"><img src="Images/exToXml.svg" /></a>
         </th>
         </tfoot>
     </table>

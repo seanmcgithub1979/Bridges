@@ -1,4 +1,4 @@
-﻿namespace Microsoft.AspNetCore.Authentication
+﻿namespace Bridges.Extensions
 {
     public class AzureAdOptions
     {

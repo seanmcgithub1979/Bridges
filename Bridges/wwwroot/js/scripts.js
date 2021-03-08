@@ -41,25 +41,25 @@ function DeleteBridge(id) {
     }
 };
 
-function ExportToCsv() {
-    window.location.href = "bridgeslistview/exporttocsv/1";;
-};
+//function ExportToCsv() {
+//    window.location.href = "bridgeslistview/exporttocsv/1";;
+//};
 
-function ExportToTxt() {
-    window.location.href = "bridgeslistview/exporttotxt/1";;
-};
+//function ExportToTxt() {
+//    window.location.href = "bridgeslistview/exporttotxt/1";;
+//};
 
-function ExportToHtml() {
-    window.location.href = "bridgeslistview/exporttohtml/1";;
-};
+//function ExportToHtml() {
+//    window.location.href = "bridgeslistview/exporttohtml/1";;
+//};
 
-function ExportToXml() {
-    window.location.href = "bridgeslistview/exporttoxml/1";;
-};
+//function ExportToXml() {
+//    window.location.href = "bridgeslistview/exporttoxml/1";;
+//};
 
-function AddComment() {
-    window.location.href = "commentsdetaileditview";
-};
+//function AddComment() {
+//    window.location.href = "commentsdetaileditview";
+//};
 
 function SaveComment(comment, from, emailAddress) {
     var url = "/savecomment/" +

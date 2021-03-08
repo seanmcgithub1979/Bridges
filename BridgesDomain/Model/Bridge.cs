@@ -39,8 +39,8 @@ namespace BridgesDomain.Model
         public string Description { get; set; }
         public double Lat { get; set; }
         public double Lng { get; set; }
-        public double DistanceToMouthKm { get; set; }
-        public double DistanceFromSourceKm { get; set; }
+        public double DistanceToMouthMiles { get; set; }
+        public double DistanceFromSourceMiles { get; set; }
         public double Zoom { get; set; }
         public double Height { get; set; }
         public DateTime LastModified { get; set; }

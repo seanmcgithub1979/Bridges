@@ -3,7 +3,7 @@ using BridgesService.Interfaces;
 
 namespace BridgesService.Services
 {
-    public class CoordService : ICoordsService
+    public class CoordsService : ICoordsService
     {
         public double DistanceBetween(double startLat, double startLng, double endLat, double endLng)
         {

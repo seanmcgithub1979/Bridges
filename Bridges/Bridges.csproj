@@ -5,6 +5,7 @@
     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
     <ApplicationInsightsResourceId>/subscriptions/00840b48-3c49-461d-8f4f-0a3d1529e418/resourceGroups/DefaultResourceGroup-SUK/providers/microsoft.insights/components/GRSMWeb</ApplicationInsightsResourceId>
     <WebProject_DirectoryAccessLevelKey>1</WebProject_DirectoryAccessLevelKey>
+    <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <None Update="custom.xml">

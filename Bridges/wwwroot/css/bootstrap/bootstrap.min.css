@@ -4221,7 +4221,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
             display: none
         }
 }
-
+/*
 @media (max-width:767.98px) {
     .navbar-expand-md > .container, .navbar-expand-md > .container-fluid {
         padding-right: 0;
@@ -4358,7 +4358,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
         .navbar-expand-xl .navbar-toggler {
             display: none
         }
-}
+}*/
 
 .navbar-expand {
     -ms-flex-flow: row nowrap;

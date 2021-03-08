@@ -55,8 +55,8 @@ namespace BridgesRepo.Mocks
                     Description = "Some desc here...",
                     Lat = 50.111111,
                     Lng = 50.111111,
-                    DistanceToMouthKm = n - i,
-                    DistanceFromSourceKm = i,
+                    DistanceToMouthMiles = n - i,
+                    DistanceFromSourceMiles = i,
                     Height = 1222, 
                     Zoom = 14.25
                 });

@@ -7,7 +7,7 @@ namespace BridgesDomain.Interfaces
         string ConnectionString { get; set; }
         string Environment { get; set; }
         string EmailAddress { get; }
-        DateTime SessionStart { get; }
+        DateTime LastRefreshed { get; }
         bool IsDevelopment { get; }
     }
 }

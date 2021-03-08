@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using BridgesDomain.Model;
 using BridgesRepo.Interfaces;
 using BridgesService.Interfaces;
@@ -19,7 +18,8 @@ namespace BridgesService.Services
         public BridgesService(IBridgeRepo repo)
         {
             this.repo = repo;
-            coordsService = new CoordService();
+            coordsService = new CoordsService();
+            //this.coordsService = coordsService;
             BuildColourMap();
         }
         
@@ -54,18 +54,13 @@ namespace BridgesService.Services
 
         public void Update(Bridge bridge)
         {
-            object syncObj = new();
-            lock (syncObj)
-            {
-                AddImageToBridge(bridge);
-                StampCalculatedDistances(bridge);
-                StampModifiedDate(bridge);
-            }
-
+            AddImageToBridge(bridge);
+            StampCalculatedDistances(bridge);
+            StampModifiedDate(bridge);
+            
             repo.Update(bridge);
         }
-
-
+        
         public void Delete(Bridge bridge)
         {
             repo.Delete(bridge);
@@ -73,14 +68,17 @@ namespace BridgesService.Services
 
         private void AddImageToBridge(Bridge bridge)
         {
-            var filename = bridge.Filename;
-
-            using Stream sr = new FileStream($@"wwwroot\Images\Original\{filename}", FileMode.Open);
-            using BinaryReader br = new(sr);
-
-            var bytes = br.ReadBytes((int)sr.Length);
-
-            bridge.FileBytes = bytes;
+            try
+            {
+                using Stream sr = new FileStream($@"wwwroot\Images\Original\{bridge.Filename}", FileMode.Open);
+                using BinaryReader br = new(sr);
+                bridge.FileBytes = br.ReadBytes((int)sr.Length);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
         }
 
         private void StampModifiedDate(Bridge bridge)
@@ -91,8 +89,8 @@ namespace BridgesService.Services
 
         private void StampCalculatedDistances(Bridge bridge)
         {
-            bridge.DistanceToMouthKm = coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.MouthLat, bridge.River.MouthLng);
-            bridge.DistanceFromSourceKm = coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.SourceLat, bridge.River.SourceLng);
+            bridge.DistanceToMouthMiles = coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.MouthLat, bridge.River.MouthLng);
+            bridge.DistanceFromSourceMiles = coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.SourceLat, bridge.River.SourceLng);
         }
 
         public string ExportToCsv()

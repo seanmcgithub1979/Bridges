@@ -8,7 +8,7 @@ namespace BridgesDomain.Model
         public string Environment { get; set; }
         public string EmailAddress => "seanmccann@hotmail.com";
         public string ConnectionString { get; set; }
-        public DateTime SessionStart => DateTime.Now;
+        public DateTime LastRefreshed => DateTime.Now;
         public bool IsDevelopment => Environment.ToLowerInvariant() == "development";
     }
 }

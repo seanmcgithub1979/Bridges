@@ -4,6 +4,7 @@ using BridgesRepo;
 using BridgesRepo.Data;
 using BridgesRepo.Interfaces;
 using BridgesService.Interfaces;
+using BridgesService.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -31,7 +32,6 @@ namespace Bridges
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = configuration.GetConnectionString("BridgesDbContext");
-
             config = new Config { ConnectionString = connectionString };
 
             services.AddRazorPages();
@@ -39,19 +39,22 @@ namespace Bridges
             services.AddServerSideBlazor();
 
             services.Configure<RazorPagesOptions>(options => options.RootDirectory = "/Pages");
-
-            services.AddSingleton<IConfig, Config>();
-            services.AddSingleton(config);
             
-            services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddSingleton(config);
+
             services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
             services.AddScoped<ICommentRepo, CommentRepoSqlServer>();
 
-            //services.AddScoped<IBridgeRepo, BridgeRepoMock>();
-            //services.AddScoped<ICommentRepo, CommentRepoMock>();
+            services.AddScoped<ICoordsService, CoordsService>();
 
+            services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<IBridgesService, BridgesService.Services.BridgesService>();
             services.AddScoped<ICommentService, BridgesService.Services.CommentService>();
+
+            #region mocks
+            //services.AddScoped<IBridgeRepo, BridgeRepoMock>();
+            //services.AddScoped<ICommentRepo, CommentRepoMock>();
+            #endregion
 
             services.AddAuthentication(sharedOptions =>
             {

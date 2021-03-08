@@ -15,11 +15,10 @@ namespace BridgesService.Services
 
         private readonly River river = new(54.9136984, -1.3697736, 54.75, -2.2225);
 
-        public BridgesService(IBridgeRepo repo)
+        public BridgesService(IBridgeRepo repo, ICoordsService coordsService)
         {
             this.repo = repo;
-            coordsService = new CoordsService();
-            //this.coordsService = coordsService;
+            this.coordsService = coordsService;
             BuildColourMap();
         }
         

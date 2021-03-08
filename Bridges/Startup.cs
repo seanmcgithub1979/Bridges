@@ -44,7 +44,6 @@ namespace Bridges
 
             services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
             services.AddScoped<ICommentRepo, CommentRepoSqlServer>();
-
             services.AddScoped<ICoordsService, CoordsService>();
 
             services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));

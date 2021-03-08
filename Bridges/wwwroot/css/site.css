@@ -378,6 +378,15 @@ footer {
     color: white;
 }
 
+.status-top {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: none;
+    color: darkorange;
+    font-size: 12px;
+}
 .status-bottom {
     position: fixed;
     width: 100%;

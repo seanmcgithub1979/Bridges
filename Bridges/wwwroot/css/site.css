@@ -15,7 +15,6 @@ img:hover {
     cursor: pointer;
 }
 
-
 body {
     font-family: 'Century Gothic';
     background-image: url("/Images/bkgrd.jpg");
@@ -378,21 +377,43 @@ footer {
     color: white;
 }
 
+.main-body {
+    position: fixed;
+    width: 87%;
+    /*height: 95%;*/
+    top: 50px;
+    bottom: 60px;
+    left: 225px;
+    /*right:25px;*/
+    background: none;
+    overflow-y: scroll;
+}
 .status-top {
     position: fixed;
     width: 100%;
     top: 0;
-    left: 0;
+    left: 200px;
     background: none;
     color: darkorange;
+    font-size: 12px;
+}
+.status-secondbottom {
+    position: fixed;
+    width: 100%;
+    bottom: 24px;
+    left: 200px;
+    background-color: darkslategray;
+    color: whitesmoke;
     font-size: 12px;
 }
 .status-bottom {
     position: fixed;
     width: 100%;
     bottom: 0;
-    left: 0;
+    left: 200px;
+    height: 24px;
     background-color: black;
     color: darkorange;
     font-size: 12px;
 }
+

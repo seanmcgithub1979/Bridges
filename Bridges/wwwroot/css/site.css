@@ -35,7 +35,7 @@ table {
 
 table td, table th {
     border: 1px solid darkslategray;
-    padding: 4px;
+    padding: 2px;
 }
 
 table tr {
@@ -411,6 +411,7 @@ footer {
     bottom: 0;
     left: 200px;
     height: 24px;
+    alignment: left;
     background-color: black;
     color: darkorange;
     font-size: 12px;

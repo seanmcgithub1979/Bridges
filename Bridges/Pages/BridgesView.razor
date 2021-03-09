@@ -4,7 +4,6 @@
 
 @using BridgesService.Interfaces
 
-<br />
 <table>
     <thead>
     <h6>
@@ -13,9 +12,9 @@
     </thead>
     @{
         var i = 1;
-
         var bridgeCount = bridgesService.GetAllBridges().Count();
         var imagesPerPage = 16;
+
         <tr>
         @foreach (var bridge in bridgesService.GetBridgesInRange(imagesPerPage, (Page - 1) * imagesPerPage))
         {

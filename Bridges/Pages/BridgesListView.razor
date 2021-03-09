@@ -19,8 +19,6 @@
 </style>
 
 @{
-    var bridgeCount = bridgesService.GetAllBridges().Count();
-    var bridgesPerPage = 10;
     var exportedFilename = string.Empty;
 
     switch (Action.ToLowerInvariant())
@@ -69,38 +67,43 @@
         <msginfo>SUCCESS - Exported <a href="file:////Bridges/@exportedFilename">@exportedFilename</a></msginfo>
         <hr />
     }
+
+    var bridgeCount = bridgesService.GetAllBridges().Count();
+    var bridgesPerPage = 11;
     
     <table>
         <thead>
-        <h6>
-            <th>Name</th>
-            @*<th>Description</th>*@
-            @*<th>Filename</th>*@
-            <th>Lat</th>
-            <th>Lng</th>
-            <th>Distance To Mouth (miles)</th>
-            <th>Distance From Source (miles)</th>
-            <th>Source - Mouth</th>
-            <th>Zoom (maps)</th>
-            <th>Height (maps)</th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </h6>
+            <h6>
+                <th>Name</th>
+                @*<th>Description</th>*@
+                @*<th>Filename</th>*@
+                <th>Lat</th>
+                <th>Lng</th>
+                <th>Distance To Mouth (miles)</th>
+                <th>Distance From Source (miles)</th>
+                <th>Source - Mouth</th>
+                <th>Zoom (maps)</th>
+                <th>Height (maps)</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </h6>
         </thead>
         @foreach (var bridge in bridgesService.GetBridgesInRange(bridgesPerPage, (Page - 1) * bridgesPerPage))
         {
+            var hexColor = bridgesService.GetHexColor(@bridge.DistanceToMouthMiles);
             var satParams = "!3m1!1e3";
             var url = $"https://www.google.co.uk/maps/@{@bridge.Lat},{@bridge.Lng},{@bridge.Height}m/data={satParams}";
-            @*<tr style="background-color: aquamarine">*@
+            
             <tr>
                 <td><a href="bridgesdetailview/view/@bridge.Id/@bridge.Name/@bridge.Filename/@bridge.Description/@bridge.Lat/@bridge.Lng/@bridge.Zoom/@bridge.Height/">@bridge.Name</a></td>
                 @*<td>@bridge.Description</td>*@
                 @*<td>@bridge.Filename</td>*@
+
                 <td>@bridge.Lat.ToString("##.######")</td>
                 <td>@bridge.Lng.ToString("##.######")</td>
-                <td style="background-color: @bridgesService.GetHexColor(@bridge.DistanceToMouthMiles)">@bridge.DistanceToMouthMiles.ToString("#.##")</td><td>@bridge.DistanceFromSourceMiles.ToString("#.##")</td>
-                <td><progress value="@bridge.DistanceFromSourceMiles" max="57" style="width: 100%; height: 50px;"></progress></td>
+                <td style="background-color: @hexColor">@bridge.DistanceToMouthMiles.ToString("#.##")</td><td>@bridge.DistanceFromSourceMiles.ToString("#.##")</td>
+                <td><progress value="@bridge.DistanceFromSourceMiles" max="57" style="width: 100%;"></progress></td>
                 <td>@bridge.Zoom.ToString("#.##")</td>
                 <td>@bridge.Height.ToString("#.##")</td>
                 <td><a href="@url" target="_blank"><img src="Images/maps-icon.jfif"/></a></td>

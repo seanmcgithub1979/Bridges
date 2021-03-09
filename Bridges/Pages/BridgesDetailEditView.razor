@@ -70,15 +70,14 @@
                         </tr>
                         <tr>
                             <td><label>Distance To Mouth (miles)</label></td>
-                            <td><input type="text" id="distToMouthId" name="distToMouth" readonly="true" value=@bridge.DistanceToMouthMiles.ToString("#.##")/></td>
+                            <td><label>@bridge.DistanceToMouthMiles.ToString("#.##")</label></td>
                         </tr>
                         <tr>
                             <td><label>Distance To Source (miles)</label></td>
-                            <td><input type="text" id="distFromSourceId" name="distToMouth" readonly="true" value=@bridge.DistanceFromSourceMiles.ToString("#.##")/></td>
+                            <td><label>@bridge.DistanceFromSourceMiles.ToString("#.##")</label></td>
                         </tr>
                         <tr>
-                            <td><label>Source - Mouth</label></td>
-                            <td><progress value="@bridge.DistanceFromSourceMiles" max="57" style="width: 100%; height: 50px;"></progress></td>
+                            <td colspan="2"><progress value="@bridge.DistanceFromSourceMiles" max="57" style="width: 100%; height: 50px;"></progress></td>
                         </tr> 
                         <tr>
                             <td><label>Zoom (maps)</label></td>
@@ -90,7 +89,7 @@
                         </tr>
                         <tr>
                             <td><label>Last modified</label></td>
-                            <td><input type="text" id="lastModified" name="height" value="@bridge.LastModified.ToString("dd/MM/yyyy HH:mm")" /></td>
+                            <td><label>@bridge.LastModified.ToString("dd/MM/yyyy HH:mm")</label></td>
                         </tr>
                         <tfoot>
                         <th colspan="2" style="text-align: right;">

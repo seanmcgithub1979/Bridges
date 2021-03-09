@@ -68,3 +68,7 @@ function SaveComment(comment, from, emailAddress) {
         + encodeURIComponent(emailAddress) + "/";
     window.location.href = url;
 };
+
+function GetScreenHeight() {
+    return window.screen.availHeight;
+}

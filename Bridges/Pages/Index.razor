@@ -23,10 +23,8 @@
         <hr/>
     }
 }
-
-<body>
 <br/>
-    <div style="background-color: lightgoldenrodyellow; opacity: 0.8;">
+<div style="background-color: lightgoldenrodyellow; opacity: 0.8;">
         <h3>Welcome to our site</h3>
         <h4>Here you can view and read about bridges over the River Wear</h4>
         <hr />
@@ -53,7 +51,7 @@
                     <thead>
                     <h6>
                         <th>Comments</th>
-                        <th colspan="3" style="text-align: right;"><img src="Images/A-icon.png" style="width: 32px; height: 32px" onclick="AddComment();"/></th>
+                        <th colspan="3" style="text-align: right;"><a href="commentsdetaileditview"><img src="Images/A-icon.png" style="width: 32px; height: 32px" /></a></th>
                     </h6>
                     </thead>
                     @foreach (Comment comment in commentService.GetAllComments().OrderByDescending(x => x.CommentDate))
@@ -73,11 +71,6 @@
         </td>
     </tr>
 </table>
-
-
-<br />
-
-</body>
 
 @code
 {

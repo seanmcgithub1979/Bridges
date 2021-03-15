@@ -42,8 +42,7 @@ var SCALING_MODE_CONTAIN = 3; //Sets 'background-size' to 'contain'. This scales
  */
 $.fn.backgroundCycle = function(options) {
   var settings = $.extend(
-    {
-      imageUrls: [],
+    { imageUrls: [],
       duration: 5000,
       fadeSpeed: 1000,
       backgroundSize: SCALING_MODE_NONE

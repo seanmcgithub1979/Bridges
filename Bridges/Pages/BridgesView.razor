@@ -4,6 +4,8 @@
 
 @using BridgesService.Interfaces
 
+<link href="css/image-effects.css" rel="stylesheet" />
+
 <table>
     <thead>
     <h6>
@@ -19,11 +21,17 @@
         @foreach (var bridge in bridgesService.GetBridgesInRange(imagesPerPage, (Page - 1) * imagesPerPage))
         {
             <td style="background-color: @bridgesService.GetHexColor(@bridge.DistanceToMouthMiles)">
-                <a href="bridgesdetailview/view/@bridge.Id/@bridge.Name/@bridge.Filename/@bridge.Description/@bridge.Lat/@bridge.Lng/@bridge.Zoom/@bridge.Height/">
-                    <h6>@bridge.Name</h6>
-                    <img alt="No image found for @bridge.Name with Filename: @bridge.Filename" title="@bridge.Description" 
-                         src="Images/Thumbs/@bridge.Filename">
-                </a>
+                <div class="frame col-xs-6">
+                    <a href="bridgesdetailview/view/@bridge.Id/@bridge.Name/@bridge.Filename/@bridge.Description/@bridge.Lat/@bridge.Lng/@bridge.Zoom/@bridge.Height/">
+                        <h6>@bridge.Name</h6>
+                        <img alt="No image found for @bridge.Name with Filename: @bridge.Filename" title="@bridge.Description"
+                             src="Images/Thumbs/@bridge.Filename">
+                        <div class="details">
+                            <h5>@bridge.Name</h5>
+                            <p>@bridge.Description</p>
+                        </div>
+                    </a>
+                </div>
             </td>
 
             if (i % Colcount == 0)

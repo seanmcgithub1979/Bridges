@@ -1,7 +1,7 @@
-﻿function AddBridge() {
+﻿//function AddBridge() {
 
-    window.location.href = "bridgesdetaileditview/add/0/";
-};
+//    window.location.href = "bridgesdetaileditview/add/0/";
+//};
 
 function UpdateBridge(id, name, filename, desc, lat, lng, zoom, height, fileToUpload) {
 

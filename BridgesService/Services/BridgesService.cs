@@ -13,8 +13,6 @@ namespace BridgesService.Services
         private readonly ICoordsService coordsService;
         private IDictionary<int, string> colorMap;
 
-        private readonly River river = new(54.9136984, -1.3697736, 54.75, -2.2225);
-
         public BridgesService(IBridgeRepo repo, ICoordsService coordsService)
         {
             this.repo = repo;
@@ -39,11 +37,7 @@ namespace BridgesService.Services
 
         public Bridge GetBridgeByName(string name)
         {
-            Bridge bridge = repo.GetBridgeByName(name);
-            
-            bridge.AssignRiver(river);
-            
-            return bridge;
+            return repo.GetBridgeByName(name);
         }
         
         public void Add(Bridge bridge)

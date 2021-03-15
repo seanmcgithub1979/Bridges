@@ -11,9 +11,7 @@ namespace BridgesDomain.Model
             AssignRiver(riverWear);
         }
 
-        public int Id { get; set; }
-
-        public Bridge(string name,
+                public Bridge(string name,
             string filename,
             string description,
             double lat,
@@ -29,10 +27,10 @@ namespace BridgesDomain.Model
             Zoom = zoom;
             Height = height;
 
-            
             AssignRiver(riverWear);
         }
 
+	public int Id { get; set; }
         public string Name { get; set; }
         public string Filename { get; set; }
         public byte[] FileBytes { get; set; }

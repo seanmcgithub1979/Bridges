@@ -46,7 +46,16 @@
         <tfoot>
             <th colspan="@Colcount">
                 <div class="pagination">
-                    @for (i = 1; i <= (bridgeCount / imagesPerPage); i++)
+
+                    @{
+                        var pages = bridgeCount / imagesPerPage;
+                        if (bridgeCount % imagesPerPage > 0)
+                        {
+                            pages++;
+                        }
+                    }
+
+                    @for (i = 1; i <= pages ; i++)
                     {
                         <span><a href="bridgesview/@Colcount/@i">@i</a></span>
                     }

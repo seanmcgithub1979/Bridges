@@ -114,7 +114,14 @@
         <tfoot>
         <th colspan="3">
             <div class="pagination">
-                @for (var i = 1; i <= (bridgeCount / bridgesPerPage) + 1; i++)
+                @{
+                    var pages = bridgeCount / bridgesPerPage;
+                    if (bridgeCount % bridgesPerPage > 0)
+                    {
+                        pages++;
+                    }
+                }
+                @for (var i = 1; i <= pages; i++)
                 {
                     <span><a href="bridgeslistview/list/@i">@i</a></span>
                 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using BridgesDomain.Model;
 using BridgesRepo.Interfaces;
 using BridgesService.Interfaces;
@@ -45,9 +46,13 @@ namespace BridgesService.Services
             repo.Add(bridge);
         }
 
-        public void Update(Bridge bridge)
+        public void Update(Bridge bridge, bool addImage = false)
         {
-            AddImageToBridge(bridge);
+            if (addImage)
+            {
+                AddImageToBridge(bridge);
+            }
+            
             StampCalculatedDistances(bridge);
             StampModifiedDate(bridge);
             
@@ -57,6 +62,23 @@ namespace BridgesService.Services
         public void Delete(Bridge bridge)
         {
             repo.Delete(bridge);
+        }
+
+        public string GetFilenamesForBackgroundCycle()
+        {
+            StringBuilder bob = new StringBuilder();
+            {
+                DirectoryInfo dir = new(@"wwwroot\Images\Thumbs");
+                foreach (FileInfo fi in dir.GetFiles())
+                {
+                    bob.Append($"Images/Thumbs/{fi.Name},");
+                }
+
+                bob.Remove(bob.Length - 1, 1);
+            }
+
+            return bob.ToString();
+
         }
 
         private void AddImageToBridge(Bridge bridge)
@@ -122,7 +144,6 @@ namespace BridgesService.Services
                 }
 
                 return filename;
-
             }
             catch (Exception e)
             {
@@ -157,7 +178,6 @@ namespace BridgesService.Services
                 sw.WriteLine("</table></body></html>");
 
                 return filename;
-
             }
             catch (Exception e)
             {
@@ -191,7 +211,6 @@ namespace BridgesService.Services
                 sw.WriteLine("</xml>");
 
                 return filename;
-
             }
             catch (Exception e)
             {

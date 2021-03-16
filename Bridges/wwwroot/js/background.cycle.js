@@ -19,19 +19,20 @@ $.fn.backgroundCycle = function () {
     var children = this.children().detach();
     contents.append(children);
 
+    var dir = 'Images/Thumbs/';
     imageUrls = [
-        "Images/Thumbs/Image1.jpg",
-        "Images/Thumbs/Image2.jpg",
-        "Images/Thumbs/Image3.jpg",
-        "Images/Thumbs/Image4.jpg",
-        "Images/Thumbs/Image5.jpg",
-        "Images/Thumbs/Image6.jpg",
-        "Images/Thumbs/Image7.jpg",
-        "Images/Thumbs/Image8.jpg",
-        "Images/Thumbs/Image9.jpg",
-        "Images/Thumbs/Image10.jpg"
+        dir + 'Image1.jpg',
+        dir + 'Image2.jpg',
+        dir + 'Image3.jpg',
+        dir + 'Image4.jpg',
+        dir + 'Image5.jpg',
+        dir + 'Image6.jpg',
+        dir + 'Image7.jpg',
+        dir + 'Image8.jpg',
+        dir + 'Image9.jpg',
+        dir + 'Image10.jpg'
     ];
-
+    
     for (var i = 0; i < imageUrls.length; i++) {
         var id = "bgImage" + i;
         var src = imageUrls[i];
@@ -90,6 +91,3 @@ function cycleToNextImage() {
    
     currentImageIndex++;
 }
-
-
-

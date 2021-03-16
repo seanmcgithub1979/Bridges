@@ -90,7 +90,6 @@ namespace Bridges
             //app.UseMvc();
             
             app.UseHttpsRedirection();
-            //app.UseStaticFiles();
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {

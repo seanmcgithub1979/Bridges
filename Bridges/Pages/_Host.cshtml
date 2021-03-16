@@ -1,5 +1,9 @@
 ﻿@page "/"
 
+@using BridgesService.Interfaces
+
+@inject IBridgesService bridgeService;
+
 @namespace Bridges.Pages
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

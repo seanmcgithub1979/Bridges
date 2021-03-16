@@ -12,8 +12,10 @@ namespace BridgesService.Interfaces
         Bridge GetBridgeByName(string name);
         
         void Add(Bridge bridge);
-        void Update(Bridge bridge);
+        void Update(Bridge bridge, bool addImage = false);
         void Delete(Bridge bridge);
+        
+        string GetFilenamesForBackgroundCycle();
         
         string ExportToCsv();
         string ExportToTxt(string delim = "\t");

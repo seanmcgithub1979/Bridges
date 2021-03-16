@@ -23,7 +23,7 @@ namespace BridgesRepo
         // Used in paging
         public IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx)
         {
-            return GetAllBridges()
+            return context.Bridges
                 .Skip(startIdx)
                 .Take(noOfBridges);
         }

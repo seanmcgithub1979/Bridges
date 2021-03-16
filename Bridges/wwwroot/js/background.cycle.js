@@ -1,25 +1,24 @@
-var currentImageIndex = 0;
+var currentImageIndex = 1;  // Skip 1st image initially as it's faded in on load
 var imageIds = new Array();
 var imageUrls = new Array();
-var fadeSpeed;
 
 $.fn.backgroundCycle = function () {
-  var marginTop = this.css("margin-top");
-  var marginRight = this.css("margin-right");
-  var marginBottom = this.css("margin-bottom");
-  var marginLeft = this.css("margin-left");
 
-  if (!this.is("body")) {
-    this.css({
-      position: "relative"
-    });
-  }
+    var marginTop = this.css("margin-top");
+    var marginRight = this.css("margin-right");
+    var marginBottom = this.css("margin-bottom");
+    var marginLeft = this.css("margin-left");
 
-  var contents = $(document.createElement("div"));
-  var children = this.children().detach();
-  contents.append(children);
+    if (!this.is("body")) {
+        this.css({
+            position: "relative"
+        });
+    }
 
-  imageUrls = ["Images/bkgrd.jpg", "Images/bkgrd2.jpg"];
+    var contents = $(document.createElement("div"));
+    var children = this.children().detach();
+    contents.append(children);
+
     imageUrls = [
         "Images/Thumbs/Image1.jpg",
         "Images/Thumbs/Image2.jpg",
@@ -31,49 +30,48 @@ $.fn.backgroundCycle = function () {
         "Images/Thumbs/Image8.jpg",
         "Images/Thumbs/Image9.jpg",
         "Images/Thumbs/Image10.jpg"
-        ];
+    ];
 
-  for (var i = 0; i < imageUrls.length; i++) {
-    var id = "bgImage" + i;
-    var src = imageUrls[i];
-    var cssClass = "cycle-bg-image";
+    for (var i = 0; i < imageUrls.length; i++) {
+        var id = "bgImage" + i;
+        var src = imageUrls[i];
+        var cssClass = "cycle-bg-image";
 
-    var image = $(document.createElement("div"));
-    image.attr("id", id);
-    image.attr("class", cssClass);
+        var image = $(document.createElement("div"));
+        image.attr("id", id);
+        image.attr("class", cssClass);
 
-    image.css({
-        "background-image": "url('" + src + "')",
-        "background-repeat": "no-repeat",
-        "background-position": "bottom",
-        "background-size": "cover",
-        "-moz-background-size": "cover",
-        "-webkit-background-size": "cover",
-        position: "fixed",
+        image.css({
+            "background-image": "url('" + src + "')",
+            "background-repeat": "no-repeat",
+            "background-position": "bottom",
+            "background-size": "cover",
+            "-moz-background-size": "cover",
+            "-webkit-background-size": "cover",
+            position: "fixed",
+            left: marginLeft,
+            top: marginTop,
+            right: marginRight,
+            bottom: marginBottom
+        });
+
+        this.append(image);
+
+        imageIds.push(id);
+    }
+
+    $(".cycle-bg-image").hide();
+    $("#" + imageIds[0]).fadeIn();
+
+    contents.css({
+        position: "absolute",
         left: marginLeft,
         top: marginTop,
         right: marginRight,
         bottom: marginBottom
     });
 
-    this.append(image);
-
-      imageIds.push(id);
-
-      $(".cycle-bg-image").hide();
-      $("#" + imageIds[0]).fadeIn();
-  }
-
-  contents.css({
-    position: "absolute",
-    left: marginLeft,
-    top: marginTop,
-    right: marginRight,
-    bottom: marginBottom
-  });
-
-  this.append(contents);
-
+    this.append(contents);
 };
 
 function cycleToNextImage() {
@@ -83,6 +81,7 @@ function cycleToNextImage() {
         $("#" + imageIds[imageIds.length - 1]).fadeOut(1000);
     }
 
+    // We must fade out the last image, else it's opacity will remain at 1
     if (currentImageIndex > 0) {
         $("#" + imageIds[currentImageIndex - 1]).fadeOut(1000);
     }
@@ -91,3 +90,6 @@ function cycleToNextImage() {
    
     currentImageIndex++;
 }
+
+
+

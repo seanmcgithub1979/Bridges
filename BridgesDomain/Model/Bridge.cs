@@ -11,7 +11,7 @@ namespace BridgesDomain.Model
             AssignRiver(riverWear);
         }
 
-                public Bridge(string name,
+        public Bridge(string name,
             string filename,
             string description,
             double lat,

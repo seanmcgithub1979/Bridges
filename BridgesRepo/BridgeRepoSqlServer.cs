@@ -17,13 +17,13 @@ namespace BridgesRepo
 
         public IEnumerable<Bridge> GetAllBridges()
         {
-            return context.Bridges;
+            return context.Bridges.OrderBy(o => o.DistanceFromSourceMiles);
         }
 
         // Used in paging
         public IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx)
         {
-            return context.Bridges
+            return GetAllBridges()
                 .Skip(startIdx)
                 .Take(noOfBridges);
         }

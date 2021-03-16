@@ -57,7 +57,7 @@
                     @foreach (Comment comment in commentService.GetAllComments().OrderByDescending(x => x.CommentDate))
                         {
                             <tr>
-                                <td style="width: 50px">@comment.CommentDate</td>
+                                <td style="width: 50px">@comment.CommentDate.ToString("dd/MM/yyyy HH:mm")</td>
                                 <td style="width: 450px">@comment.CommentContent</td>
                                 <td>@comment.From</td>
                                 <td>@comment.EmailAddress</td>

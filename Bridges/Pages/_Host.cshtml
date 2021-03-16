@@ -26,8 +26,14 @@
 
     <script src="js/jquery-3.5.1.js"></script>
     <script src="js/scripts.js"></script>
-
-    @*<script src="js/background.cycle.js"></script>*@
+    <script src="js/background.cycle.js"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("body").backgroundCycle();
+            setInterval(cycleToNextImage, 5000);
+        });
+    </script>
 
     @*<script src="_framework/blazor.server.js"></script>*@
 </head>

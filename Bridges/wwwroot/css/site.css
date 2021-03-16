@@ -17,8 +17,9 @@ img:hover {
 
 body {
     font-family: 'Century Gothic';
-    background-image: url("/Images/bkgrd.jpg");
-    background-size: cover;
+    /*background-image: url("/Images/bkgrd.jpg");
+    background-size: cover;*/
+    background-color: darkslategray;
 }
 
 textarea {

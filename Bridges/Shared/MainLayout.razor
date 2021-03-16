@@ -11,35 +11,35 @@
         <h3><a href="bridgeslistview/view/1" style="color: white;">Bridges over the River Wear</a></h3>
     </div>
     @*<header></header>*@
-    <div class ="main-body">
-        @Body
-    </div>
     <div class="status-top">
         <a href="bridgeslistview/view/1/"> List</a>
+    </div>
+    <div class="main-body">
+        @Body
     </div>
     <div class="status-bottom">
         @if (!config.IsDevelopment)
         {
-        <table style="background-color: black; color: lightgreen;">
-            <td style="background-color: lightgreen; color: black;">Env: @config.Environment</td>
-            <td style=" background-color: black; color: lightgreen;">
-                conn: @config.ConnectionString.Replace("User ID=mail.seanmccann@gmail.com@gsrm;Password=Ejifgi1979$;", "");
-            </td>
-            <td style="background-color: black; color: lightgreen;"><a href="mailto:@config.EmailAddress" style="color: white;">Email</a></td>
-            <td style="background-color: black; color: lightgreen; text-align: right;">Refeshed at: @config.LastRefreshed</td>
-        </table>
+            <table style="background-color: black; color: lightgreen;">
+                <td style="background-color: lightgreen; color: black;">Env: @config.Environment</td>
+                <td style=" background-color: black; color: lightgreen;">
+                    conn: @config.ConnectionString.Replace("User ID=mail.seanmccann@gmail.com@gsrm;Password=Ejifgi1979$;", "");
+                </td>
+                <td style="background-color: black; color: lightgreen;"><a href="mailto:@config.EmailAddress" style="color: white;">Email</a></td>
+                <td style="background-color: black; color: lightgreen; text-align: right;">Refeshed at: @config.LastRefreshed</td>
+            </table>
         }
         else
         {
-        <table style="background-color: black; color: orangered;">
+            <table style="background-color: black; color: orangered;">
 
-            <td style="background-color: orangered; color: black;">Env: @config.Environment</td>
-            <td style="background-color: black; color: orangered;">
-                conn: @config.ConnectionString;
-            </td>
-            <td style="background-color: black; color: orangered;"><a href="mailto:@config.EmailAddress" style="color: white;">Email</a></td>
-            <td style="background-color: black; color: orangered; text-align: left;">Refeshed at: @config.LastRefreshed</td>
-        </table>
+                <td style="background-color: orangered; color: black;">Env: @config.Environment</td>
+                <td style="background-color: black; color: orangered;">
+                    conn: @config.ConnectionString;
+                </td>
+                <td style="background-color: black; color: orangered;"><a href="mailto:@config.EmailAddress" style="color: white;">Email</a></td>
+                <td style="background-color: black; color: orangered; text-align: left;">Refeshed at: @config.LastRefreshed</td>
+            </table>
         }
     </div>
 </div>

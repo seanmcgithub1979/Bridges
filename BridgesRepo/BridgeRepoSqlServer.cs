@@ -15,9 +15,17 @@ namespace BridgesRepo
             this.context = context;
         }
 
+        public IEnumerable<Bridge> GetAllBridges()
+        {
+            return context.Bridges.OrderBy(o => o.DistanceFromSourceMiles);
+        }
+
+        // Used in paging
         public IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx)
         {
-            return GetAllBridges().Skip(startIdx).Take(noOfBridges);
+            return GetAllBridges()
+                .Skip(startIdx)
+                .Take(noOfBridges);
         }
 
         public Bridge GetBridgeById(int id)
@@ -35,7 +43,7 @@ namespace BridgesRepo
             context.Bridges.Add(bridge);
             context.SaveChanges();
         }
-        
+
         public void Delete(Bridge bridge)
         {
             context.Bridges.Remove(bridge);
@@ -46,11 +54,6 @@ namespace BridgesRepo
         {
             context.Bridges.Update(bridge);
             context.SaveChanges();
-        }
-
-        public IList<Bridge> GetAllBridges()
-        {
-            return context.Bridges.ToList();
         }
     }
 }

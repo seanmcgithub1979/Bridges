@@ -1,35 +1,49 @@
 ﻿@page "/commentsdetaileditview"
 
-@inject ICommentService CommentService;
-
-@using BridgesDomain.Model
-@using BridgesService.Interfaces
-
 <style>
+    img {
+        width: 32px;
+        height: 32px;
+        border: none;
+        horiz-align: center;
+    }
+
+    img:hover {
+        box-shadow: 0 0 2px 1px darkslategray);
+    }
+
     input {
         width: 400px;
     }
-
-    td {
-        opacity: 0.9;
-    }
 </style>
 
-@{
-    Comment comment = new();;
+<table>
+    <thead>
+        <h6>
+        <th colspan="2">Add comment</th></h6>
+    </thead>
+    <td style="width: 20%; vertical-align: top;">
+        <table>
 
-    <br/>
-   
-    <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%;">
-        <tr>
-            <td><label>Comment</label></td>
-            <td><textarea id="inputCommentContent" style="height: 400px; width: 100%;">@comment.CommentContent</textarea></td>
-        </tr>
-        <tr>
-            <td colspan="2" style="text-align: right; horiz-align: right; background-color: darkslategray; color: lightgoldenrodyellow;">
-                <input type="button" id="btnSave" value="Save"
-                       onclick="SaveComment(inputCommentContent.value);" />
-            </td>
-        </tr>
-    </table>
-}
+            <tr><label>From</label></tr>
+            <tr><input type="text" id="inputCommentFrom"></tr>
+            <tr><label>Email</label></tr>
+            <tr><input type="text" id="inputCommentEmailAddress"></tr>
+        </table>
+    </td>
+    <td style="vertical-align: top;">
+        <table>
+            <tr><label style="vertical-align: top;">Comment</label></tr>
+            <tr><textarea id="inputCommentContent" style="height: 300px"></textarea></tr>
+        </table>
+    </td>
+    <tfoot>
+    <th colspan="2" style="text-align: right;">
+        <img src="Images/S-icon.png"
+               onclick="SaveComment(
+                            inputCommentContent.value,
+                            inputCommentFrom.value,
+                            inputCommentEmailAddress.value);" />
+    </th>
+    </tfoot>
+</table>

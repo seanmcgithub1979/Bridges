@@ -1,8 +1,14 @@
+using Bridges.Extensions;
+using BridgesDomain.Interfaces;
+using BridgesDomain.Model;
 using BridgesRepo;
 using BridgesRepo.Data;
 using BridgesRepo.Interfaces;
-using BridgesRepo.Mocks;
 using BridgesService.Interfaces;
+using BridgesService.Services;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -15,38 +21,50 @@ namespace Bridges
 {
     public class Startup
     {
+        private readonly IConfiguration configuration;
+        private IConfig config;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.configuration = configuration;
         }
-
-        private IConfiguration Configuration { get; }
-
+        
         // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("BridgesDbContext");
-            
+            var connectionString = configuration.GetConnectionString("BridgesDbContext");
+            config = new Config { ConnectionString = connectionString };
+
             services.AddRazorPages();
-            
+
             services.AddServerSideBlazor();
-            
+
             services.Configure<RazorPagesOptions>(options => options.RootDirectory = "/Pages");
             
-            services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));
-            services.AddDbContext<CommentsDbContext>(options => options.UseSqlServer(connectionString));
-            
-            services.AddScoped<ICommentRepo, CommentRepoSqlServer>();
-            //services.AddScoped<ICommentRepo, CommentRepoMock>();
+            services.AddSingleton(config);
 
-            //services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
-            services.AddScoped<IBridgeRepo, BridgeRepoMock>();
-            
+            services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
+            services.AddScoped<ICommentRepo, CommentRepoSqlServer>();
+            services.AddScoped<ICoordsService, CoordsService>();
+
+            services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<IBridgesService, BridgesService.Services.BridgesService>();
             services.AddScoped<ICommentService, BridgesService.Services.CommentService>();
-            
-            //services.Configure<EmailSettingsOptions>(Configuration.GetSection("EmailSettings"));
+
+            #region mocks
+            //services.AddScoped<IBridgeRepo, BridgeRepoMock>();
+            //services.AddScoped<ICommentRepo, CommentRepoMock>();
+            #endregion
+
+            services.AddAuthentication(sharedOptions =>
+            {
+                sharedOptions.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                sharedOptions.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+            })
+            .AddAzureAd(options => configuration.Bind("AzureAd", options))
+            .AddCookie();
+
+            services.AddApplicationInsightsTelemetry(configuration["APPINSIGHTS_CONNECTIONSTRING"]);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,17 +72,24 @@ namespace Bridges
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                config.Environment = "development";
+                //app.UseDirectoryBrowser();
+                //app.UseDeveloperExceptionPage();
             }
             else
             {
+                config.Environment = "production";
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseDeveloperExceptionPage();
+
             app.UseStaticFiles();
+            app.UseAuthentication();
+            //app.UseMvc();
+            
+            app.UseHttpsRedirection();
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {

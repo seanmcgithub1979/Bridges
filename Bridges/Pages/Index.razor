@@ -1,4 +1,4 @@
-﻿@page "/{action?}/{comment?}/"
+﻿@page "/{action?}/{comment?}/{from?}/{emailaddress?}"
 
 @inject ICommentService commentService;
 
@@ -6,68 +6,72 @@
 @using BridgesService.Interfaces
 
 <style>
-    div.mainDiv {
-        height: 800px;
-    }
-    div.commentListDiv {
-        width: 817px;
-        height: 650px;
+    div.ex1 {
+        width: 860px;
+        height: 370px;
         overflow-y: scroll;
-        border-style:solid;
-        border: 1px;
-        border-color: darkslategray;
     }
 </style>
 
 @{
     if (!string.IsNullOrEmpty(Action) && Action.ToLowerInvariant() == "savecomment")
     {
-        commentService.AddComment(Comment);
-        <br/>
+        commentService.AddComment(Comment, From, EmailAddress);
+        <hr/>
         <img style="border: none; height: 45px; width: 45px;" src="Images/info.png"/>
-            <msg>SUCCESS - Comment added</msg>
+        <msginfo>SUCCESS - Comment added</msginfo>
         <hr/>
     }
 }
-
-    <body>
-    <br/>
-    <div class="mainDiv">
-        <table class="table" width="80%" height="80%" style=" horiz-align: center; vertical-align: center; opacity: 0.8;
-            background-color: lightgoldenrodyellow; color: darkslategray;
-            border-width: 1px; border-color: lightgoldenrodyellow">
-            <tr>
-                <td>
-                    <h3>Welcome to Bridges over the River Wear.</h3>
-                    <hr />
-                    <p>This site shows some of the bridges over the river Wear.</p>
-                    <p>Contributions by Georgie & Sean.</p>
-                </td>
-                <td>
-                    <div class="commentListDiv">
-                        <table class="table" style="width: 800px; horiz-align: center; vertical-align: center; background-color: lightgoldenrodyellow; opacity: 0.8; color: darkslategray;">
-                            <tr style="background-color: darkslategray; color: white">
-                                <td><h3>Comments</h3></td>
-                                <td style="text-align: right; horiz-align: right;"><input type="button" id="tbnAddComment" onclick="AddComment();" value="Add" /></td>
-                            </tr>
-                            @foreach (Comment comment in commentService.GetAllComments().OrderByDescending(x => x.CommentDate))
-                            {
-                                <tr>
-                                    <td style="width: 20px">@comment.CommentDate</td>
-                                    <td>@comment.CommentContent</td>
-                                </tr>
-                            }
-                        </table>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><p>Some other info here.</p></td>
-            </tr>
-
-        </table>
+<br/>
+<div style="background-color: lightgoldenrodyellow; opacity: 0.8;">
+        <h3>Welcome to our site</h3>
+        <h4>Here you can view and read about bridges over the River Wear</h4>
+        <hr />
+        <p>The River Wear flows through County Durham for the whole of its course.
+            It has its source in the East Pennines on Alston Moor near the A689, the highest main road in England, where the Killhope Burn begins its flow to join the Burnhope Burn at Wearhead to form the River Wear proper.
+            The river then passes through farmland to St John's Chapel, Daddry Shield and Eastgate, and on to the small town of Stanhope situated in a deep valley with steep hills rising on either side. 
+            Then on to Frosterley and Wolsingham after which the river turns southeast to Witton-le-Wear. 
+            From here it winds its way towards the town of Bishop Auckland.
+            Thence it never ceases to wind, progressing in a series of loops to the sea, first turning north for Durham, then north east. 
+            In the old city of Durham the Wear winds itself around the hill on which stand the Norman Cathedral and Castle. 
+            Continuing its winding course to the north the river passes through former coal-mining country and past medieval Finchale Priory towards the town of Chester-le-Street and Lambton Castle, then moving on to Fatfield and to its eventual outlet in the North Sea at the City of Sunderland.
+            There are many bridges, footbridges, and viaducts of all types along the Wear and the river is remarkable for the number of former bridges which have been washed away or damaged by floods and for its many fords. 
+            Quite a few ferries once croseed its waters.</p>
+        <hr />
+        <h5>Please leave a comment below and thank you for visiting our site</h5>
+        <br/>
     </div>
-    </body>
+<br/>
+<table>
+    <tr>
+        <td>
+            <div class="ex1">
+                <table>
+                    <thead>
+                    <h6>
+                        <th>Comments</th>
+                        <th colspan="3" style="text-align: right;">Add:<a href="commentsdetaileditview"><img src="Images/A-icon.png" style="width: 32px; height: 32px" /></a></th>
+                    </h6>
+                    </thead>
+                    @foreach (Comment comment in commentService.GetAllComments().OrderByDescending(x => x.CommentDate))
+                        {
+                            <tr>
+                                <td style="width: 50px">@comment.CommentDate.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td style="width: 450px">@comment.CommentContent</td>
+                                <td>@comment.From</td>
+                                <td>@comment.EmailAddress</td>
+                            </tr>
+                        }
+                </table>
+            </div>
+        </td>
+        <td>
+            <img src="Images/riverwear.png" width="700px" height="370px"/>
+        </td>
+    </tr>
+</table>
+
 @code
 {
     [Parameter]
@@ -75,4 +79,8 @@
 
     [Parameter]
     public string Comment { get; set; }
+    [Parameter]
+    public string From { get; set; }
+    [Parameter]
+    public string EmailAddress { get; set; }
 }

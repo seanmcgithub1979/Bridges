@@ -7,84 +7,98 @@
 
 <style>
     input {
-        width: 400px;
+        width: 650px;
     }
 
-    td {
-        opacity: 0.9;
+    img:hover {
+        box-shadow: 0 0 2px 1px darkslategray);
     }
 </style>
 
 @{
-    Bridge bridge = null;
-
-    bridge = Action.ToLowerInvariant() == "add" ? new Bridge() : bridgesService.GetBridgeById(Id);
+    Bridge bridge = Action.ToLowerInvariant() == "add" ? new Bridge() : bridgesService.GetBridgeById(Id);
 
     if (bridge != null)
     {
-        var lat = @bridge.Lat;
-        var lng = @bridge.Lng;
-        var zoom = @bridge.Zoom;
-        var height = @bridge.Height;
+        var satParams = "!3m1!1e3";
+        var url = $"https://www.google.co.uk/maps/@{@bridge.Lat},{@bridge.Lng},{@bridge.Height}m/data={satParams}";
 
         <br/>
-        <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%;">
-            <tr>
-                <td>
-                    <a href="Images/Original/@bridge.Filename">
-                        <img alt="No image found for bridge with Id: @bridge.Id" height="600px" width="800px" src="Images/Original/@bridge.Filename" style="opacity: 1.0;" />
-                    </a>
+        <table>
+            <thead>
+             <h6>
+                <th colspan="2">@bridge.Name</th>
+            </h6>
+            </thead>
+            <tr style="background-color: @bridgesService.GetHexColor(@bridge.DistanceToMouthMiles)">
+                <td style="width: 40%;">
+                    <img id="imgBridge" alt="No image" height="600px" width="800px" src="Images/Original/@bridge.Filename" />
                 </td>
                 <td>
-                    <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%;">
+                    <table>
                         <tr>
-                            <td><label>Id</label></td>
-                            <td><input type="text" readonly="true" id="inputId" name="name" value="@bridge.Id"/></td>
+                            @*<td><label>Id</label></td>*@
+                            <input type="hidden" id="inputId" name="id" value="@bridge.Id"/>
                         </tr>
                         <tr>
                             <td><label>Name</label></td>
-                            <td><input type="text" id="inputName" name="name" value="@bridge.Name"/></td>
+                            <td><input type="text" id="inputName" name="name" value="@bridge.Name" /></td>
                         </tr>
                         <tr>
-                            <td><label>Filename</label></td>
-                            <td><input type="text" id="inputFilename" name="filename" value="@bridge.Filename"/></td>
+                            <td><label>File to upload</label></td>
+                            <td>
+                                <input type="file" id="fileToUpload"><br />
+                                <input type="button" id="btnfileToUpload" value="Upload" onclick="UploadFile(fileToUpload.files[0]);";>
+                                <br />
+                            </td>
                         </tr>
+                        @*<tr>
+                            <td><label>Filename</label></td>*@
+                            <input type="hidden" id="inputFilename" name="filename" value="@bridge.Filename"/>
+                        @*</tr>*@
                         <tr>
                             <td><label>Description</label></td>
-                            <td><textarea id="inputDesc" style="width: 400px; height: 100px;">@bridge.Description</textarea></td>
+                            <td><textarea id="inputDesc" style="height: 150px;">@bridge.Description</textarea></td>
                         </tr>
                         <tr>
                             <td><label>Lat</label></td>
-                            <td><input type="text" id="inputLat" name="desc" value="@bridge.Lat.ToString("#.######")"/></td>
+                            <td><input type="number" id="inputLat" name="lat" value="@bridge.Lat.ToString("#.######")"/></td>
                         </tr>
                         <tr>
                             <td><label>Lng</label></td>
-                            <td><input type="text" id="inputLng" name="lng" value="@bridge.Lng.ToString("#.######")"/></td>
+                            <td><input type="number" id="inputLng" name="lng" value="@bridge.Lng.ToString("#.######")"/></td>
                         </tr>
                         <tr>
-                            <td><label>Zoom</label></td>
-                            <td><input type="text" id="inputZoom" name="zoom" value="@bridge.Zoom.ToString("#.##")"/></td>
+                            <td><label>Distance To Mouth (miles)</label></td>
+                            <td><label>@bridge.DistanceToMouthMiles.ToString("#.##")</label></td>
                         </tr>
                         <tr>
-                            <td><label>Height</label></td>
-                            <td><input type="text" id="inputHeight" name="height" value="@bridge.Height.ToString("#.##")"/></td>
+                            <td><label>Distance To Source (miles)</label></td>
+                            <td><label>@bridge.DistanceFromSourceMiles.ToString("#.##")</label></td>
                         </tr>
                         <tr>
-                            <td colspan="2" style="text-align: right; horiz-align: right; background-color: darkslategray; color: white;">
-                                <input type="button" id="btnUpdate" value="Update" 
-                                       onclick="UpdateBridge(
-                                                    inputId.value,
-                                                    inputName.value,
-                                                    inputFilename.value,
-                                                    inputDesc.value,
-                                                    inputLat.value,
-                                                    inputLng.value,
-                                                    inputZoom.value,
-                                                    inputHeight.value);"/>
-                                <input type="button" id="btnDelete" style="background-color: red" value="Delete" 
-                                       onclick="DeleteBridge(inputId.value);"/>
-                            </td>
+                            <td colspan="2"><progress value="@bridge.DistanceFromSourceMiles" max="57" style="width: 100%; height: 50px;"></progress></td>
+                        </tr> 
+                        <tr>
+                            <td><label>Zoom (maps)</label></td>
+                            <td><input type="number" id="inputZoom" name="zoom" value="@bridge.Zoom.ToString("#.##")"/></td>
                         </tr>
+                        <tr>
+                            <td><label>Height (maps)</label></td>
+                            <td><input type="number" id="inputHeight" name="height" value="@bridge.Height.ToString("#.##")"/></td>
+                        </tr>
+                        <tr>
+                            <td><label>Last modified</label></td>
+                            <td><label>@bridge.LastModified.ToString("dd/MM/yyyy HH:mm")</label></td>
+                        </tr>
+                        <tfoot>
+                        <th colspan="2" style="text-align: right;">
+                            <a href="@url" target="_blank"><img src="Images/maps-icon.jfif" style="width: 32px; height: 32px; horiz-align: center;" /></a>
+                            <img src="Images/D-icon.png" style="width: 32px; height: 32px; horiz-align: center;" onclick="DeleteBridge(inputId.value); "/>
+                            <img src="Images/S-icon.png" style="width: 32px; height: 32px; horiz-align: center;"
+                                 onclick="UpdateBridge(inputId.value, inputName.value, inputFilename.value, inputDesc.value, inputLat.value, inputLng.value, inputZoom.value, inputHeight.value, fileToUpload);"/>
+                        </th>
+                        </tfoot>
                     </table>
                 </td>
             </tr>

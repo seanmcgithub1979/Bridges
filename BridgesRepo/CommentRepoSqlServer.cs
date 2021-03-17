@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BridgesDomain.Model;
 using BridgesRepo.Data;
 using BridgesRepo.Interfaces;
@@ -7,9 +8,9 @@ namespace BridgesRepo
 {
     public class CommentRepoSqlServer : ICommentRepo
     {
-        private readonly CommentsDbContext context;
+        private readonly BridgesDbContext context;
 
-        public CommentRepoSqlServer(CommentsDbContext context)
+        public CommentRepoSqlServer(BridgesDbContext context)
         {
             this.context = context;
         }

@@ -1,8 +1,14 @@
-﻿function AddBridge() {
-    window.location.href = "bridgesdetaileditview/add/0/";
-};
+﻿//function AddBridge() {
 
-function UpdateBridge(id, name, filename, desc, lat, lng, zoom, height) {
+//    window.location.href = "bridgesdetaileditview/add/0/";
+//};
+
+function UpdateBridge(id, name, filename, desc, lat, lng, zoom, height, fileToUpload) {
+
+    if (fileToUpload != null && fileToUpload.files.length > 0) {
+        filename = fileToUpload.files[0].name;
+    }
+    
     var url = "bridgesdetailview/update/"
         + encodeURIComponent(id) + "/"
         + encodeURIComponent(name) + "/"
@@ -16,6 +22,16 @@ function UpdateBridge(id, name, filename, desc, lat, lng, zoom, height) {
     window.location.href = url;
 };
 
+function UploadFile(file) {
+    //var fReader = new FileReader();
+
+    //fReader.readAsDataURL(file);
+    //fReader.onloadend = function(event) {
+    //    var img = document.getElementById("imgBridge");
+    //    img.src = event.target.result;
+    //}
+};
+
 function DeleteBridge(id) {
     if (confirm("Delete bridge " + id + " ?")) {
         var url = "bridgeslistview/delete/1/"
@@ -25,26 +41,34 @@ function DeleteBridge(id) {
     }
 };
 
-function ExportToCsv() {
-    window.location.href = "bridgeslistview/exporttocsv/1";;
+//function ExportToCsv() {
+//    window.location.href = "bridgeslistview/exporttocsv/1";;
+//};
+
+//function ExportToTxt() {
+//    window.location.href = "bridgeslistview/exporttotxt/1";;
+//};
+
+//function ExportToHtml() {
+//    window.location.href = "bridgeslistview/exporttohtml/1";;
+//};
+
+//function ExportToXml() {
+//    window.location.href = "bridgeslistview/exporttoxml/1";;
+//};
+
+//function AddComment() {
+//    window.location.href = "commentsdetaileditview";
+//};
+
+function SaveComment(comment, from, emailAddress) {
+    var url = "/savecomment/" +
+        encodeURIComponent(comment) + "/"
+        + encodeURIComponent(from) + "/"
+        + encodeURIComponent(emailAddress) + "/";
+    window.location.href = url;
 };
 
-function ExportToTxt() {
-    window.location.href = "bridgeslistview/exporttotxt/1";;
-};
-
-function ExportToHtml() {
-    window.location.href = "bridgeslistview/exporttohtml/1";;
-};
-
-function ExportToXml() {
-    window.location.href = "bridgeslistview/exporttoxml/1";;
-};
-
-function AddComment() {
-    window.location.href = "commentsdetaileditview";
-};
-
-function SaveComment(comment) {
-    window.location.href = "/savecomment/" + comment;
-};
+function GetScreenHeight() {
+    return window.screen.availHeight;
+}

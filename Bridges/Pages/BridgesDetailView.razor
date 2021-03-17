@@ -1,4 +1,4 @@
-﻿@page "/bridgesdetailview/{action}/{id:int}/{name?}/{filename?}/{desc?}/{lat:decimal?}/{lng:decimal?}/{zoom:decimal?}/{height:decimal?}"
+﻿@page "/bridgesdetailview/{action}/{id:int}/{name?}/{filename?}/{desc?}/{lat:double?}/{lng:double?}/{zoom:double?}/{height:double?}"
 
 @inject IBridgesService bridgesService;
 
@@ -6,7 +6,7 @@
 @using BridgesService.Interfaces
 
 @{
-    Bridge bridge = null;
+    Bridge bridge;
     var msgText = string.Empty;
 
     if (!string.IsNullOrEmpty(Action))
@@ -29,6 +29,7 @@
                         bridge.Name = Name;
                         bridge.Filename = Filename;
                         bridge.Description = Desc;
+                        bridge.FileBytes = null;
                         bridge.Lat = Lat;
                         bridge.Lng = Lng;
                         bridge.Zoom = Zoom;
@@ -54,49 +55,53 @@
 
     if (bridge != null)
     {
-        var lat = @bridge.Lat;
-        var lng = @bridge.Lng;
-        var zoom = @bridge.Zoom;
-        var height = @bridge.Height;
         var satParams = "!3m1!1e3";
-        var url = $"https://www.google.co.uk/maps/@{lat},{lng},{height}m/data={satParams}";
+        var url = $"https://www.google.co.uk/maps/@{@bridge.Lat},{@bridge.Lng},{@bridge.Height}m/data={satParams}";
 
-        <br/>
-        @if (!string.IsNullOrEmpty(msgText))
+        if (!string.IsNullOrEmpty(msgText))
         {
-            <img style="border: none; height: 45px; width: 45px;" src="Images/info.png"/>
-            <msg>@msgText</msg>
+            <hr />
+            <img style="border: none; height: 45px; width: 45px;" src="Images/info.png" />
+            <msginfo>@msgText</msginfo>
             <hr />
         }
-
-        <table class="table" style="background-color: lightgoldenrodyellow; color: darkslategray; width: 100%; opacity: 0.8">
-            <tr>
-                <td colspan="2" style="text-align: left; background-color: darkslategray; color: white; opacity: 0.8;">
-                    <h6 style="color: whitesmoke">@bridge.Name<a href=@url>    Show in maps</a></h6>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: lightgoldenrodyellow">
+        <table>
+            <thead>
+                <h6>
+            <th colspan="2">@bridge.Name<a href=@url target="_blank"> Show in maps</a></th>
+            </h6>
+            </thead>
+            <tr style="vertical-align: top; background-color: @bridgesService.GetHexColor(@bridge.DistanceToMouthMiles)">
+                <td style="width: 40%">
                     <a href="Images/Original/@bridge.Filename">
-                        <img alt="No image found for bridge with name: @bridge.Name" height="600" width="800" src="Images/Original/@bridge.Filename" style="opacity: 1.0" />
+                        <img alt="No image found for bridge with name: @bridge.Name" height="600" width="800" src="Images/Original/@bridge.Filename" />
                     </a>
                 </td>
-                <td style="horiz-align: left; vertical-align: text-top; background-color: lightgoldenrodyellow; color: darkslategray; width: 100%">
-                    <h6>Description<a href=@url>    Show in maps</a></h6>
+                <td>
                     <hr />
-
-                    <p>@bridge.Description</p>
-                    <hr />
-                    
-                    <p align="left">Lat: @bridge.Lat.ToString("#.#######")</p>
-                    <p align="left">Lng: @bridge.Lng.ToString("#.#######")</p>
-                    <p align="left">Zoom: @bridge.Zoom.ToString("#.##")</p>
-                    <p align="left">Height: @bridge.Height.ToString("#.##")</p>
-                    <hr/>
-
-                    <a href="bridgesdetaileditview/view/@bridge.Id" style="text-align: left">
-                        <p>Edit</p>
-                    </a>
+                    <table>
+                        <tr>@bridge.Description</tr>
+                        <hr />
+                        @*<tr><td>Id</td><td>@bridge.Id</td></tr>*@
+                        <tr><td>Name</td><td>@bridge.Name</td></tr>
+                        @*<tr><td>File name</td><td>@bridge.Filename</td></tr>*@
+                        <tr><td>Lat</td><td>@bridge.Lat.ToString("##.#######")</td></tr>
+                        <tr><td>Lng</td><td>@bridge.Lng.ToString("##.#######")</td></tr>
+                        <tr><td>Disance to mouth (miles)</td><td>@bridge.DistanceToMouthMiles.ToString("#.##")</td></tr>
+                        <tr><td>Distance from source (miles)</td><td>@bridge.DistanceFromSourceMiles.ToString("#.##")</td></tr>
+                        <tr><td colspan="2"><progress value="@bridge.DistanceFromSourceMiles" max="57" style="width: 100%; height: 50px;"></progress></td></tr>
+                        <tr><td>Zoom (maps)</td><td>@bridge.Zoom.ToString("#.##")</td></tr>
+                        <tr><td>Height (maps)</td><td>@bridge.Height.ToString("#.##")</td></tr>
+                        <tr><td>Last modified</td><td>@bridge.LastModified.ToString("dd/MM/yyyy HH:mm")</td></tr>
+                        <hr />
+                        <tfoot>
+                        <th colspan="2" style="text-align: right;">
+                        <a href="@url" target="_blank"><img src="Images/maps-icon.jfif" style="width: 32px; height: 32px; horiz-align: center;" /></a>
+                        <a href="bridgesdetaileditview/view/@bridge.Id"><img src="Images/E-icon.png" style="width: 32px; height: 32px; horiz-align: center;" /></a>
+                        <img src="Images/D-icon.png" style="width: 32px; horiz-align: center;" onclick="DeleteBridge(@bridge.Id);" />
+                        </th>
+                        </tfoot>
+                    </table>
                 </td>
             </tr>
         </table>
@@ -121,11 +126,11 @@
     [Parameter]
     public string Desc { get; set; }
     [Parameter]
-    public decimal Lat { get; set; }
+    public double Lat { get; set; }
     [Parameter]
-    public decimal Lng { get; set; }
+    public double Lng { get; set; }
     [Parameter]
-    public decimal Zoom { get; set; }
+    public double Zoom { get; set; }
     [Parameter]
-    public decimal Height { get; set; }
+    public double Height { get; set; }
 }

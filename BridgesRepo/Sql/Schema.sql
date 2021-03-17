@@ -6,15 +6,19 @@ GO
 
 CREATE TABLE Bridges
 (
-	[Id]			INT IDENTITY (1, 1)	PRIMARY KEY,
-	Name			VARCHAR(255),
-	[Description]	VARCHAR(MAX),
-	[Filename]		VARCHAR(255),
-	Lng				DECIMAL(28,10),
-	Lat				DECIMAL(28,10),
-	Zoom			DECIMAL(28,10),
-	Height			DECIMAL(28,10)
-);
+	[Id]					INT IDENTITY (1, 1)	PRIMARY KEY,
+	[Name]					VARCHAR(255),
+	[Description]			VARCHAR(MAX),
+	[Filename]				VARCHAR(255),
+	[FileBytes]				VARBINARY(MAX),
+	Lng						FLOAT,
+	Lat						FLOAT,
+	DistanceToMouthMiles	FLOAT,
+	DistanceFromSourceMiles	FLOAT,
+	Zoom					FLOAT,
+	Height					FLOAT,
+	DateCreated				DATETIME NOT NULL DEFAULT GETDATE(),
+	LastModified			DATETIME NOT NULL DEFAULT GETDATE());
 GO
 
 IF EXISTS (SELECT 1 FROM sys.tables WHERE name = 'Comments') 
@@ -25,6 +29,8 @@ CREATE TABLE Comments
 (
 	[Id]			INT IDENTITY (1, 1)	PRIMARY KEY,
 	CommentContent	VARCHAR(MAX),
-	CommentDate		DATETIME
+	CommentDate		DATETIME NOT NULL DEFAULT GETDATE(),
+	[From]			VARCHAR(255),
+	EmailAddress	VARCHAR(255)
 );
 GO

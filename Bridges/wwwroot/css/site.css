@@ -1,94 +1,124 @@
-@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
-/*tr:hover {
-    background: salmon;
-}*/
-
-/*.highlight {
+/*@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+tr:hover {
     background: salmon;
 }*/
 
 img {
     border: solid gray;
-    padding: 0; /*No padding */
-
-    /*width: 254px;*/ /* Set a small width */
-    /*height: 254px;*/ /* Set a small height */
+    padding: 0;
+    cursor: pointer;
 }
 
 /* Add a hover effect (shadow) */
-/*img:hover {
-    box-shadow: 0 0 2px 1px rgb(255,255,10);
-}
-*/
-/* Container holding the image and the text */
-.container {
-    position: relative;
-    /*max-width: 200px;
-    max-height: 200px;*/
-}
-
-/* Text */
-.text-block {
-    position: relative;
-    top: 10px;
-    right: 2px;
-    background-color: gray;
-    color: white;
-    padding-top: 10px;
-    /*padding-bottom: 10px;*/
-    padding-left: 10px;
-    padding-right: 10px;
-    /*background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);*/
-}
-
-html, body {
-    /*font-family: 'Century Gothic', 'Berlin Sans FB', Broadway;*/
-    /*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
-    /*background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);*/
-    /*background-image: url("/Images/bkgrd.jpg");*/
-    /*background-color: darkslategray;*/
+img:hover {
+    box-shadow: 0 0 2px 1px darkslategray);
+    cursor: pointer;
 }
 
 body {
-    font-family: 'Century Gothic', 'Berlin Sans FB';
-    background-image: url("/Images/bkgrd.jpg");
-    background-size: cover;
+    font-family: 'Century Gothic';
+    /*background-image: url("/Images/bkgrd.jpg");
+    background-size: cover;*/
+    background-color: darkslategray;
 }
 
-a, .btn-link {
-    color: blue;
+textarea {
+    width: 100%;
+    height: 250x;
 }
 
-msg {
-    border: 2px solid white;
-    border-radius: 25px;
-    color: white;
-    padding: 10px;
+table {
+    /*font-family: Arial, Helvetica, sans-serif;*/
+    border-collapse: collapse;
+    width: 100%;
+    opacity: 0.9
 }
 
-button {
-    border-radius: 0;
+table td, table th {
+    border: 1px solid darkslategray;
+    padding: 2px;
+}
+
+table tr {
+    padding: 2px;
+}
+
+table tr:nth-child(even) {
+    background-color: whitesmoke;
+}
+
+table tr:nth-child(odd) {
+    background-color: lightgoldenrodyellow;
+}
+
+table th {
+    padding: 4px;
+    text-align: left;
     background-color: darkslategray;
     color: white;
 }
 
-button:focus {
-    outline: 1px dotted;
-    outline: 5px auto -webkit-focus-ring-color;
+table tfoot {
+    padding: 4px;
+    text-align: left;
+    background-color: darkslategray;
+    color: white;
 }
 
-button:hover {
-    outline: 1px dotted;
-    outline: 5px auto -webkit-focus-ring-color;
-    background-color: white;
+a, .btn-link {
+    color: #1b6ec2;
+    cursor: pointer;
+}
+
+msginfo {
+    border: 2px solid white;
+    border-radius: 25px;
+    color: white;
+    background-color: #1b6ec2;
+    padding: 10px;
+}
+
+msgwarn {
+    border: 2px solid white;
+    border-radius: 25px;
     color: darkslategray;
+    background-color: yellow;
+    padding: 10px;
+}
+
+msgerror {
+    border: 2px solid white;
+    border-radius: 25px;
+    color: white;
+    background-color: red;
+    padding: 10px;
+}
+
+button {
+    border: 2px solid white;
+    border-radius: 25px;
+    transition-duration: 0.4s;
+    background-color: darkslategray;
+    color: white;
 }
 
 button, input, optgroup, select, textarea {
     margin: 0;
     font-family: inherit;
     font-size: inherit;
-    line-height: inherit
+    line-height: inherit;
+}
+
+button:hover {
+    background-color: lightgoldenrodyellow;
+    color: darkslategray;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: 1px dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    cursor: pointer;
 }
 
 button, input {
@@ -180,16 +210,16 @@ app {
     border: 1px solid white;
 }
 
-    .pagination a.active {
-        color: white;
-        background-color: darkslategray;
-        border: 1px solid white;
-    }
+.pagination a.active {
+    color: white;
+    background-color: darkslategray;
+    border: 1px solid white;
+}
 
 .pagination a:hover:not(.active) {
-        color: darkslategray;
-        background-color: white;
-    }
+    color: darkslategray;
+    background-color: white;
+}
 
 .pagination a:first-child {
     border-top-left-radius: 5px;
@@ -326,12 +356,13 @@ app {
         top: 0;
     }
 
-    .main > div {
+    /*.main > div {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
-    }
+    }*/
 
     .navbar-toggler {
+        /*display: block;*/
         display: none;
     }
 
@@ -340,3 +371,50 @@ app {
         display: block;
     }
 }
+
+footer {
+    background-color: darkslategray;
+    opacity: 0.9;
+    color: white;
+}
+
+.main-body {
+    position: fixed;
+    width: 87%;
+    /*height: 95%;*/
+    top: 50px;
+    bottom: 60px;
+    left: 225px;
+    /*right:25px;*/
+    background: none;
+    overflow-y: scroll;
+}
+.status-top {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 200px;
+    background: none;
+    font-size: 12px;
+}
+.status-secondbottom {
+    position: fixed;
+    width: 100%;
+    bottom: 24px;
+    left: 200px;
+    background-color: darkslategray;
+    color: whitesmoke;
+    font-size: 12px;
+}
+.status-bottom {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 200px;
+    height: 24px;
+    alignment: left;
+    background-color: black;
+    color: darkorange;
+    font-size: 12px;
+}
+

@@ -5,7 +5,7 @@ namespace BridgesRepo.Interfaces
 {
     public interface IBridgeRepo
     {
-        IList<Bridge> GetAllBridges();
+        IEnumerable<Bridge> GetAllBridges();
         
         IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx);
 

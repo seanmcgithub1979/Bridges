@@ -5,7 +5,7 @@ tr:hover {
 
 img {
     border: solid gray;
-    padding: 0; /*No padding */
+    padding: 0;
     cursor: pointer;
 }
 

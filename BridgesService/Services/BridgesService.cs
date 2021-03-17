@@ -43,6 +43,7 @@ namespace BridgesService.Services
         
         public void Add(Bridge bridge)
         {
+            StampModifiedDate(bridge);
             repo.Add(bridge);
         }
 

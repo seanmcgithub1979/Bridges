@@ -40,22 +40,22 @@
             }
         case "exporttocsv":
             {
-                exportedFilename = ExportToCsv();
+                exportedFilename = bridgesService.ExportToCsv();
                 break;
             }
         case "exporttotxt":
             {
-                exportedFilename = ExportToTxt();
+                exportedFilename = bridgesService.ExportToTxt();
                 break;
             }
         case "exporttohtml":
             {
-                exportedFilename = ExportToHtml();
+                exportedFilename = bridgesService.ExportToHtml();
                 break;
             }
         case "exporttoxml":
             {
-                exportedFilename = ExportToXml();
+                exportedFilename = bridgesService.ExportToXml();
                 break;
             }
     }
@@ -153,24 +153,4 @@
     public int Id { get; set; }
     [Parameter]
     public int Page { get; set; }
-
-    public string ExportToCsv()
-    {
-        return bridgesService.ExportToCsv();
-    }
-
-    public string ExportToTxt()
-    {
-        return bridgesService.ExportToTxt();
-    }
-
-    public string ExportToHtml()
-    {
-        return bridgesService.ExportToHtml();
-    }
-
-    public string ExportToXml()
-    {
-        return bridgesService.ExportToXml();
-    }
 }

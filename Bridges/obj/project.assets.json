@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {
+    "net6.0": {
       "Azure.Core/1.4.1": {
         "type": "package",
         "dependencies": {
@@ -2632,7 +2632,7 @@
       },
       "BridgesDomain/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
           "bin/placeholder/BridgesDomain.dll": {}
         },
@@ -2642,7 +2642,7 @@
       },
       "BridgesRepo/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "BridgesDomain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.2",
@@ -2657,7 +2657,7 @@
       },
       "BridgesService/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "BridgesDomain": "1.0.0",
           "BridgesRepo": "1.0.0"
@@ -8593,7 +8593,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net5.0": [
+    "net6.0": [
       "Azure.Extensions.AspNetCore.Configuration.Secrets >= 1.0.0",
       "Azure.Identity >= 1.2.2",
       "BridgesDomain >= 1.0.0",
@@ -8606,45 +8606,50 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cex\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Sean\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\SeansStuff\\Code\\Bridges\\Bridges\\Bridges.csproj",
+      "projectUniqueName": "C:\\Repos\\Bridges\\Bridges\\Bridges.csproj",
       "projectName": "Bridges",
-      "projectPath": "C:\\SeansStuff\\Code\\Bridges\\Bridges\\Bridges.csproj",
-      "packagesPath": "C:\\Users\\cex\\.nuget\\packages\\",
-      "outputPath": "C:\\SeansStuff\\Code\\Bridges\\Bridges\\obj\\",
+      "projectPath": "C:\\Repos\\Bridges\\Bridges\\Bridges.csproj",
+      "packagesPath": "C:\\Users\\Sean\\.nuget\\packages\\",
+      "outputPath": "C:\\Repos\\Bridges\\Bridges\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\cex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Sean\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0"
+        "net6.0"
       ],
       "sources": {
-        "C:\\Users\\cex\\.nuget\\packages\\": {},
-        "https://www.nuget.org/api/v2/": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\SeansStuff\\Code\\Bridges\\BridgesDomain\\BridgesDomain.csproj": {
-              "projectPath": "C:\\SeansStuff\\Code\\Bridges\\BridgesDomain\\BridgesDomain.csproj"
+            "C:\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj": {
+              "projectPath": "C:\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj"
             },
-            "C:\\SeansStuff\\Code\\Bridges\\BridgesRepo\\BridgesRepo.csproj": {
-              "projectPath": "C:\\SeansStuff\\Code\\Bridges\\BridgesRepo\\BridgesRepo.csproj"
+            "C:\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj": {
+              "projectPath": "C:\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj"
             },
-            "C:\\SeansStuff\\Code\\Bridges\\BridgesService\\BridgesService.csproj": {
-              "projectPath": "C:\\SeansStuff\\Code\\Bridges\\BridgesService\\BridgesService.csproj"
+            "C:\\Repos\\Bridges\\BridgesService\\BridgesService.csproj": {
+              "projectPath": "C:\\Repos\\Bridges\\BridgesService\\BridgesService.csproj"
             }
           }
         }
@@ -8656,8 +8661,8 @@
       }
     },
     "frameworks": {
-      "net5.0": {
-        "targetAlias": "net5.0",
+      "net6.0": {
+        "targetAlias": "net6.0",
         "dependencies": {
           "Azure.Extensions.AspNetCore.Configuration.Secrets": {
             "target": "Package",
@@ -8702,16 +8707,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\SeansStuff\\Code\\Bridges\\Bridges\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

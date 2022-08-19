@@ -4,6 +4,7 @@ using BridgesDomain.Model;
 using BridgesRepo;
 using BridgesRepo.Data;
 using BridgesRepo.Interfaces;
+using BridgesRepo.Mocks;
 using BridgesService.Interfaces;
 using BridgesService.Services;
 using Microsoft.AspNetCore.Authentication;
@@ -43,8 +44,10 @@ namespace Bridges
             
             services.AddSingleton(config);
 
-            services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
-            services.AddScoped<ICommentRepo, CommentRepoSqlServer>();
+            //services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
+            services.AddScoped<IBridgeRepo, BridgeRepoMock>();
+            //services.AddScoped<ICommentRepo, CommentRepoSqlServer>();
+            services.AddScoped<ICommentRepo, CommentRepoMock>();
             services.AddScoped<ICoordsService, CoordsService>();
 
             services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));

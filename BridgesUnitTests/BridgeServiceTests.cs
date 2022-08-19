@@ -1,4 +1,3 @@
-using System.Security.Cryptography.X509Certificates;
 using BridgesService.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

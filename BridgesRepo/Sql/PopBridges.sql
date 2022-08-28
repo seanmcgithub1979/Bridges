@@ -9,7 +9,7 @@ DECLARE @commentDate DATETIME;
 WHILE (@i <= 62)
 BEGIN
 
-	INSERT INTO Bridges([Name], [Description], [Filename], FileBytes, Lat, Lng, DistanceToMouthKm, DistanceFromSourceKm, Zoom, Height)
+	INSERT INTO Bridges([Name], [Description], [Filename], FileBytes, Lat, Lng, DistanceToMouthMiles, DistanceFromSourceMiles, Zoom, Height)
 	SELECT 																			
 		'Bridge ' + CONVERT(VARCHAR(255),@i), 
 		'Description ' + CONVERT(VARCHAR(255),@i), 

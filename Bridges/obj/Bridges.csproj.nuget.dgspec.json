@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Repos\\Bridges\\Bridges\\Bridges.csproj": {}
+    "C:\\SeansStuff\\Repos\\Bridges\\Bridges\\Bridges.csproj": {}
   },
   "projects": {
-    "C:\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj": {
+    "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj",
+        "projectUniqueName": "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj",
         "projectName": "BridgesDomain",
-        "projectPath": "C:\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj",
+        "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj",
         "packagesPath": "C:\\Users\\Sean\\.nuget\\packages\\",
-        "outputPath": "C:\\Repos\\Bridges\\BridgesDomain\\obj\\",
+        "outputPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -65,14 +65,14 @@
         }
       }
     },
-    "C:\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj": {
+    "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj",
+        "projectUniqueName": "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj",
         "projectName": "BridgesRepo",
-        "projectPath": "C:\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj",
+        "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj",
         "packagesPath": "C:\\Users\\Sean\\.nuget\\packages\\",
-        "outputPath": "C:\\Repos\\Bridges\\BridgesRepo\\obj\\",
+        "outputPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -96,8 +96,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj": {
-                "projectPath": "C:\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj"
+              "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj": {
+                "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj"
               }
             }
           }
@@ -140,14 +140,14 @@
         }
       }
     },
-    "C:\\Repos\\Bridges\\BridgesService\\BridgesService.csproj": {
+    "C:\\SeansStuff\\Repos\\Bridges\\BridgesService\\BridgesService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Repos\\Bridges\\BridgesService\\BridgesService.csproj",
+        "projectUniqueName": "C:\\SeansStuff\\Repos\\Bridges\\BridgesService\\BridgesService.csproj",
         "projectName": "BridgesService",
-        "projectPath": "C:\\Repos\\Bridges\\BridgesService\\BridgesService.csproj",
+        "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesService\\BridgesService.csproj",
         "packagesPath": "C:\\Users\\Sean\\.nuget\\packages\\",
-        "outputPath": "C:\\Repos\\Bridges\\BridgesService\\obj\\",
+        "outputPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -171,11 +171,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj": {
-                "projectPath": "C:\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj"
+              "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj": {
+                "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj"
               },
-              "C:\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj": {
-                "projectPath": "C:\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj"
+              "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj": {
+                "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj"
               }
             }
           }
@@ -208,14 +208,14 @@
         }
       }
     },
-    "C:\\Repos\\Bridges\\Bridges\\Bridges.csproj": {
+    "C:\\SeansStuff\\Repos\\Bridges\\Bridges\\Bridges.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Repos\\Bridges\\Bridges\\Bridges.csproj",
+        "projectUniqueName": "C:\\SeansStuff\\Repos\\Bridges\\Bridges\\Bridges.csproj",
         "projectName": "Bridges",
-        "projectPath": "C:\\Repos\\Bridges\\Bridges\\Bridges.csproj",
+        "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\Bridges\\Bridges.csproj",
         "packagesPath": "C:\\Users\\Sean\\.nuget\\packages\\",
-        "outputPath": "C:\\Repos\\Bridges\\Bridges\\obj\\",
+        "outputPath": "C:\\SeansStuff\\Repos\\Bridges\\Bridges\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -239,14 +239,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj": {
-                "projectPath": "C:\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj"
+              "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj": {
+                "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj"
               },
-              "C:\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj": {
-                "projectPath": "C:\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj"
+              "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj": {
+                "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj"
               },
-              "C:\\Repos\\Bridges\\BridgesService\\BridgesService.csproj": {
-                "projectPath": "C:\\Repos\\Bridges\\BridgesService\\BridgesService.csproj"
+              "C:\\SeansStuff\\Repos\\Bridges\\BridgesService\\BridgesService.csproj": {
+                "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesService\\BridgesService.csproj"
               }
             }
           }

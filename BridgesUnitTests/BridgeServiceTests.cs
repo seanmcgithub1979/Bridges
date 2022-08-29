@@ -23,5 +23,13 @@ namespace BridgesUnitTests
             Assert.AreEqual(expected, actual);
             //bridgeServiceMock.Verify(x => x.ExportToCsv());
         }
+
+        [TestMethod]
+        public void TestPipelines()
+        {
+            var expected = "test.csv";
+            var actual = "test.csv";
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

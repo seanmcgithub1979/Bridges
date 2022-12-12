@@ -7,12 +7,12 @@ namespace BridgesUnitTests
     [TestClass]
     public class BridgeServiceTests
     {
-        Mock<IBridgesService> mockBridgeService = new();
+        Mock<IBridgesService> _mockBridgeService = new();
 
         [TestInitialize]
         public void Setup()
         {
-            mockBridgeService.Setup(x => x.ExportToCsv()).Returns("test.csv");
+            _mockBridgeService.Setup(x => x.ExportToCsv()).Returns("test.csv");
         }
 
         [TestMethod]

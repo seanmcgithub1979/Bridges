@@ -1,6 +1,6 @@
 ﻿@page "/{action?}/{comment?}/{from?}/{emailaddress?}"
 
-@inject ICommentService commentService;
+@inject ICommentService CommentService;
 
 @using BridgesDomain.Model
 @using BridgesService.Interfaces
@@ -16,7 +16,7 @@
 @{
     if (!string.IsNullOrEmpty(Action) && Action.ToLowerInvariant() == "savecomment")
     {
-        commentService.AddComment(Comment, From, EmailAddress);
+        CommentService.AddComment(Comment, From, EmailAddress);
         <hr/>
         <img style="border: none; height: 45px; width: 45px;" src="Images/info.png"/>
         <msginfo>SUCCESS - Comment added</msginfo>
@@ -54,7 +54,7 @@
                         <th colspan="3" style="text-align: right;">Add:<a href="commentsdetaileditview"><img src="Images/A-icon.png" style="width: 32px; height: 32px" /></a></th>
                     </h6>
                     </thead>
-                    @foreach (Comment comment in commentService.GetAllComments().Distinct().OrderByDescending(x => x.CommentDate))
+                    @foreach (Comment comment in CommentService.GetAllComments().Distinct().OrderByDescending(x => x.CommentDate))
                         {
                             <tr>
                                 <td style="width: 50px">@comment.CommentDate.ToString("dd/MM/yyyy HH:mm")</td>

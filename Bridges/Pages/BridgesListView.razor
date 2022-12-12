@@ -1,6 +1,6 @@
 ﻿@page "/bridgeslistview/{action}/{page:int?}/{id:int?}"
 
-@inject IBridgesService bridgesService;
+@inject IBridgesService BridgesService;
 
 @using BridgesDomain.Model
 @using BridgesService.Interfaces
@@ -25,11 +25,11 @@
     {
         case "delete":
             {
-                Bridge bridge = bridgesService.GetBridgeById(Id);
+                Bridge bridge = BridgesService.GetBridgeById(Id);
 
                 if (bridge != null) // This is annoying as could be called with the back button or manual url input.
                 {
-                    bridgesService.Delete(bridge);
+                    BridgesService.Delete(bridge);
 
                     <hr />
                     <img style="border: none; height: 45px; width: 45px;" src="/Images/info.png" />
@@ -40,22 +40,22 @@
             }
         case "exporttocsv":
             {
-                exportedFilename = bridgesService.ExportToCsv();
+                exportedFilename = BridgesService.ExportToCsv();
                 break;
             }
         case "exporttotxt":
             {
-                exportedFilename = bridgesService.ExportToTxt();
+                exportedFilename = BridgesService.ExportToTxt();
                 break;
             }
         case "exporttohtml":
             {
-                exportedFilename = bridgesService.ExportToHtml();
+                exportedFilename = BridgesService.ExportToHtml();
                 break;
             }
         case "exporttoxml":
             {
-                exportedFilename = bridgesService.ExportToXml();
+                exportedFilename = BridgesService.ExportToXml();
                 break;
             }
     }
@@ -68,7 +68,7 @@
         <hr />
     }
 
-    var bridgeCount = bridgesService.GetAllBridges().Count();
+    var bridgeCount = BridgesService.GetAllBridges().Count();
     var bridgesPerPage = 11;
     
     <table>
@@ -89,9 +89,9 @@
                 <th></th>
             </h6>
         </thead>
-        @foreach (var bridge in bridgesService.GetBridgesInRange(bridgesPerPage, (Page - 1) * bridgesPerPage))
+        @foreach (var bridge in BridgesService.GetBridgesInRange(bridgesPerPage, (Page - 1) * bridgesPerPage))
         {
-            var hexColor = bridgesService.GetHexColor(@bridge.DistanceToMouthMiles);
+            var hexColor = BridgesService.GetHexColor(@bridge.DistanceToMouthMiles);
             var satParams = "!3m1!1e3";
             var url = $"https://www.google.co.uk/maps/@{@bridge.Lat},{@bridge.Lng},{@bridge.Height}m/data={satParams}";
             

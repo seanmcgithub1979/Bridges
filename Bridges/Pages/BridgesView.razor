@@ -1,6 +1,6 @@
 ﻿@page "/bridgesview/{colcount:int}/{page:int}"
 
-@inject IBridgesService bridgesService;
+@inject IBridgesService BridgesService;
 
 @using BridgesService.Interfaces
 
@@ -28,13 +28,13 @@
     </thead>
     @{
         var i = 1;
-        var bridgeCount = bridgesService.GetAllBridges().Count();
+        var bridgeCount = BridgesService.GetAllBridges().Count();
         var imagesPerPage = 16;
 
         <tr>
-            @foreach (var bridge in bridgesService.GetBridgesInRange(imagesPerPage, (Page - 1) * imagesPerPage))
+            @foreach (var bridge in BridgesService.GetBridgesInRange(imagesPerPage, (Page - 1) * imagesPerPage))
             {
-                <td style="background-color: @bridgesService.GetHexColor(@bridge.DistanceToMouthMiles)">
+                <td style="background-color: @BridgesService.GetHexColor(@bridge.DistanceToMouthMiles)">
                     <div class="frame">
                         <a href="bridgesdetailview/view/@bridge.Id/@bridge.Name/@bridge.Filename/@bridge.Description/@bridge.Lat/@bridge.Lng/@bridge.Zoom/@bridge.Height/">
                             <h5><strong>@bridge.Name</strong></h5>

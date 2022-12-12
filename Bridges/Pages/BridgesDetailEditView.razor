@@ -1,6 +1,6 @@
 ﻿@page "/bridgesdetaileditview/{action}/{id:int?}"
 
-@inject IBridgesService bridgesService;
+@inject IBridgesService BridgesService;
 
 @using BridgesDomain.Model
 @using BridgesService.Interfaces
@@ -16,7 +16,7 @@
 </style>
 
 @{
-    Bridge bridge = Action.ToLowerInvariant() == "add" ? new Bridge() : bridgesService.GetBridgeById(Id);
+    Bridge bridge = Action.ToLowerInvariant() == "add" ? new Bridge() : BridgesService.GetBridgeById(Id);
 
     if (bridge != null)
     {
@@ -30,7 +30,7 @@
                 <th colspan="2">@bridge.Name</th>
             </h6>
             </thead>
-            <tr style="background-color: @bridgesService.GetHexColor(@bridge.DistanceToMouthMiles)">
+            <tr style="background-color: @BridgesService.GetHexColor(@bridge.DistanceToMouthMiles)">
                 <td style="width: 40%;">
                     <img id="imgBridge" alt="No image" height="600px" width="800px" src="Images/Original/@bridge.Filename" />
                 </td>

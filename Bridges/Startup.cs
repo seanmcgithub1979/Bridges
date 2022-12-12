@@ -22,19 +22,19 @@ namespace Bridges
 {
     public class Startup
     {
-        private readonly IConfiguration configuration;
-        private IConfig config;
+        private readonly IConfiguration _configuration;
+        private IConfig _config;
 
         public Startup(IConfiguration configuration)
         {
-            this.configuration = configuration;
+            _configuration = configuration;
         }
         
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = configuration.GetConnectionString("BridgesDbContext");
-            config = new Config { ConnectionString = connectionString };
+            var connectionString = _configuration.GetConnectionString("BridgesDbContext");
+            _config = new Config { ConnectionString = connectionString };
 
             services.AddRazorPages();
 
@@ -42,7 +42,7 @@ namespace Bridges
 
             services.Configure<RazorPagesOptions>(options => options.RootDirectory = "/Pages");
             
-            services.AddSingleton(config);
+            services.AddSingleton(_config);
 
             //services.AddScoped<IBridgeRepo, BridgeRepoSqlServer>();
             services.AddScoped<IBridgeRepo, BridgeRepoMock>();
@@ -52,7 +52,7 @@ namespace Bridges
 
             services.AddDbContext<BridgesDbContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<IBridgesService, BridgesService.Services.BridgesService>();
-            services.AddScoped<ICommentService, BridgesService.Services.CommentService>();
+            services.AddScoped<ICommentService, CommentService>();
 
             #region mocks
             //services.AddScoped<IBridgeRepo, BridgeRepoMock>();
@@ -64,10 +64,10 @@ namespace Bridges
                 sharedOptions.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 sharedOptions.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
-            .AddAzureAd(options => configuration.Bind("AzureAd", options))
+            .AddAzureAd(options => _configuration.Bind("AzureAd", options))
             .AddCookie();
 
-            services.AddApplicationInsightsTelemetry(configuration["APPINSIGHTS_CONNECTIONSTRING"]);
+            services.AddApplicationInsightsTelemetry(_configuration["APPINSIGHTS_CONNECTIONSTRING"]);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,13 +75,13 @@ namespace Bridges
         {
             if (env.IsDevelopment())
             {
-                config.Environment = "development";
+                _config.Environment = "development";
                 //app.UseDirectoryBrowser();
                 //app.UseDeveloperExceptionPage();
             }
             else
             {
-                config.Environment = "production";
+                _config.Environment = "production";
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }

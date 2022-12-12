@@ -1,6 +1,6 @@
 ﻿@page "/bridgesdetailview/{action}/{id:int}/{name?}/{filename?}/{desc?}/{lat:double?}/{lng:double?}/{zoom:double?}/{height:double?}"
 
-@inject IBridgesService bridgesService;
+@inject IBridgesService BridgesService;
 
 @using BridgesDomain.Model
 @using BridgesService.Interfaces
@@ -15,12 +15,12 @@
         {
             case "update":
                 {
-                    bridge = bridgesService.GetBridgeById(Id);
+                    bridge = BridgesService.GetBridgeById(Id);
                     if (bridge == null) // Assumes add bridge
                     {
                         bridge = new Bridge(Name, Filename, Desc, Lat, Lng, Zoom, Height);
 
-                        bridgesService.Add(bridge);
+                        BridgesService.Add(bridge);
 
                         msgText = $"SUCCESS - Bridge Id: {@bridge.Id} added";
                     }
@@ -35,7 +35,7 @@
                         bridge.Zoom = Zoom;
                         bridge.Height = Height;
 
-                        bridgesService.Update(bridge);
+                        BridgesService.Update(bridge);
 
                         msgText = $"SUCCESS - Bridge Id: {@bridge.Id} updated";
                     }
@@ -43,14 +43,14 @@
                 }
             default:
                 {
-                    bridge = bridgesService.GetBridgeById(Id);
+                    bridge = BridgesService.GetBridgeById(Id);
                     break;
                 }
         }
     }
     else
     {
-        bridge = bridgesService.GetBridgeById(Id);
+        bridge = BridgesService.GetBridgeById(Id);
     }
 
     if (bridge != null)
@@ -71,7 +71,7 @@
             <th colspan="2">@bridge.Name<a href=@url target="_blank"> Show in maps</a></th>
             </h6>
             </thead>
-            <tr style="vertical-align: top; background-color: @bridgesService.GetHexColor(@bridge.DistanceToMouthMiles)">
+            <tr style="vertical-align: top; background-color: @BridgesService.GetHexColor(@bridge.DistanceToMouthMiles)">
                 <td style="width: 40%">
                     <a href="Images/Original/@bridge.Filename">
                         <img alt="No image found for bridge with name: @bridge.Name" height="600" width="800" src="Images/Original/@bridge.Filename" />

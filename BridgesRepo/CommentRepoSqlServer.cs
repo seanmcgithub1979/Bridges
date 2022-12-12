@@ -8,22 +8,22 @@ namespace BridgesRepo
 {
     public class CommentRepoSqlServer : ICommentRepo
     {
-        private readonly BridgesDbContext context;
+        private readonly BridgesDbContext _context;
 
         public CommentRepoSqlServer(BridgesDbContext context)
         {
-            this.context = context;
+            _context = context;
         }
 
         public IEnumerable<Comment> GetAllComments()
         {
-            return context.Comments;
+            return _context.Comments;
         }
 
         public void AddComment(Comment comment)
         {
-            context.Comments.Add(comment);
-            context.SaveChanges();
+            _context.Comments.Add(comment);
+            _context.SaveChanges();
         }
     }
 }

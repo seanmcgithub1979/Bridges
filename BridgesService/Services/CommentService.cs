@@ -7,21 +7,21 @@ namespace BridgesService.Services
 {
     public class CommentService : ICommentService
     {
-        private readonly ICommentRepo repo;
+        private readonly ICommentRepo _repo;
 
         public CommentService(ICommentRepo repo)
         {
-            this.repo = repo;
+            _repo = repo;
         }
 
         public IEnumerable<Comment> GetAllComments()
         {
-            return repo.GetAllComments();
+            return _repo.GetAllComments();
         }
         
         public void AddComment(string comment, string from, string emailAddress)
         {
-            repo.AddComment(new Comment(comment, from, emailAddress));
+            _repo.AddComment(new Comment(comment, from, emailAddress));
         }
     }
 }

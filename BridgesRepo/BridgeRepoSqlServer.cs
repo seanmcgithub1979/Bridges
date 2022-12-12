@@ -8,16 +8,16 @@ namespace BridgesRepo
 {
     public class BridgeRepoSqlServer : IBridgeRepo
     {
-        private readonly BridgesDbContext context;
+        private readonly BridgesDbContext _context;
 
         public BridgeRepoSqlServer(BridgesDbContext context)
         {
-            this.context = context;
+            _context = context;
         }
 
         public IEnumerable<Bridge> GetAllBridges()
         {
-            return context.Bridges.OrderBy(o => o.DistanceFromSourceMiles);
+            return _context.Bridges.OrderBy(o => o.DistanceFromSourceMiles);
         }
 
         // Used in paging
@@ -30,30 +30,30 @@ namespace BridgesRepo
 
         public Bridge GetBridgeById(int id)
         {
-            return context.Bridges.FirstOrDefault(x => x.Id == id);
+            return _context.Bridges.FirstOrDefault(x => x.Id == id);
         }
 
         public Bridge GetBridgeByName(string name)
         {
-            return context.Bridges.FirstOrDefault(x => x.Name == name);
+            return _context.Bridges.FirstOrDefault(x => x.Name == name);
         }
 
         public void Add(Bridge bridge)
         {
-            context.Bridges.Add(bridge);
-            context.SaveChanges();
+            _context.Bridges.Add(bridge);
+            _context.SaveChanges();
         }
 
         public void Delete(Bridge bridge)
         {
-            context.Bridges.Remove(bridge);
-            context.SaveChanges();
+            _context.Bridges.Remove(bridge);
+            _context.SaveChanges();
         }
 
         public void Update(Bridge bridge)
         {
-            context.Bridges.Update(bridge);
-            context.SaveChanges();
+            _context.Bridges.Update(bridge);
+            _context.SaveChanges();
         }
     }
 }

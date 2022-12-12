@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-@inject BridgesDomain.Interfaces.IConfig config;
+@inject BridgesDomain.Interfaces.IConfig Config;
 
 <div class="sidebar">
     <NavMenu />
@@ -18,27 +18,27 @@
         @Body
     </div>
     <div class="status-bottom">
-        @if (!config.IsDevelopment)
+        @if (!Config.IsDevelopment)
         {
             <table style="background-color: black; color: lightgreen;">
-                <td style="background-color: lightgreen; color: black;">Env: @config.Environment</td>
+                <td style="background-color: lightgreen; color: black;">Env: @Config.Environment</td>
                 <td style=" background-color: black; color: lightgreen;">
-                    conn: @config.ConnectionString.Replace("User ID=mail.seanmccann@gmail.com@gsrm;Password=Ejifgi1979$;", "");
+                    conn: @Config.ConnectionString.Replace("User ID=mail.seanmccann@gmail.com@gsrm;Password=Ejifgi1979$;", "");
                 </td>
-                <td style="background-color: black; color: lightgreen;"><a href="mailto:@config.EmailAddress" style="color: white;">Email</a></td>
-                <td style="background-color: black; color: lightgreen; text-align: right;">Refeshed at: @config.LastRefreshed</td>
+                <td style="background-color: black; color: lightgreen;"><a href="mailto:@Config.EmailAddress" style="color: white;">Email</a></td>
+                <td style="background-color: black; color: lightgreen; text-align: right;">Refeshed at: @Config.LastRefreshed</td>
             </table>
         }
         else
         {
             <table style="background-color: black; color: orangered;">
 
-                <td style="background-color: orangered; color: black;">Env: @config.Environment</td>
+                <td style="background-color: orangered; color: black;">Env: @Config.Environment</td>
                 <td style="background-color: black; color: orangered;">
-                    conn: @config.ConnectionString;
+                    conn: @Config.ConnectionString;
                 </td>
-                <td style="background-color: black; color: orangered;"><a href="mailto:@config.EmailAddress" style="color: white;">Email</a></td>
-                <td style="background-color: black; color: orangered; text-align: left;">Refeshed at: @config.LastRefreshed</td>
+                <td style="background-color: black; color: orangered;"><a href="mailto:@Config.EmailAddress" style="color: white;">Email</a></td>
+                <td style="background-color: black; color: orangered; text-align: left;">Refeshed at: @Config.LastRefreshed</td>
             </table>
         }
     </div>

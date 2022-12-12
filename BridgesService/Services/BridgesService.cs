@@ -10,41 +10,41 @@ namespace BridgesService.Services
 {
     public class BridgesService : IBridgesService
     {
-        private readonly IBridgeRepo repo;
-        private readonly ICoordsService coordsService;
-        private IDictionary<int, string> colorMap;
+        private readonly IBridgeRepo _repo;
+        private readonly ICoordsService _coordsService;
+        private IDictionary<int, string> _colorMap;
 
         public BridgesService(IBridgeRepo repo, ICoordsService coordsService)
         {
-            this.repo = repo;
-            this.coordsService = coordsService;
+            _repo = repo;
+            _coordsService = coordsService;
             BuildColourMap();
         }
         
         public IEnumerable<Bridge> GetAllBridges()
         {
-            return repo.GetAllBridges();
+            return _repo.GetAllBridges();
         }
 
         public IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx)
         {
-            return repo.GetBridgesInRange(noOfBridges, startIdx);
+            return _repo.GetBridgesInRange(noOfBridges, startIdx);
         }
 
         public Bridge GetBridgeById(int id)
         {
-            return repo.GetBridgeById(id);
+            return _repo.GetBridgeById(id);
         }
 
         public Bridge GetBridgeByName(string name)
         {
-            return repo.GetBridgeByName(name);
+            return _repo.GetBridgeByName(name);
         }
         
         public void Add(Bridge bridge)
         {
             StampModifiedDate(bridge);
-            repo.Add(bridge);
+            _repo.Add(bridge);
         }
 
         public void Update(Bridge bridge, bool addImage = false)
@@ -57,12 +57,12 @@ namespace BridgesService.Services
             StampCalculatedDistances(bridge);
             StampModifiedDate(bridge);
             
-            repo.Update(bridge);
+            _repo.Update(bridge);
         }
         
         public void Delete(Bridge bridge)
         {
-            repo.Delete(bridge);
+            _repo.Delete(bridge);
         }
 
         public string GetFilenamesForBackgroundCycle()
@@ -105,8 +105,8 @@ namespace BridgesService.Services
 
         private void StampCalculatedDistances(Bridge bridge)
         {
-            bridge.DistanceToMouthMiles = coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.MouthLat, bridge.River.MouthLng);
-            bridge.DistanceFromSourceMiles = coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.SourceLat, bridge.River.SourceLng);
+            bridge.DistanceToMouthMiles = _coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.MouthLat, bridge.River.MouthLng);
+            bridge.DistanceFromSourceMiles = _coordsService.DistanceBetween(bridge.Lat, bridge.Lng, bridge.River.SourceLat, bridge.River.SourceLng);
         }
 
         public string ExportToCsv()
@@ -233,29 +233,29 @@ namespace BridgesService.Services
 
             distance = distance / 4;
 
-            return colorMap[(int)distance];
+            return _colorMap[(int)distance];
         }
 
         private void BuildColourMap()
         {
-            colorMap = new Dictionary<int, string>();
+            _colorMap = new Dictionary<int, string>();
 
-            colorMap.Add(new KeyValuePair<int, string>(0, "#053a56"));
-            colorMap.Add(new KeyValuePair<int, string>(1, "#064667"));
-            colorMap.Add(new KeyValuePair<int, string>(2, "#075179"));
-            colorMap.Add(new KeyValuePair<int, string>(3, "#085d8a"));
-            colorMap.Add(new KeyValuePair<int, string>(4, "#09699b"));
-            colorMap.Add(new KeyValuePair<int, string>(5, "#0a75ad"));
-            colorMap.Add(new KeyValuePair<int, string>(6, "#2282b5"));
-            colorMap.Add(new KeyValuePair<int, string>(8, "#539ec5"));
-            colorMap.Add(new KeyValuePair<int, string>(7, "#3a90bd"));
-            colorMap.Add(new KeyValuePair<int, string>(9, "#6caccd"));
-            colorMap.Add(new KeyValuePair<int, string>(10, "#84bad6"));
-            colorMap.Add(new KeyValuePair<int, string>(11, "#9dc7de"));
-            colorMap.Add(new KeyValuePair<int, string>(12, "#b5d5e6"));
-            colorMap.Add(new KeyValuePair<int, string>(13, "#cee3ee"));
-            colorMap.Add(new KeyValuePair<int, string>(14, "#e6f1f6"));
-            colorMap.Add(new KeyValuePair<int, string>(15, "#ffffff"));
+            _colorMap.Add(new KeyValuePair<int, string>(0, "#053a56"));
+            _colorMap.Add(new KeyValuePair<int, string>(1, "#064667"));
+            _colorMap.Add(new KeyValuePair<int, string>(2, "#075179"));
+            _colorMap.Add(new KeyValuePair<int, string>(3, "#085d8a"));
+            _colorMap.Add(new KeyValuePair<int, string>(4, "#09699b"));
+            _colorMap.Add(new KeyValuePair<int, string>(5, "#0a75ad"));
+            _colorMap.Add(new KeyValuePair<int, string>(6, "#2282b5"));
+            _colorMap.Add(new KeyValuePair<int, string>(8, "#539ec5"));
+            _colorMap.Add(new KeyValuePair<int, string>(7, "#3a90bd"));
+            _colorMap.Add(new KeyValuePair<int, string>(9, "#6caccd"));
+            _colorMap.Add(new KeyValuePair<int, string>(10, "#84bad6"));
+            _colorMap.Add(new KeyValuePair<int, string>(11, "#9dc7de"));
+            _colorMap.Add(new KeyValuePair<int, string>(12, "#b5d5e6"));
+            _colorMap.Add(new KeyValuePair<int, string>(13, "#cee3ee"));
+            _colorMap.Add(new KeyValuePair<int, string>(14, "#e6f1f6"));
+            _colorMap.Add(new KeyValuePair<int, string>(15, "#ffffff"));
         }
     }
 }

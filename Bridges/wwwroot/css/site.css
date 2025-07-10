@@ -16,7 +16,7 @@ img:hover {
 }
 
 body {
-    font-family: 'Century Gothic', Arial, sans-serif;
+    font-family: 'Century Gothic', Arial, Helvetica, sans-serif;
     /*background-image: url("/Images/bkgrd.jpg");
     background-size: cover;*/
     background-color: darkslategray;

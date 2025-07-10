@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using BridgesDomain.Model;
+﻿namespace BridgesRepo.Interfaces;
 
-namespace BridgesRepo.Interfaces
+public interface ICommentRepo
 {
-    public interface ICommentRepo
-    {
-        IEnumerable<Comment> GetAllComments();
+    IEnumerable<Comment> GetAllComments();
         
-        void AddComment(Comment comment);
-    }
+    void AddComment(Comment comment);
 }

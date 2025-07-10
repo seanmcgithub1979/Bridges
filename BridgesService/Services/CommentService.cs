@@ -1,27 +1,21 @@
-﻿using System.Collections.Generic;
-using BridgesDomain.Model;
-using BridgesRepo.Interfaces;
-using BridgesService.Interfaces;
+﻿namespace BridgesService.Services;
 
-namespace BridgesService.Services
+public class CommentService : ICommentService
 {
-    public class CommentService : ICommentService
+    private readonly ICommentRepo repo;
+
+    public CommentService(ICommentRepo repo)
     {
-        private readonly ICommentRepo repo;
+        this.repo = repo;
+    }
 
-        public CommentService(ICommentRepo repo)
-        {
-            this.repo = repo;
-        }
-
-        public IEnumerable<Comment> GetAllComments()
-        {
-            return repo.GetAllComments();
-        }
+    public IEnumerable<Comment> GetAllComments()
+    {
+        return repo.GetAllComments();
+    }
         
-        public void AddComment(string comment, string from, string emailAddress)
-        {
-            repo.AddComment(new Comment(comment, from, emailAddress));
-        }
+    public void AddComment(string comment, string from, string emailAddress)
+    {
+        repo.AddComment(new Comment(comment, from, emailAddress));
     }
 }

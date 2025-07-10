@@ -7,6 +7,7 @@
     <WebProject_DirectoryAccessLevelKey>1</WebProject_DirectoryAccessLevelKey>
     <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
     <LangVersion>default</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
     <None Update="custom.xml">

@@ -1,30 +1,25 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.Extensions.Options;
+﻿namespace Bridges.Extensions;
 
-namespace Bridges.Extensions
+public class ConfigureAzureOptions : IConfigureNamedOptions<OpenIdConnectOptions>
 {
-    public class ConfigureAzureOptions : IConfigureNamedOptions<OpenIdConnectOptions>
+    private readonly AzureAdOptions _azureOptions;
+
+    public ConfigureAzureOptions(IOptions<AzureAdOptions> azureOptions)
     {
-        private readonly AzureAdOptions _azureOptions;
+        _azureOptions = azureOptions.Value;
+    }
 
-        public ConfigureAzureOptions(IOptions<AzureAdOptions> azureOptions)
-        {
-            _azureOptions = azureOptions.Value;
-        }
+    public void Configure(string name, OpenIdConnectOptions options)
+    {
+        options.ClientId = _azureOptions.ClientId;
+        options.Authority = $"{_azureOptions.Instance}{_azureOptions.TenantId}";
+        options.UseTokenLifetime = true;
+        options.CallbackPath = _azureOptions.CallbackPath;
+        options.RequireHttpsMetadata = false;
+    }
 
-        public void Configure(string name, OpenIdConnectOptions options)
-        {
-            options.ClientId = _azureOptions.ClientId;
-            options.Authority = $"{_azureOptions.Instance}{_azureOptions.TenantId}";
-            options.UseTokenLifetime = true;
-            options.CallbackPath = _azureOptions.CallbackPath;
-            options.RequireHttpsMetadata = false;
-        }
-
-        public void Configure(OpenIdConnectOptions options)
-        {
-            Configure(Options.DefaultName, options);
-        }
+    public void Configure(OpenIdConnectOptions options)
+    {
+        Configure(Options.DefaultName, options);
     }
 }

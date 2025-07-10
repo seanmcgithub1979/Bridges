@@ -1,24 +1,19 @@
-﻿using System.Collections.Generic;
-using BridgesDomain.Model;
-using BridgesRepo.Interfaces;
+﻿namespace BridgesRepo.Mocks;
 
-namespace BridgesRepo.Mocks
+public class CommentRepoMock : ICommentRepo
 {
-    public class CommentRepoMock : ICommentRepo
+    public IEnumerable<Comment> GetAllComments()
     {
-        public IEnumerable<Comment> GetAllComments()
+        IList<Comment> comments = new List<Comment>();
+        for (var i = 0; i < 20; i++)
         {
-            IList<Comment> comments = new List<Comment>();
-            for (var i = 0; i < 20; i++)
-            {
-                comments.Add(new Comment($"Comment: {i + 1}", "from ...", "emailAddress..."));
-            }
-
-            return comments;
+            comments.Add(new Comment($"Comment: {i + 1}", "from ...", "emailAddress..."));
         }
 
-        public void AddComment(Comment comment)
-        {
-        }
+        return comments;
+    }
+
+    public void AddComment(Comment comment)
+    {
     }
 }

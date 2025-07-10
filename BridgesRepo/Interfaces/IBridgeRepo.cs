@@ -1,19 +1,15 @@
-﻿using System.Collections.Generic;
-using BridgesDomain.Model;
+﻿namespace BridgesRepo.Interfaces;
 
-namespace BridgesRepo.Interfaces
+public interface IBridgeRepo
 {
-    public interface IBridgeRepo
-    {
-        IEnumerable<Bridge> GetAllBridges();
+    IEnumerable<Bridge> GetAllBridges();
         
-        IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx);
+    IEnumerable<Bridge> GetBridgesInRange(int noOfBridges, int startIdx);
 
-        Bridge GetBridgeById(int id);
-        Bridge GetBridgeByName(string name);
+    Bridge GetBridgeById(int id);
+    Bridge GetBridgeByName(string name);
 
-        void Add(Bridge bridge);
-        void Delete(Bridge bridge);
-        void Update(Bridge bridge);
-    }
+    void Add(Bridge bridge);
+    void Delete(Bridge bridge);
+    void Update(Bridge bridge);
 }

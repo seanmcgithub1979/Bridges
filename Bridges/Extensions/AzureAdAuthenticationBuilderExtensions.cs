@@ -1,22 +1,17 @@
-﻿using System;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.AspNetCore.Authentication;
 
-namespace Bridges.Extensions
+namespace Bridges.Extensions;
+
+public static class AzureAdAuthenticationBuilderExtensions
 {
-    public static class AzureAdAuthenticationBuilderExtensions
-    {
-        public static AuthenticationBuilder AddAzureAd(this AuthenticationBuilder builder)
-            => builder.AddAzureAd(_ => { });
+    public static AuthenticationBuilder AddAzureAd(this AuthenticationBuilder builder)
+        => builder.AddAzureAd(_ => { });
 
-        public static AuthenticationBuilder AddAzureAd(this AuthenticationBuilder builder, Action<AzureAdOptions> configureOptions)
-        {
-            builder.Services.Configure(configureOptions);
-            builder.Services.AddSingleton<IConfigureOptions<OpenIdConnectOptions>, ConfigureAzureOptions>();
-            builder.AddOpenIdConnect();
-            return builder;
-        }
+    public static AuthenticationBuilder AddAzureAd(this AuthenticationBuilder builder, Action<AzureAdOptions> configureOptions)
+    {
+        builder.Services.Configure(configureOptions);
+        builder.Services.AddSingleton<IConfigureOptions<OpenIdConnectOptions>, ConfigureAzureOptions>();
+        builder.AddOpenIdConnect();
+        return builder;
     }
 }

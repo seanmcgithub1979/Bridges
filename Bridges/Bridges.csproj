@@ -41,4 +41,9 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services" />
   </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Account\AccessDenied.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Account\SignedOut.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Account\_ViewImports.cshtml" />
+  </ItemGroup>
 </Project>

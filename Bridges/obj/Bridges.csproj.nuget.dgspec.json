@@ -1,252 +1,39 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SeansStuff\\Repos\\Bridges\\Bridges\\Bridges.csproj": {}
+    "/Users/sean/SeansStuff/Repos/Bridges/Bridges/Bridges.csproj": {}
   },
   "projects": {
-    "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj": {
+    "/Users/sean/SeansStuff/Repos/Bridges/Bridges/Bridges.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj",
-        "projectName": "BridgesDomain",
-        "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj",
-        "packagesPath": "C:\\Users\\Sean\\.nuget\\packages\\",
-        "outputPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\Sean\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj",
-        "projectName": "BridgesRepo",
-        "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj",
-        "packagesPath": "C:\\Users\\Sean\\.nuget\\packages\\",
-        "outputPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\Sean\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {
-              "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj": {
-                "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[5.0.2, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[5.0.2, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\SeansStuff\\Repos\\Bridges\\BridgesService\\BridgesService.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\SeansStuff\\Repos\\Bridges\\BridgesService\\BridgesService.csproj",
-        "projectName": "BridgesService",
-        "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesService\\BridgesService.csproj",
-        "packagesPath": "C:\\Users\\Sean\\.nuget\\packages\\",
-        "outputPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesService\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\Sean\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {
-              "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj": {
-                "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj"
-              },
-              "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj": {
-                "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\SeansStuff\\Repos\\Bridges\\Bridges\\Bridges.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\SeansStuff\\Repos\\Bridges\\Bridges\\Bridges.csproj",
+        "projectUniqueName": "/Users/sean/SeansStuff/Repos/Bridges/Bridges/Bridges.csproj",
         "projectName": "Bridges",
-        "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\Bridges\\Bridges.csproj",
-        "packagesPath": "C:\\Users\\Sean\\.nuget\\packages\\",
-        "outputPath": "C:\\SeansStuff\\Repos\\Bridges\\Bridges\\obj\\",
+        "projectPath": "/Users/sean/SeansStuff/Repos/Bridges/Bridges/Bridges.csproj",
+        "packagesPath": "/Users/sean/.nuget/packages/",
+        "outputPath": "/Users/sean/SeansStuff/Repos/Bridges/Bridges/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Sean\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/sean/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj": {
-                "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesDomain\\BridgesDomain.csproj"
+              "/Users/sean/SeansStuff/Repos/Bridges/BridgesDomain/BridgesDomain.csproj": {
+                "projectPath": "/Users/sean/SeansStuff/Repos/Bridges/BridgesDomain/BridgesDomain.csproj"
               },
-              "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj": {
-                "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesRepo\\BridgesRepo.csproj"
+              "/Users/sean/SeansStuff/Repos/Bridges/BridgesRepo/BridgesRepo.csproj": {
+                "projectPath": "/Users/sean/SeansStuff/Repos/Bridges/BridgesRepo/BridgesRepo.csproj"
               },
-              "C:\\SeansStuff\\Repos\\Bridges\\BridgesService\\BridgesService.csproj": {
-                "projectPath": "C:\\SeansStuff\\Repos\\Bridges\\BridgesService\\BridgesService.csproj"
+              "/Users/sean/SeansStuff/Repos/Bridges/BridgesService/BridgesService.csproj": {
+                "projectPath": "/Users/sean/SeansStuff/Repos/Bridges/BridgesService/BridgesService.csproj"
               }
             }
           }
@@ -255,11 +42,17 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
             "Azure.Extensions.AspNetCore.Configuration.Secrets": {
               "target": "Package",
@@ -292,7 +85,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -304,7 +98,205 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/sean/SeansStuff/Repos/Bridges/BridgesDomain/BridgesDomain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/sean/SeansStuff/Repos/Bridges/BridgesDomain/BridgesDomain.csproj",
+        "projectName": "BridgesDomain",
+        "projectPath": "/Users/sean/SeansStuff/Repos/Bridges/BridgesDomain/BridgesDomain.csproj",
+        "packagesPath": "/Users/sean/.nuget/packages/",
+        "outputPath": "/Users/sean/SeansStuff/Repos/Bridges/BridgesDomain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/sean/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/sean/SeansStuff/Repos/Bridges/BridgesRepo/BridgesRepo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/sean/SeansStuff/Repos/Bridges/BridgesRepo/BridgesRepo.csproj",
+        "projectName": "BridgesRepo",
+        "projectPath": "/Users/sean/SeansStuff/Repos/Bridges/BridgesRepo/BridgesRepo.csproj",
+        "packagesPath": "/Users/sean/.nuget/packages/",
+        "outputPath": "/Users/sean/SeansStuff/Repos/Bridges/BridgesRepo/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/sean/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/sean/SeansStuff/Repos/Bridges/BridgesDomain/BridgesDomain.csproj": {
+                "projectPath": "/Users/sean/SeansStuff/Repos/Bridges/BridgesDomain/BridgesDomain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/sean/SeansStuff/Repos/Bridges/BridgesService/BridgesService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/sean/SeansStuff/Repos/Bridges/BridgesService/BridgesService.csproj",
+        "projectName": "BridgesService",
+        "projectPath": "/Users/sean/SeansStuff/Repos/Bridges/BridgesService/BridgesService.csproj",
+        "packagesPath": "/Users/sean/.nuget/packages/",
+        "outputPath": "/Users/sean/SeansStuff/Repos/Bridges/BridgesService/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/sean/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/sean/SeansStuff/Repos/Bridges/BridgesDomain/BridgesDomain.csproj": {
+                "projectPath": "/Users/sean/SeansStuff/Repos/Bridges/BridgesDomain/BridgesDomain.csproj"
+              },
+              "/Users/sean/SeansStuff/Repos/Bridges/BridgesRepo/BridgesRepo.csproj": {
+                "projectPath": "/Users/sean/SeansStuff/Repos/Bridges/BridgesRepo/BridgesRepo.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

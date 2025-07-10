@@ -1,7 +1,7 @@
-/*@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
-tr:hover {
-    background: salmon;
-}*/
+/*@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');*/
+/*tr:hover {*/
+/*    background: salmon;*/
+/*}*/
 
 img {
     border: solid gray;
@@ -16,7 +16,7 @@ img:hover {
 }
 
 body {
-    font-family: 'Century Gothic';
+    font-family: 'Century Gothic', Arial, sans-serif;
     /*background-image: url("/Images/bkgrd.jpg");
     background-size: cover;*/
     background-color: darkslategray;
@@ -24,7 +24,7 @@ body {
 
 textarea {
     width: 100%;
-    height: 250x;
+    height: 250px;
 }
 
 table {
